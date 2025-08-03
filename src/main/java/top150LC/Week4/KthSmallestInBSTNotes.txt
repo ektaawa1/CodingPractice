@@ -1,0 +1,40 @@
+        5
+       / \
+      3   6
+     / \
+    2   4
+   /
+  1
+
+Let's dry-run with this tree and k = 3.
+
+Variable Setup
+k = 3
+ans = 0
+Starting at root = 5
+
+Dry Run: helper(5)
+helper(5)
+→ Left: helper(3)
+
+helper(3)
+→ Left: helper(2)
+
+helper(2)
+→ Left: helper(1)
+
+helper(1)
+→ Left: null, return
+→ Visit node 1 → k = 2
+→ Right: null, return
+
+Back to helper(2)
+→ Visit node 2 → k = 1
+→ Right: null, return
+
+Back to helper(3)
+→ Visit node 3 → k = 0 ✅
+→ ans = 3
+→ Return immediately — no more traversal needed!
+
+✅ Final Answer: ans = 3

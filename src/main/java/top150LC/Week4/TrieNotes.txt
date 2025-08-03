@@ -1,0 +1,7 @@
+A Trie (pronounced “try”) is a tree-based data structure used to efficiently store
+and retrieve strings, especially useful for:
+Prefix search (e.g., "find all words starting with 'pre'")
+Auto-complete systems
+Spell checkers
+IP routing
+

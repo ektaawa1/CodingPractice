@@ -1,0 +1,16 @@
+✅ Should I use Stack or Deque in Java?
+1. Stack (java.util.Stack)
+✔️ Simple to use — meant for LIFO (Last In First Out).
+✔️ Has push(), pop(), peek().
+✔️ BUT: It's an old class — synchronized (thread-safe), so slightly slower.
+
+2. Deque (java.util.Deque)
+✔️ Recommended since Java 6/7 onwards for stack-like usage.
+✔️ Faster — not synchronized (better for single-threaded code or modern usage).
+✔️ Use methods:
+
+
+Deque<Integer> stack = new ArrayDeque<>();
+stack.push(val);     // equivalent to Stack's push
+stack.pop();        // equivalent to Stack's pop
+stack.peek();       // equivalent to Stack's peek

@@ -1,0 +1,118 @@
+Least Recently Used Cache
+
+## **Quick recap: LRU Cache uses:**
+
+1. **HashMap** — for O(1) key lookup
+2. **Doubly Linked List** — to track the **order of usage**:
+
+   * **Head = Most recently used (MRU)**
+   * **Tail = Least recently used (LRU)**
+
+Plus:
+
+* Two dummy nodes: **head & tail** to simplify boundary cases:
+
+```
+head <-> Node1 <-> Node2 <-> Node3 <-> tail
+```
+
+---
+
+## ✅ 1. **removeNode(DoublyLinkedNode node)**
+
+🔍 **Purpose**: Remove `node` from the list.
+
+### Before:
+
+```
+prev <-> node <-> next
+```
+
+### Code:
+
+```java
+node.prev.next = node.next;
+node.next.prev = node.prev;
+```
+
+### After:
+
+```
+prev <-> next
+```
+
+✔️ The node is removed by re-wiring its neighbors directly.
+
+---
+
+## ✅ 2. **addToHead(DoublyLinkedNode node)**
+
+🔍 **Purpose**: Insert `node` **right after dummy head** (marking it "most recently used").
+
+### Before:
+
+```
+head <-> firstNode
+```
+
+### Code:
+
+```java
+node.next = head.next;   // node points to firstNode
+node.prev = head;        // node points back to head
+head.next.prev = node;   // firstNode's prev now points to new node
+head.next = node;        // head now points to new node
+```
+
+### After:
+
+```
+head <-> node <-> firstNode
+```
+
+✔️ New node inserted immediately after `head`.
+
+---
+
+## ✅ 3. **removeTail()**
+
+🔍 **Purpose**: Remove **the least recently used node (just before dummy tail)** and return it.
+
+```java
+DoublyLinkedNode res = tail.prev; // last real node
+removeNode(res);                 // remove this node
+return res;                      // return it for cache cleanup
+```
+
+### Visually:
+
+```
+head <-> ... <-> res <-> tail
+```
+
+After removal:
+
+```
+head <-> ... <-> tail
+```
+
+✔️ Used to **evict LRU item when capacity is exceeded**.
+
+---
+
+## 🎯 **Quick Summary Table:**
+
+| Function     | Purpose                                 | Affects       |
+| ------------ | --------------------------------------- | ------------- |
+| removeNode() | Remove `node` from anywhere in the list | Middle node   |
+| addToHead()  | Insert `node` after dummy head (MRU)    | Front of list |
+| removeTail() | Remove node before dummy tail (LRU)     | End of list   |
+
+---
+
+### 🔍 **Why dummy head & tail?**
+
+* Avoid null checks.
+* Simplify adding/removing logic at both ends.
+
+---

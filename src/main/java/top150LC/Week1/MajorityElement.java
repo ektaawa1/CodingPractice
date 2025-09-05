@@ -1,4 +1,4 @@
-package org.Week1;
+package top150LC.Week1;
 
 /**
  *Given an array nums of size n, return the majority element.

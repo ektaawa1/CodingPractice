@@ -3,18 +3,25 @@ package top75LC.Week1;
 import java.util.Arrays;
 import java.util.HashSet;
 
+/**
+ * Example 1:
+ *Input: s = "IceCreAm", Output: "AceCreIm"
+ *
+ * Example 2:
+ * Input: s = "leetcode", Output: "leotcede"
+ */
 public class ReverseVowelsInString {
     // Two pointer approach
     public String reverseVowels(String s) {
-        HashSet<Character> vowel = new HashSet<>(Arrays.asList('a','e','i','o','u','A','E','I','O','U'));
+        HashSet<Character> vowelSet = new HashSet<>(Arrays.asList('a','e','i','o','u','A','E','I','O','U'));
         int left = 0;
         int right = s.length()-1;
         char word[] = s.toCharArray();
 
         while(left<right){
-            if(!vowel.contains(word[left])){
+            if(!vowelSet.contains(word[left])){
                 left++;
-            } else if(!vowel.contains(word[right])){
+            } else if(!vowelSet.contains(word[right])){
                 right--;
             } else {
                 char temp = word[left];

@@ -1,4 +1,4 @@
-package org.Week3;
+package top150LC.Week3;
 
 //21. Merge Two Sorted Lists
 // https://algo.monster/liteproblems/21

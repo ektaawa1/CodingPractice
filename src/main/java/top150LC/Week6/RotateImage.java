@@ -5,6 +5,9 @@ package top150LC.Week6;
  * You have to rotate the image in-place, which means you have to modify the input 2D matrix directly.
  * DO NOT allocate another 2D matrix and do the rotation.
  */
+
+//Clockwise: transpose + reverse each row
+//Counter-clockwise: transpose + reverse each column
 public class RotateImage {
     public void rotate(int[][] matrix) {
         int size = matrix.length;
@@ -68,3 +71,46 @@ public class RotateImage {
  * To rotate the matrix 90 degrees clockwise in-place,
  * I transpose it to swap rows with columns, and then mirror each row to simulate the rotation.
  */
+
+/** For Clockwise:
+ * for (int i = 0; i < size; i++) {
+ *         int left = 0, right = size - 1;
+ *         while (left < right) {
+ *             int temp = matrix[i][left];
+ *             matrix[i][left] = matrix[i][right];
+ *             matrix[i][right] = temp;
+ *             left++;
+ *             right--;
+ *         }
+ *     }
+ */
+//Rotating a matrix 180° clockwise is the same as:
+//Flipping it upside down (reverse rows) and
+//Flipping it left to right (reverse each row)
+
+/**
+ * dd
+ */
+
+//public void rotate180(int[][] matrix) {
+//    int n = matrix.length;
+//
+//    // Flip upside down (reverse rows)
+//    for (int i = 0; i < n / 2; i++) {
+//        int[] temp = matrix[i];
+//        matrix[i] = matrix[n - 1 - i];
+//        matrix[n - 1 - i] = temp;
+//    }
+//
+//    // Reverse each row (flip left-right)
+//    for (int i = 0; i < n; i++) {
+//        int left = 0, right = n - 1;
+//        while (left < right) {
+//            int temp = matrix[i][left];
+//            matrix[i][left] = matrix[i][right];
+//            matrix[i][right] = temp;
+//            left++;
+//            right--;
+//        }
+//    }
+//}

@@ -1,4 +1,4 @@
-package org.Week3;
+package top150LC.Week3;
 
 import java.util.HashMap;
 

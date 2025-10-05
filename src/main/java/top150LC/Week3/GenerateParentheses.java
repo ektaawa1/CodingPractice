@@ -1,4 +1,4 @@
-package org.Week3;
+package top150LC.Week3;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +9,9 @@ import java.util.List;
 public class GenerateParentheses {
     public List<String> generateParenthesis(int n) {
         List<String> combString = new ArrayList<>();
+        if(n == 0){
+            return combString;
+        }
         backtrack(combString, "", 0, 0, n);
         return combString;
     }

@@ -2,6 +2,11 @@ package grind75.Week1;
 
 import java.util.HashMap;
 
+/**
+ * Given a string s which consists of lowercase or uppercase letters,
+ * return the length of the longest palindrome that can be built with those letters.
+ * Letters are case-sensitive, for example, "Aa" is not considered a palindrome.
+ */
 public class LongestPalindromeLength {
     public int longestPalindrome(String s) {
         HashMap<Character, Integer> freq = new HashMap<>();
@@ -71,4 +76,26 @@ public class LongestPalindromeLength {
  * a=1 and b=1 → odds → we can put one in the center.
  *
  * Final length = 6 + 1 = 7, Answer = 7 (palindrome like "dccaccd").
+ */
+/**
+ * Example: "aabbcddd"
+ * Freq count --> a → 2, b → 2, c → 1, d → 3
+ *
+ * val = 2 (for 'a')
+ * Even → count += 2 → count = 2
+ * val = 2 (for 'b')
+ * Even → count += 2 → count = 4
+ * val = 1 (for 'c')
+ * Odd → count += 0 → count = 4
+ * oddFound = true
+ * val = 3 (for 'd')
+ * Odd → count += 2 → count = 6
+ * oddFound = true (already true)
+ * After loop:
+ * count = 6, oddFound = true
+ * Since oddFound = true → count += 1 → count = 7
+ * Step 3: Result
+ * The longest palindrome length = 7
+ *
+ * for building palindrome we can use- aa, bb, ddd or aa,bb,dd,c.
  */

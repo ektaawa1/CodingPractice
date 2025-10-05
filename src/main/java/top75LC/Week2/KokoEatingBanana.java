@@ -1,5 +1,6 @@
 package top75LC.Week2;
 
+//Applying binary search algo
 public class KokoEatingBanana {
     public int minEatingSpeed(int[] piles, int h) {
         int minSpeed = 1;

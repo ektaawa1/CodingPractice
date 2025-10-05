@@ -1,4 +1,4 @@
-package org.Week3;
+package top150LC.Week3;
 
 // 2. Add Two Numbers
 // Linked List https://algo.monster/liteproblems/2

@@ -1,4 +1,4 @@
-package org.Week3;
+package top150LC.Week3;
 
 // 146. LRU Cache https://algo.monster/liteproblems/146
 
@@ -7,88 +7,78 @@ import java.util.HashMap;
 /**
  * Using Doubly Linked List & Hash Map
  */
-class DoublyLinkedListNode {
+class DoublyLL{
+    DoublyLL next;
+    DoublyLL prev;
     int key;
-    int value;
-    DoublyLinkedListNode next;
-    DoublyLinkedListNode prev;
-
-    //constructor
-    public DoublyLinkedListNode(int key, int value){
+    int val;
+    public DoublyLL(int key, int value){ //constructor
         this.key = key;
-        this.value = value;
+        this.val = value;
     }
 }
-public class LRUCache {
-    private int capacity;
-    private int size;
-    private HashMap<Integer, DoublyLinkedListNode> cacheMap;
-    private DoublyLinkedListNode head;
-    private DoublyLinkedListNode tail;
+class LRUCache {
+    int capacity;
+    int size;
+    DoublyLL dummyHead;
+    DoublyLL dummyTail;
+    HashMap<Integer, DoublyLL> cacheMap;
 
-    public LRUCache(int capacity) {
+    public LRUCache(int capacity){
         this.capacity = capacity;
         this.size = 0;
         this.cacheMap = new HashMap<>();
-        this.head = new DoublyLinkedListNode(0,0);
-        this.tail = new DoublyLinkedListNode(0,0);
+        this.dummyHead = new DoublyLL(0,0);
+        this.dummyTail = new DoublyLL(0,0);
+        dummyHead.next = dummyTail;
+        dummyTail.prev = dummyHead;
     }
 
     public int get(int key) {
-        if (!cacheMap.containsKey(key)){
+        if(!cacheMap.containsKey(key)){
             return -1;
         }
-        DoublyLinkedListNode node = cacheMap.get(key);
-        // now make it MRU node by making it point to head
+        DoublyLL node = cacheMap.get(key);
         moveToHead(node);
-        return node.value;
+        return node.val;
     }
 
     public void put(int key, int value) {
-        if (cacheMap.containsKey(key)){
-            DoublyLinkedListNode node = cacheMap.get(key);
-            node.value = value;
-            // now make it MRU node by making it point to head
-            moveToHead(node);
+        if(cacheMap.containsKey(key)){
+            DoublyLL node = cacheMap.get(key);
+            node.val = value;
+            moveToHead(node);//since it is most recently used
         } else {
-            DoublyLinkedListNode newNode = new DoublyLinkedListNode(key, value);
+            DoublyLL newNode = new DoublyLL(key, value);
             cacheMap.put(key, newNode);
-            // now make it MRU node by making it point to head
-            moveToHead(newNode);
+            addToHead(newNode); //since its a new node so directly move to Head
             size++;
-            if(size > capacity) {
-                //remove the LRU node i.e which is nearest to the Tail
-                DoublyLinkedListNode tailNode = removeTailNode();
-                // also remove from hashmap
-                cacheMap.remove(tailNode.key);
+            if(size > capacity){
+                DoublyLL lruNode = dummyTail.prev;
+                removeNode(lruNode);
+                cacheMap.remove(lruNode.key);
                 size--;
             }
-
         }
-    }
 
-    private void moveToHead(DoublyLinkedListNode node) {
-        removeNode(node);
-        addToHead(node);
     }
-
-    // Removes and returns the tail node (least recently used node)
-    private DoublyLinkedListNode removeTailNode() {
-        DoublyLinkedListNode node = tail.prev;
-        removeNode(node);
-        return node;
+    // head->node->currNode->tail ====> head->node->tail
+    // ===============================> head->currNode->node->tail
+    private void moveToHead(DoublyLL currNode){
+        //Remove the node
+        removeNode(currNode);
+        //add the node to head
+        addToHead(currNode);
     }
-
-    private void removeNode(DoublyLinkedListNode node) {
+    private void removeNode(DoublyLL node){
         node.prev.next = node.next;
         node.next.prev = node.prev;
     }
-
-    private void addToHead(DoublyLinkedListNode node) {
-        node.next = head.next;
-        node.prev = head;
-        head.next.prev = node;
-        head.next = node;
+    private void addToHead(DoublyLL node){
+        node.next = dummyHead.next;
+        node.prev = dummyHead;
+        dummyHead.next.prev = node;
+        dummyHead.next = node;
     }
 }
 

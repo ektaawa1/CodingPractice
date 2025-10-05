@@ -24,6 +24,7 @@ class TreeNode {
 // → that’s postorder DFS traversal.
 public class HeightBalancedBT {
       public boolean isBalanced(TreeNode root) {
+
           return dfs(root) != -1;
       }
 

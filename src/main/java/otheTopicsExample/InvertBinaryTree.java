@@ -22,6 +22,7 @@ import java.util.Queue;
 //TC = O(n) → Each node is processed once.
 //
 //SC = O(w) → Max width of tree (worst case O(n) if tree is very wide).
+//Using BFS Approach
 public class InvertBinaryTree {
     public TreeNode1 invertTree(TreeNode1 root) {
         if (root == null) return null;
@@ -75,4 +76,14 @@ public class InvertBinaryTree {
  * Queue is just a storage structure — it stores nodes in the order you insert them.
  * When you dequeue and process a node later, the node already knows which child is left and
  * which is right because you swapped before enqueuing.
+ */
+
+/**
+ * A Deque (double-ended queue) Interface
+ * allows adding or removing elements from both ends and can work as either a FIFO queue or a LIFO stack.
+ *
+ * Supports FIFO and LIFO : Can function as a queue (FIFO) or a stack (LIFO).
+ * No Capacity Restriction (for most implementations) : Classes like ArrayDeque grow automatically as needed.
+ * More Versatile than Queue : Provides extra methods like addFirst(), addLast(), peekFirst(), peekLast().
+ * Efficient Insert/Remove at Both Ends : Constant-time performance for add/remove operations at either end in most implementations.
  */

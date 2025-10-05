@@ -1,4 +1,4 @@
-package org.Week2;
+package top150LC.Week2;
 
 // 167. Two Sum II - Input Array Is Sorted
 

@@ -1,9 +1,10 @@
-package org.Week2;
+package top150LC.Week2;
 
 // 20. Valid Parentheses
 
 import java.util.ArrayDeque;
 import java.util.Deque;
+import java.util.Stack;
 
 /**
  * Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
@@ -43,10 +44,32 @@ public class ValidParentheses {
                 (leftBracket == '{' && rightBracket == '}') ||
                 (leftBracket == '[' && rightBracket == ']');
     }
+
+    //another approach
+    public boolean isValid1(String s) {
+        // your code goes here
+        Stack<Character> stck = new Stack<>();
+        if(s == null || s.length() == 0){
+            return false;
+        }
+        for(char ch : s.toCharArray()){
+            if(ch == '{' || ch == '(' || ch == '['){
+                stck.push(ch);
+            }
+            if(!stck.isEmpty()){
+                char top = stck.peek();
+                if((ch == '}' && top == '{') || (ch == ')' && top == '(') || (ch == ']' && top == '[')){
+                    stck.pop();
+                }
+            }
+        }
+        return stck.isEmpty();
+
+    }
 }
 
-//TC = O(n)
-//SC = O(n)
+//TC = O(n) (each char is pushed & popped at most once)
+//SC = O(n) (in worst case (all chars are opening brackets))
 /**
  * Best Case: When the string is empty or consists of a single pair of brackets,
  * the time complexity is O(1) because it takes a constant amount of time.

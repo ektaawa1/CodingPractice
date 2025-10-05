@@ -13,7 +13,6 @@ import java.util.Queue;
  * If this is impossible, return -1.
  */
 
-//Step 1: Count all the fresh & rotten oranges
 public class RottingOranges {
     public int orangesRotting(int[][] grid) {
         int rows = grid.length;

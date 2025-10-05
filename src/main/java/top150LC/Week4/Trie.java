@@ -1,4 +1,4 @@
-package org.Week4;
+package top150LC.Week4;
 
 import java.util.HashMap;
 
@@ -12,6 +12,7 @@ class TrieNode{
 class Trie {
     TrieNode root;
     public Trie() {
+
         root = new TrieNode();
     }
 

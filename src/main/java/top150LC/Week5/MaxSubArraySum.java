@@ -1,4 +1,4 @@
-package org.Week5;
+package top150LC.Week5;
 
 public class MaxSubArraySum {
     //Kadane’s algorithm works in linear time O(n)
@@ -7,7 +7,7 @@ public class MaxSubArraySum {
         int currSum = 0;
 
         for(int n: nums){
-            if(currSum < 0){
+            if(currSum < 0){//if the sum is -ve i.e., -10 or -3, etc.
                 currSum = 0;
             }
             currSum += n;

@@ -1,4 +1,4 @@
-package org.Week2;
+package top150LC.Week2;
 
 // 1. Two Sum
 // https://algo.monster/liteproblems/1
@@ -12,6 +12,10 @@ import java.util.HashMap;
  * Example 2: Input: nums = [3,2,4], target = 6, Output: [1,2]
  *
  * Example 3: Input: nums = [3,3], target = 6, Output: [0,1]
+ */
+
+/**
+ * For Two Sum, sorting would break the mapping between numbers and their original indices, so I’d prefer a hash map.
  */
 
 // Hashtable approach
@@ -39,4 +43,16 @@ public class TwoSum {
  *
  * While the result is an array of 2 integers (O(1) space), the HashMap used for
  * lookups can store up to n elements in the worst case — making the space complexity O(n).
+ */
+/**
+ * Brute Force- TC = O(n^2), SC = O(1)
+ * for (int i = 0; i < n; i++) {
+ *     for (int j = i + 1; j < n; j++) {
+ *         if (nums[i] + nums[j] == target) return new int[]{i, j};
+ *     }
+ * }
+ */
+/**
+ * 2 pointers approach- TC = O(nlog n), SC = O(1)
+ * 1st sort the array, then apply 2 pointers
  */

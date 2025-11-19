@@ -27,7 +27,9 @@ public class HeightBalancedBT {
 
           return dfs(root) != -1;
       }
-
+        //The below helper method returns:
+      // the height of the subtree if it’s balanced
+      // -1 if it’s not balanced
       private int dfs(TreeNode node){
           //base case
           if(node == null){
@@ -86,4 +88,10 @@ public class HeightBalancedBT {
  * Node 3: left=0, right=0 → height = 1
  * Node 1: left=2, right=1 → height = max(2,1)+1 = 3
  * So the whole tree’s height = 3.
+ */
+
+/**
+ * An empty tree is considered balanced because:
+ * There are no nodes where height difference could exist.
+ * The height of an empty tree is conventionally 0.
  */

@@ -48,6 +48,24 @@ public class GroupAnagram {
         // effectively grouping all anagrams together.
         return new ArrayList<>(anagram_map.values());
     }
+    public List<List<String>> groupAnagramsEasy(String[] strs) {
+        HashMap<String, List<String>> map1 = new HashMap<>();
+
+        for(String s: strs){
+            char[] chArr = s.toCharArray();
+            Arrays.sort(chArr);
+
+            String sortedS = String.valueOf(chArr);
+            if(map1.containsKey(sortedS)){
+                map1.get(sortedS).add(s);
+            }else {
+                List<String> tempList = new ArrayList<>();
+                tempList.add(s);
+                map1.put(sortedS, tempList);
+            }
+        }
+        return new ArrayList<>(map1.values());
+    }
 }
 
 //Equivalent Verbose-
@@ -75,3 +93,11 @@ public class GroupAnagram {
  *   "abt": ["bat"]
  * }
  */
+
+//Note: Array definition versus ArrayList definition
+//String[] strs = {"eat","tea","tan","ate","nat","bat"};
+//ArrayList<String> sList = new ArrayList<>(Arrays.asList("eat", "tea", "bat"));
+
+//TC = O(n × k log k)
+//n = number of strings
+//k = average length of each string

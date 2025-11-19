@@ -1,4 +1,4 @@
-package org.Week1;
+package top150LC.Week1;
 
 // 189. Rotate Array
 

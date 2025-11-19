@@ -45,7 +45,7 @@ public class KthLargestElement {
         for(int i = 0; i<nums.length; i++){
             minHeap.offer(nums[i]);
             if(minHeap.size()>k){ // remove the smallest (top) element if size exceeds k
-                minHeap.poll();//to keep only k largest elements
+                minHeap.poll();//to keep only k large elements
             }
         }
         return minHeap.peek(); // kth largest element

@@ -24,34 +24,26 @@ import java.util.Set;
 public class LongestSubstring {
     public int lengthOfLongestSubstring(String s) {
         int maxLen = 0;
-        int left = 0;
-        HashSet<Character> charSet = new HashSet<>();
-        for(int right = 0; right <s.length(); right++){
-            while(charSet.contains(s.charAt(right))){
-                charSet.remove(s.charAt(left));
-                left++;
+        int l = 0;//left boundary
+        HashSet<Character> set = new HashSet<>();
+        for(int r = 0; r< s.length(); r++){ //right boundary r
+            while(set.contains(s.charAt(r))){//but if we find a duplicate, we shrink from the left side, l
+                set.remove(s.charAt(l));
+                l++;
             }
-            charSet.add(s.charAt(right));
-            maxLen = Math.max(maxLen, right-left+1);
-        }
-        return maxLen;
-    }
-    public int lengthOfLongestSubstring1(String s) {
-        Set<Character> set = new HashSet<>();
-        int left = 0, right = 0, maxLen = 0;
-
-        while (right < s.length()) {
-            if (!set.contains(s.charAt(right))) {
-                set.add(s.charAt(right));
-                maxLen = Math.max(maxLen, right - left + 1);
-                right++;
-            } else {
-                set.remove(s.charAt(left));
-                left++;
-            }
+            set.add(s.charAt(r));//move the right pointer r forward each time
+            maxLen = Math.max(maxLen, r-l+1);//if l=2, r=4 then window size = 4-2+1=3 i.e. 2,3,4 total 3 elements
         }
         return maxLen;
     }
 }
+// s= "bbbbb", i = 0, set = []
+//1)    j = 0, set = ['b']  , maxLen = (0,1)= 1
+//2)    j = 1, set = [ ], i = 1, set = ['b'], maxLen = (1, 1) = 1
+//3)    j = 2, set = [ ], i = 2, set = ['b'], maxLen = (1, 1) = 1
+//4)    j = 3, set = [ ], i = 3, set = ['b'], maxLen = (1, (3-3+1)) = 1
+//5)    j = 4, set = [ ], i = 4, set = ['b'], maxLen = (1, (4-4+1)) = 1
+// output = 1
+
 //TC = O(n)
 //SC = O(n)

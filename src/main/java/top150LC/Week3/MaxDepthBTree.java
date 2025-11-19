@@ -1,6 +1,10 @@
 package top150LC.Week3;
 
 
+import com.sun.source.tree.Tree;
+
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -23,7 +27,7 @@ public class MaxDepthBTree {
      */
     public int maxDepth1(TreeNode root) {
         if (root == null) return 0; // Edge case: empty tree
-
+        //Deque<TreeNode> q = new ArrayDeque<>();
         Queue<TreeNode> queue = new LinkedList<>();// to process nodes level by level
         queue.offer(root); // queue.offer(x) is the same as queue.add(x) — inserts an element at the end of the queue.
         int depth = 0;
@@ -81,4 +85,11 @@ public class MaxDepthBTree {
  * Queue is empty.
  *
  * Max Depth = 3
+ */
+
+/**
+ * | Method                       | TC   | SC                       |
+ * | ---------------------------- | ---- | ------------------------ |
+ * | DFS (recursive)              | O(n) | O(h) (stack depth)       |
+ * | BFS (iterative, level-order) | O(n) | O(w) (max width of tree) |
  */

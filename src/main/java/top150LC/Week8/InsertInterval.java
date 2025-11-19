@@ -38,6 +38,7 @@ public class InsertInterval {
 
         return result.toArray(new int[result.size()][]);
     }
+    // prefer this
     public int[][] insertA(int[][] intervals, int[] newInterval) {
         List<int[]> before = new ArrayList<>();
         List<int[]> after = new ArrayList<>();

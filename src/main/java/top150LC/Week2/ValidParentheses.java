@@ -23,27 +23,27 @@ import java.util.Stack;
 // https://algo.monster/liteproblems/20
 //Stack LIFO
 public class ValidParentheses {
-    public boolean isValid(String s) {
-        Deque<Character> stack = new ArrayDeque<>();
-        for(char c: s.toCharArray()){
-            if(c == '(' || c == '{' || c == '['){
-                stack.push(c);
-            } else {
-                if (stack.isEmpty() || !match(stack.pop(),c)){
-                    return false;
-                }
-            }
-        }
-        // If the stack is empty, all brackets were matched correctly
-        return stack.isEmpty();
-    }
-
-    private boolean match(char leftBracket, char rightBracket) {
-        // Return true if pairs match, false otherwise
-        return (leftBracket == '(' && rightBracket == ')') ||
-                (leftBracket == '{' && rightBracket == '}') ||
-                (leftBracket == '[' && rightBracket == ']');
-    }
+//    public boolean isValid(String s) {
+//        Deque<Character> stack = new ArrayDeque<>();
+//        for(char c: s.toCharArray()){
+//            if(c == '(' || c == '{' || c == '['){
+//                stack.push(c);
+//            } else {
+//                if (stack.isEmpty() || !match(stack.pop(),c)){
+//                    return false;
+//                }
+//            }
+//        }
+//        // If the stack is empty, all brackets were matched correctly
+//        return stack.isEmpty();
+//    }
+//
+//    private boolean match(char leftBracket, char rightBracket) {
+//        // Return true if pairs match, false otherwise
+//        return (leftBracket == '(' && rightBracket == ')') ||
+//                (leftBracket == '{' && rightBracket == '}') ||
+//                (leftBracket == '[' && rightBracket == ']');
+//    }
 
     //another approach
     public boolean isValid1(String s) {

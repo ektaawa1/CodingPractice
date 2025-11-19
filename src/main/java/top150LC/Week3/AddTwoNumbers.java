@@ -11,24 +11,29 @@ class ListNode {
   }
 public class AddTwoNumbers {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        ListNode dummy = new ListNode(0);//will point to the head of the result linked list
-        ListNode curr = dummy; //will point to the current node in the new Linked list
+        ListNode dummy = new ListNode(0);
+        ListNode curr = dummy;
 
-        int carry = 0; //to keep track of carry-over
-         while(l1 != null || l2 != null || carry != 0){
-             //handling the case where l1 or l2 has no node left so we treat it as 0
-             int sum = (l1 == null ? 0 : l1.val) + (l2 == null ? 0 : l2.val) + carry; //calculate sum
+        int carry = 0;
+        //int sum = 0;
+        while(l1 != null || l2 != null || carry != 0){
+            int v1 = (l1!= null) ? l1.val : 0;
+            int v2= (l2!=null) ? l2.val : 0;
 
-             curr.next = new ListNode(sum % 10); // store the digit value of sum in a new node
-             curr = curr.next; // moves to the new node you just added
+            int sum = v1 + v2 + carry;
+            carry = sum / 10; //gives the carry (1) for the next iteration
+            curr.next = new ListNode(sum % 10); //gives the digit to place at the current node, 8+7 =15 so 15%10 = 5
+            //15/10 = 1 which is the carry over
+            curr = curr.next;
 
-             carry = sum / 10;
 
-             // handling the case where l1 or l2 has no node left
-             l1 = l1 == null? null : l1.next;
-             l2 = l2 == null? null : l2.next;
-         }
-         return dummy.next;
+            if (l1 != null) l1 = l1.next;
+            if (l2 != null) l2 = l2.next;
+        }
+        return dummy.next;
+    }
+    private ListNode reverse(ListNode l){
+        return l;
     }
 }
 

@@ -40,3 +40,7 @@ public class CloneGraph {
     }
     //BFS Approach
 }
+//O(n + e) TC, SC = O(n)
+//n = number of nodes
+//
+//e = number of edges

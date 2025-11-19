@@ -1,37 +1,88 @@
 package top150LC.Week4;
-//                     ???????????????????????????? DO IT AGAIN ???????????????????????????????
-//Approach
-//Expand Around Center (Two Pointers) — O(n²), O(1) space
+
 public class LongestPalindromicSubstring {
+    //Optimal Solution-Expand Around Center (Two Pointers) — O(n²), O(1) space
     public String longestPalindrome(String s) {
-        int start = 0; int end = 0;
-        if(s == null || s.length()<1){ //base case
-            return "";
+        if (s == null || s.length() < 2) {
+            return s; // single char is always a palindrome
         }
 
-        for(int i = 0; i<s.length(); i++){
-            int len1 = expandFromCenter(s, i, i);//odd length;both the pointers will be at the single element
-            int len2 = expandFromCenter(s,i,i+1);//even length; 2 pointers will be at two elements
-            int maxLen = Math.max(len1,len2);
+        int start = 0, end = 0;
 
-            if(maxLen > (end-start)){
-                //update the end & start points
-                //calculates the start and end index of the current palindrome.
-                start = i-(maxLen-1)/2;
-                end = i+maxLen/2;
+        for (int i = 0; i < s.length(); i++) {
+            // Case 1: odd-length palindrome (center at i)
+            int[] odd = expandFromCenter(s, i, i); // this returns the start & the end index of odd length palindrome
+
+            // Case 2: even-length palindrome (center between i and i+1)
+            int[] even = expandFromCenter(s, i, i + 1); // returns the start & end index of even length palindrome
+
+            // Compare which one gives longer palindrome
+            if (odd[1] - odd[0] > end - start) {
+                start = odd[0];
+                end = odd[1];
+            }
+            if (even[1] - even[0] > end - start) {
+                start = even[0];
+                end = even[1];
             }
         }
-        return s.substring(start,end+1);
+
+        return s.substring(start, end + 1);
     }
-    private int expandFromCenter(String s, int left, int right) {
-        while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
-            left--;
-            right++;
+
+    private int[] expandFromCenter(String s, int start, int end) {
+        // expand while characters match
+        while (start >= 0 && end < s.length() && s.charAt(start) == s.charAt(end)) {
+            start--;
+            end++;
         }
-        return right - left - 1;
-        //We're expanding from the center outwards as long as characters match (i.e., a palindrome).
-        //But when the while loop ends, left and right have moved one step too far—to non-matching characters.
-        //So to get the correct length, we subtract one step from both ends.
+
+        // When loop breaks, left & right are one step beyond palindrome
+        // So return the correct boundaries
+        return new int[]{start + 1, end - 1};
+        //WHY NOT return the substring directly?
+        //
+        //Because returning substring repeatedly is expensive
+        //→ O(n) for each substring extraction → increased total time.
+        //Returning indices is constant time and very lightweight.
+    }
+
+    public String longestPalindromeBruteForce(String s) {
+        if (s == null || s.length() < 2) {
+            return s; // single character is always a palindrome
+        }
+
+        int n = s.length();
+        String longest = "";
+
+        // Generate all substrings
+        for (int i = 0; i < n; i++) {
+            for (int j = i; j < n; j++) {
+
+                String sub = s.substring(i, j + 1);
+
+                if (isPalindrome(sub) && sub.length() > longest.length()) {
+                    longest = sub;
+                }
+            }
+        }
+
+        return longest;
+    }
+
+    // Check if a string is a palindrome
+    private boolean isPalindrome(String str) {
+        int left = 0, right = str.length() - 1;
+
+        while (left < right) {
+            if (str.charAt(left) != str.charAt(right)) {
+                return false;
+            }
+            left++;
+            right--;
+        }
+
+        return true;
     }
 }
 

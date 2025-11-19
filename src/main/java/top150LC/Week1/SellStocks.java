@@ -1,4 +1,4 @@
-package org.Week1;
+package top150LC.Week1;
 
 //121. Best Time to Buy and Sell Stock
 

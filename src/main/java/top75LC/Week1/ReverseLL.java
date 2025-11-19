@@ -26,4 +26,31 @@ public class ReverseLL {
         }
         return prev;
     }
+    // Simple test run
+    public static void main(String[] args) {
+        // Create sample linked list: 1 -> 2 -> 3 -> 4 -> 5 -> null
+        ListNode head = new ListNode(1,
+                new ListNode(2,
+                        new ListNode(3,
+                                new ListNode(4,
+                                        new ListNode(5, null)))));
+
+        ReverseLL obj = new ReverseLL();
+        ListNode reversed = obj.reverseList(head);
+
+        // Print reversed list
+        while (reversed != null) {
+            System.out.print(reversed.val + " ");
+            reversed = reversed.next;
+        }
+        // Expected Output: 5 4 3 2 1
+    }
 }
+
+//C  N
+//1->2->3->4->5->NULL
+//P  C  N
+//            P   C
+
+//Time → O(n) (each node visited once)
+//Space → O(1) (no extra data structures)

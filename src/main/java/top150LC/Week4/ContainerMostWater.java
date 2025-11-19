@@ -1,4 +1,4 @@
-package org.Week4;
+package top150LC.Week4;
 
 // 2 pointers approach is used here
 public class ContainerMostWater {
@@ -19,7 +19,7 @@ public class ContainerMostWater {
         }
         return res;
     }
-
+    //easy one
     public int maxArea1(int[] height) {
         int maxArea = 0;
         int left = 0, right = height.length - 1;

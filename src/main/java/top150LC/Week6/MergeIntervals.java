@@ -4,31 +4,54 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Why we use the Comparator?
+ * intervals is a 2D array (int[][]).
+ * The default Arrays.sort() without a comparator doesn’t know how to compare two subarrays (int[]).
+ * Each element of intervals is itself an int[] (like [1,3] or [2,6]), not a simple integer or string.
+ * So you must tell Java “how to compare two subarrays”, i.e., on what basis to sort them.
+ * That’s what the comparator does:
+ * It says — when comparing two intervals a and b, compare their start times (a[0] vs b[0]).
+ * If you try to use:
+ * Arrays.sort(intervals);
+ * you’ll get a ClassCastException or unexpected results, because Java doesn’t have a natural ordering for int[].
+ */
 public class MergeIntervals {
     public int[][] merge(int[][] intervals) {
         if(intervals.length <= 1){
             return intervals;
         }
-        //using comparator
+        //Step1:
+        //Using Comparator
+        //It’s like sorting a list of pairs — you must tell Java which field to use for comparison.
         Arrays.sort(intervals, (a, b)->Integer.compare(a[0], b[0]));
-        List<int[]> output_list = new ArrayList<>();// as actual size of output is not known.
-        int curr_interval[] = intervals[0];
-        output_list.add(curr_interval);
+
+        //Step2:
+        List<int[]> output = new ArrayList<>();// as actual size of output is not known.
+        int[] currInt = intervals[0];
+        output.add(currInt);
 
         for(int[] interval: intervals){
-            int curr_begin = curr_interval[0];
-            int curr_end = curr_interval[1];
-            int next_begin = interval[0];
-            int next_end = interval[1];
+            int begin = currInt[0];
+            int end = currInt[1];
+            int nextBegin = interval[0];
+            int nextEnd = interval[1];
 
-            if(curr_end >= next_begin){
-                curr_interval[1] = Math.max(curr_end, next_end);
-            }else {
-                curr_interval = interval;
-                output_list.add(curr_interval);
+            //Case 1: Overlap (end >= nextBegin)
+            //You merge intervals — update the same array object that’s already in output.
+            //So no need to add anything new — you just extend its end value.
+            if(end >= nextBegin){
+                currInt[1] = Math.max(end, nextEnd);
+            }
+            //Case 2: No overlap (end < nextBegin)
+            //You’re done with the current interval (currInt).
+            //You need to start a new merged interval.
+            else {
+                currInt = interval; //Now start merging from this new interval.
+                output.add(currInt); //Add this as a separate merged range.
             }
         }
-        return output_list.toArray(new int[output_list.size()][]);//converting list to Array
+        return output.toArray(new int[output.size()][]);//converting list to Array
     }
 }
 

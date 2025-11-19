@@ -1,33 +1,44 @@
 package top150LC.Week5;
-// ???????????????????????????          DO IT AGAIN                   ?????????????????????????
+
 //Modified Binary search
 public class SearchInSortedRotatedArray {
     public int search(int[] nums, int target) {
-        int left = 0;
-        int right = nums.length-1;
+        if(nums.length == 0 || nums == null){
+            return -1;
+        }
+        int low = 0;
+        int high = nums.length-1; // index: 0-6
+        while(low <= high){
+            int mid = low + (high-low)/2; //to avoid integer overflow
 
-        while(left<=right){ //if array has single element then both will point to the same element
-            int mid = left + (right - left)/2;
-            if(nums[mid]==target){
+            if(nums[mid] == target){
                 return mid;
             }
-            //if we are on the left sorted portion of the array?
-            else if(nums[left] <= nums[mid]){
-                if(target> nums[mid] || target < nums[left]){
-                    left = mid+1;
-                }else{
-                    right = mid-1;
+            // if on the left side
+            if(nums[low]<= nums[mid]){
+                if(target >= nums[low] && target < nums[mid]){
+                    high = mid -1; //search left side
+                } else {
+                    low = mid + 1;  // search right half
                 }
             }
-            // right sorted portion?
-            else{
-                if(target < nums[mid] || target > nums[right]){
-                    right = mid-1;
-                }else{
-                    left = mid+1;
+            //if on the right side
+            else {
+                if (target > nums[mid] && target <= nums[high]) {
+                    low = mid + 1;  // search right half
+                } else {
+                    high = mid - 1; // search left half
                 }
             }
         }
         return -1;
     }
 }
+//[4,5,6,7,0,1,2]  target = 0 Modified Binary Search
+//Find mid
+//if nums[mid] == target, retrun mid
+// if nums[mid] > target, mid = mid+1
+// if nums[mid] < target, mid = mid-1
+
+//TC = O(log n)
+//SC = O(1)

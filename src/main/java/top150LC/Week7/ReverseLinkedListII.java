@@ -1,6 +1,7 @@
 package top150LC.Week7;
 
-public class ReverseLinkedListII {
+public class
+ReverseLinkedListII {
     public ListNode reverseBetween(ListNode head, int left, int right) {
         if(head == null || head.next == null){
             return head;

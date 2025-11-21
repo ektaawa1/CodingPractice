@@ -18,28 +18,28 @@ public class WordBreak {
         // That’s why we convert to HashSet for O(1) lookup.
         int strLen = s.length();
         HashSet<String> dictSet = new HashSet<>(wordDict);// search operation is O(1)
-        // ✅ Good optimization — HashSet makes `contains()` O(1) average case.
+        //Good optimization — HashSet makes `contains()` O(1) average case.
 
         boolean arr[] = new boolean[strLen+1];// since we have to work with substring
-        // ✅ arr[i] = true means substring(0..i-1) can be split using dict.
+        // arr[i] = true means substring(0..i-1) can be split using dict.
         // n+1 size because we need dp[0] = true as base case.
         arr[0] = true; // empty string is always splittable (base case)
-        // ✅ empty string is always splittable → base condition.
+        // empty string is always splittable → base condition.
         for(int i = 1; i<= strLen; i++){
-            // ✅ iterate over all prefixes ending at i (exclusive).
+            // iterate over all prefixes ending at i (exclusive).
             for(int j = 0; j<i; j++){
-                // ✅ check every possible cut between 0..i.
+                // check every possible cut between 0..i.
                 if(arr[j] && dictSet.contains(s.substring(j, i))){
-                    // ✅ if prefix up to j is splittable
+                    // if prefix up to j is splittable
                     // and current substring s[j..i-1] is in dict
                     // → then whole s[0..i-1] is splittable.
                     arr[i] = true;
                     break; //no need to check further for this i
-                    // ✅ no need to check more cuts for this i.
+                    // no need to check more cuts for this i.
                 }
             }
         }
-        return arr[strLen]; // ✅ final answer: can whole string be split?
+        return arr[strLen]; // final answer: can whole string be split?
     }
 }
 /**

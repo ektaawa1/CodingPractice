@@ -51,7 +51,7 @@ public class MergeIntervals {
                 output.add(currInt); //Add this as a separate merged range.
             }
         }
-        return output.toArray(new int[output.size()][]);//converting list to Array
+        return output.toArray(new int[output.size()][]);//converting list to Array [][]
     }
 }
 

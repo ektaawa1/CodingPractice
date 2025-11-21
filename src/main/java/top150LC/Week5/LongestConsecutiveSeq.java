@@ -1,7 +1,12 @@
-package org.Week5;
+package top150LC.Week5;
 
 import java.util.HashSet;
 
+/**
+ * Input: [100, 4, 200, 1, 3, 2]
+ * Output: 4
+ * Because the longest consecutive sequence is: 1, 2, 3, 4
+ */
 public class LongestConsecutiveSeq {
     public int longestConsecutive(int[] nums) {
         HashSet<Integer> numsSet = new HashSet<>();

@@ -27,7 +27,7 @@ public class TwoSum {
             int diff = target - nums[i];
 
             if(indexMap.containsKey(diff)){
-                return new int[] {indexMap.get(diff), i};
+                    return new int[] {indexMap.get(diff), i};
             }
             indexMap.put(nums[i], i);
         }

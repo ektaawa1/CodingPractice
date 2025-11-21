@@ -15,9 +15,9 @@ public class SearchInSortedRotatedArray {
                 return mid;
             }
             // if on the left side
-            if(nums[low]<= nums[mid]){
+            if(nums[low] <= nums[mid]){
                 if(target >= nums[low] && target < nums[mid]){
-                    high = mid -1; //search left side
+                    high = mid - 1; //search left side
                 } else {
                     low = mid + 1;  // search right half
                 }

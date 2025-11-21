@@ -60,6 +60,8 @@ public class TopKFreqWords {
  * When we poll the heap, the first word we get is the smallest in heap order, i.e., least frequent among top k.
  *
  * To get most frequent first in output, we reverse the list at the end.
+ *
+ * 8733
  * Heap poll order (from min-heap): "banana", "apple"
  * After Collections.reverse(result) → "apple", "banana"
  */

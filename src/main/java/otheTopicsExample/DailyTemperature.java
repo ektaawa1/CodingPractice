@@ -28,7 +28,7 @@ public class DailyTemperature {
         int l = temperatures.length;
         int result[] = new int[l];
 
-        Stack<Integer> stc = new Stack<>();
+        Stack<Integer> stc = new Stack<>();// for storing index
         for(int i = 0; i<l; i++){
             while(!stc.isEmpty() && temperatures[i] > temperatures[stc.peek()]){
                 int prevIndex = stc.pop();

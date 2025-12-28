@@ -53,6 +53,6 @@ public class TwoSum {
  * }
  */
 /**
- * 2 pointers approach- TC = O(nlog n), SC = O(1)
+ * 2 pointers approach-TC = O(nlog n), SC = O(1)
  * 1st sort the array, then apply 2 pointers
  */

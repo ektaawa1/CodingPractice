@@ -14,6 +14,8 @@ class TreeNode1 {
         this.right = right;
     }
 }
+//Inorder- Left, Root, Right
+//PostOrder- Left, Right, root
 public class BinaryTreeFromInPostOrder {
     HashMap<Integer,Integer> indexMap = new HashMap<>();
     int postOrderIndex;

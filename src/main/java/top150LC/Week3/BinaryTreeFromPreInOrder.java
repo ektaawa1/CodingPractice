@@ -16,6 +16,8 @@ class TreeNode {
         this.right = right;
     }
 }
+//PreOrder- Root, Left, Right
+//InOrder- Left, Root, Right
 public class BinaryTreeFromPreInOrder {
     HashMap<Integer,Integer> indexMap = new HashMap<>();
     int preorderIndex = 0; // iterate the preorder arr

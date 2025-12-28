@@ -1,4 +1,4 @@
-package org.Week1;
+package top150LC.Week1;
 
 // Leetcode
 //88. Merge Sorted Array
@@ -20,20 +20,24 @@ The result of the merge is [1,2,2,3,5,6] with the underlined elements coming fro
 
 public class MergeSortedArray {
     public void merge(int nums1[], int m, int[] nums2, int n){
-        // two pointers approach
-        int i = m-1;
-        int j = n-1;
+        // two pointers approach, in-place approach
+        int i = m-1; //pointer for nums1
+        int j = n-1; //pointer for nums2
 
         int k = m+n-1;
 
-        while ( i >= 0 && j >=0){
+        while ( i >= 0 && j >=0){//fill nums1 from the back
             if (nums1[i] > nums2[j]){
-                nums1[k--] = nums1[i--];
+                nums1[k] = nums1[i];
+                k--;
+                i--;
             }else{
-                nums1[k--] = nums2[j--];
+                nums1[k] = nums2[j];
+                k--;
+                j--;
             }
         }
-
+        // copy remaining elements from nums2
         while (j >= 0){
             nums1[k--] = nums2[j--];
         }

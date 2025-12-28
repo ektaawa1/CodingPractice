@@ -74,6 +74,7 @@ class LRUCache {
         node.prev.next = node.next;
         node.next.prev = node.prev;
     }
+    // dummyHead->node1->dummyTail ===>  dummyHead->node->node1->dummyTail
     private void addToHead(DoublyLL node){
         node.next = dummyHead.next;
         node.prev = dummyHead;

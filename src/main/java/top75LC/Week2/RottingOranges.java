@@ -66,12 +66,12 @@ public class RottingOranges {
 // cells if they are all rotten oranges
 
 /**
- * 🛠️ Approach (BFS Infection Spread 🔁)
- * 🧭 Start BFS from all initially rotten oranges.
- * 🟢 Keep track of fresh oranges.
- * 🟡 For each minute, infect the 4 neighboring cells (up, right, down, left).
- * 🧮 Count how many fresh got infected.
- * 🧾 If all fresh get infected ➡️ return time.
- * 🚫 If not ➡️ return -1.
+ * Approach (BFS Infection Spread 🔁)
+ * Start BFS from all initially rotten oranges.
+ * Keep track of fresh oranges.
+ * For each minute, infect the 4 neighboring cells (up, right, down, left).
+ * Count how many fresh got infected.
+ * If all fresh oranges get infected ➡️ return time.
+ * If not ➡️ return -1.
  */
 

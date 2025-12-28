@@ -1,4 +1,9 @@
-package org.Week4;
+package top150LC.Week4;
+
+/**
+ * Write a function to find the longest common prefix string amongst an array of strings.
+ * If there is no common prefix, return an empty string "".
+ */
 
 //The time complexity of the code is O(n * m), where n is the number of strings in the given list,
 // and m represents the length of the shortest string in the list.
@@ -9,18 +14,18 @@ public class LongestCommonPrefix {
         }
         // Start with the first word as prefix
         // Considering 1st word as the longest than the other words
-        String str = strs[0];
+        String prefix = strs[0];
         for(int i = 1; i<strs.length; i++){
             // Keep trimming the prefix until it matches the current string
-            while(!strs[i].startsWith(str)){
-                str = str.substring(0, str.length()-1);
+            while(!strs[i].startsWith(prefix)){
+                prefix = prefix.substring(0, prefix.length()-1);
 
-                if(str.isEmpty()){
+                if(prefix.isEmpty()){
                     return "";
                 }
             }
         }
-        return str;
+        return prefix;
     }
 }
 

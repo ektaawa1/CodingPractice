@@ -1,5 +1,11 @@
-package org.Week3;
+package top150LC.Week3;
 
+/**
+ * Given two strings s and t, return true if s is a subsequence of t, or false otherwise.
+ * A subsequence of a string is a new string that is formed from the original string by
+ * deleting some (can be none) of the characters without disturbing the relative positions of
+ * the remaining characters. (i.e., "ace" is a subsequence of "abcde" while "aec" is not).
+ */
 public class SubsequenceString {
     public boolean isSubsequence(String s, String t) {
         int i = 0, j = 0;
@@ -27,3 +33,15 @@ public class SubsequenceString {
  */
 // TC = O(n+m)
 // SC = O(1)
+
+/**
+ * Dry Run Example-
+ * s = "abc", t = "ahbgdc"
+ *
+ * i=0 (a), j=0 (a) → match → i=1, j=1
+ * i=1 (b), j=1 (h) → no match → j=2
+ * i=1 (b), j=2 (b) → match → i=2, j=3
+ * i=2 (c), j=3 (g) → no match → j=4
+ * i=2 (c), j=4 (d) → no match → j=5
+ * i=2 (c), j=5 (c) → match → i=3, j=6
+ */

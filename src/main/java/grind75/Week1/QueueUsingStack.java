@@ -7,8 +7,8 @@ public class QueueUsingStack {
     Stack<Integer> outStack;
 
     public QueueUsingStack() {
-        inStack = new Stack<>(); //LIFO
-        outStack = new Stack<>();
+        inStack = new Stack<>(); //LIFO //used for enqueue
+        outStack = new Stack<>(); //used for dequeue
     }
 
     public void push(int x) {

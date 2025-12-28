@@ -27,9 +27,9 @@ class Trie {
             if(! curr.children.containsKey(ch)){
                 curr.children.put(ch, new TrieNode());
             }
-            curr = curr.children.get(ch);
+            curr = curr.children.get(ch);// traversing to the existing node
         }
-        curr.isEndOfWord = true;
+        curr.isEndOfWord = true;// Mark end of this word
     }
 
     public boolean search(String word) {

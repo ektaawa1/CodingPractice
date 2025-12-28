@@ -20,6 +20,7 @@ public class ClimbingStairs {
         return a;
     }
 }
+//0,1,1,2,3,5,8,13.....
 
 //TC = O(n)
 //SC = O(1)

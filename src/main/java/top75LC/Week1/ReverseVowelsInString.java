@@ -31,7 +31,8 @@ public class ReverseVowelsInString {
                 right--;
             }
         }
-        return new String(word);
+        return new String(word); //String st = new String(word); return st;
+        //or return String.valueOf(word);
     }
 }
 /**

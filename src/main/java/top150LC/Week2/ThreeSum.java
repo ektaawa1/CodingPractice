@@ -12,6 +12,10 @@ import java.util.List;
 // it enables the two-pointer pattern and simplifies duplicate handling.
 
 /**
+ * Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that
+ * i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.
+ * Notice that the solution set must not contain duplicate triplets.
+ *
  * Two-Pointer Technique: We start the two-pointer process with i, j, and k as follows:
  * i = 0: We choose -4 as the first element.
  * j = i + 1: j starts at -1 (the element right after -4).
@@ -28,7 +32,7 @@ import java.util.List;
 public class ThreeSum {
     public List<List<Integer>> threeSum(int[] arr) {
         List<List<Integer>> outputList = new ArrayList<>();
-        Arrays.sort(arr);
+        Arrays.sort(arr); //to avoid the duplicates
 
         int arrSize = arr.length;
 
@@ -37,28 +41,26 @@ public class ThreeSum {
             if(i > 0 && arr[i] == arr[i-1]){
                 continue;
             }
-            int j = i+1;
-            int k = arrSize-1;
+            int left = i+1;
+            int right = arrSize-1;
 
-            while(j<k){
-                int sum = arr[i] + arr[j] + arr[k];
+            while(left<right){
+                int sum = arr[i] + arr[left] + arr[right];
 
                 if(sum == 0){
-                    outputList.add(Arrays.asList(arr[i], arr[j], arr[k]));
+                    outputList.add(Arrays.asList(arr[i], arr[left], arr[right]));
 
                     //moving past duplicates
-                    while(j<k && arr[j] == arr[j+1]) j++;
-                    while(j<k && arr[k] == arr[k-1]) k--;
-                    j++;
-                    k--;
+                    while(left<right && arr[left] == arr[left+1]) left++;
+                    while(left<right && arr[right] == arr[right-1]) right--;
+                    left++;
+                    right--;
                 } else if(sum < 0){
-                    j++;
+                    left++;
                 } else {
-                    k--;
+                    right--;
                 }
             }//while loop ends here
-            j++;
-            k--;
         }
         return outputList;
     }

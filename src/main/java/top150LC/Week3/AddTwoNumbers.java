@@ -2,6 +2,12 @@ package top150LC.Week3;
 
 // 2. Add Two Numbers
 // Linked List https://algo.monster/liteproblems/2
+
+/**
+ * Input: l1 = [2,4,3], l2 = [5,6,4]
+ * Output: [7,0,8]
+ * Explanation: 342 + 465 = 807.
+ */
 class ListNode {
     int val;
     ListNode next;
@@ -20,8 +26,8 @@ public class AddTwoNumbers {
             int v1 = (l1!= null) ? l1.val : 0;
             int v2= (l2!=null) ? l2.val : 0;
 
-            int sum = v1 + v2 + carry;
-            carry = sum / 10; //gives the carry (1) for the next iteration
+            int sum = v1 + v2 + carry;//2+5+0=7, 4+6+0, 3+4+1
+            carry = sum / 10;//7/10=0, 10/10=1, 8/10=0 //gives the carry (1) for the next iteration
             curr.next = new ListNode(sum % 10); //gives the digit to place at the current node, 8+7 =15 so 15%10 = 5
             //15/10 = 1 which is the carry over
             curr = curr.next;
@@ -31,9 +37,6 @@ public class AddTwoNumbers {
             if (l2 != null) l2 = l2.next;
         }
         return dummy.next;
-    }
-    private ListNode reverse(ListNode l){
-        return l;
     }
 }
 
@@ -55,4 +58,4 @@ public class AddTwoNumbers {
 //| Metric    | Complexity                                  |
 //| --------- | ------------------------------------------- |
 //| **Time**  | O(max(m, n)) (m = l1 length, n = l2 length) |
-//| **Space** | O(max(m, n)) — for result list              |
+//| **Space** | O(1) but if considering result space then O(max(m, n)) — for result list              |

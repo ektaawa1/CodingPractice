@@ -46,6 +46,7 @@ public class MergeKSortedLists {
 
 //Divide & Conquer Approach:
 //Time: O(N log k) → N
+//Where: N = total number of nodes, K = number of lists
 //Space: O(1)
 
 //Example:

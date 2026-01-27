@@ -66,7 +66,6 @@ class NoOfPaths {
     }
 
     public static void main(String[] args) {
-
     }
 // Brute Force Solution-BFS approach
     public int numOfPathsBFS(int n) {

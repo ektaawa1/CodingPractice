@@ -1,5 +1,10 @@
 package top75LC.Week2;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 //Applying binary search algo
 public class KokoEatingBanana {
     public int minEatingSpeed(int[] piles, int h) {
@@ -30,6 +35,9 @@ public class KokoEatingBanana {
         }
 
         return minSpeed; // minSpeed == maxSpeed here
+    }
+    public List<Integer> maxSumArray(List<Integer> input) {
+        return input.stream().filter(s->s%2==0).map(s->s*s).sorted().collect(Collectors.toList());
     }
 }
 //  Time complexity = O(n log M) where

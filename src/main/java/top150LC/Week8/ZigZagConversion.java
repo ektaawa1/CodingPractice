@@ -18,7 +18,7 @@ public class ZigZagConversion {
         int dir = -1; //1 for down & -1 for up direction
 
         for(char c: s.toCharArray()){
-            if(currRow == 0 || currRow == numRows-1){ // flip direction up or down
+            if(currRow == 0 || currRow == numRows-1){ // flip direction when up or down i.e, 0th row or last row
                 dir = - dir;
             }
             stb[currRow].append(c);

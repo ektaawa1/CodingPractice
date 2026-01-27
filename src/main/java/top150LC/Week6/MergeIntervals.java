@@ -69,3 +69,18 @@ public class MergeIntervals {
  * Yes. Instead of using a separate result list, we can overwrite the input array and use a pointer to track the position of merged intervals.
  * However, this makes the logic more complex and slightly harder to maintain.
  */
+
+// sort it on the basis of 0th index
+//   1  2  3  6  8  10  15  18
+//    -----
+//       -----
+//                ----
+//                       ----
+// Output:
+// [1,6]  [8,10] [15, 18]
+
+// if a[1] >= b[0] so include it
+// if a[1] < b[0] so dont include it
+
+//TC = O(n)
+// SC = O(k) where k is the size of the output array

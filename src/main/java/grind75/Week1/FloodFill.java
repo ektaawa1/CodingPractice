@@ -3,6 +3,11 @@ package grind75.Week1;
 import java.util.LinkedList;
 import java.util.Queue;
 
+/**
+ * You are given an image represented by an m x n grid of integers image, where image[i][j]
+ * represents the pixel value of the image. You are also given three integers sr, sc, and color.
+ * Your task is to perform a flood fill on the image starting from the pixel image[sr][sc].
+ */
 public class FloodFill {
     public int[][] floodFill(int[][] image, int sr, int sc, int color) {
         // BFS Approach

@@ -16,31 +16,31 @@ import java.util.List;
  */
 public class GenerateParentheses {
     public List<String> generateParenthesis(int n) {
-        List<String> combString = new ArrayList<>();
+        List<String> combStringList = new ArrayList<>();
         if(n == 0){
-            return combString;
+            return combStringList;
         }
-        backtrack(combString, "", 0, 0, n);
-        return combString;
+        backtrack(combStringList, "", 0, 0, n);
+        return combStringList;
     }
 
-    private void backtrack(List<String> combString, String currStr, int openCount, int closeCount, int n) {
+    private void backtrack(List<String> combStringList, String currStr, int openCount, int closeCount, int n) {
 //        if(openCount>n || closeCount>n || openCount<closeCount){ // this check is not needed as below its already being checked
 //            return;
 //        }//We can put explicit guards like (open > n) but our branching ensures such states are unreachable.
 
         if(currStr.length() == n*2){
-            combString.add(currStr);
+            combStringList.add(currStr);
             return;
         }
         //  Option to add '(' — try this branch
         if(openCount<n){ // we never exceed n value
-            backtrack(combString, currStr+ "(", openCount+1, closeCount, n);
+            backtrack(combStringList, currStr+ "(", openCount+1, closeCount, n);
         }
 
         // Option to add ')' — try this branch
         if(closeCount < openCount){ //we never allow more close braces than open braces
-            backtrack(combString, currStr+ ")", openCount, closeCount+1,n);
+            backtrack(combStringList, currStr+ ")", openCount, closeCount+1,n);
         }
     }
 }
@@ -67,3 +67,6 @@ public class GenerateParentheses {
 //        |
 //        |-- Add ')'  --> "()()" ✅ VALID → ADD TO RESULT
 
+//Time Complexity: O(4^n / √n) → you can say roughly O(4^n).
+
+//Space Complexity: O(4^n / √n) → again, roughly O(4^n).

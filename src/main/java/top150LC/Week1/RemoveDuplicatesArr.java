@@ -21,13 +21,13 @@ package org.Week1;
 // 2 pointers technique
 public class RemoveDuplicatesArr {
     public int removeDuplicates(int[] nums) {
-        int new_len = 0;
+        int i = 0;
         for(int num: nums){
-            if(new_len == 0 || num != nums[new_len-1]){
-                nums[new_len++] = num;
+            if(i == 0 || num != nums[i-1]){
+                nums[i++] = num;
             }
         }
-        return new_len;
+        return i;
     }
 }
 

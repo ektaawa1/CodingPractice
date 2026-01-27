@@ -3,48 +3,29 @@ package top150LC.Week4;
 public class LongestPalindromicSubstring {
     //Optimal Solution-Expand Around Center (Two Pointers) — O(n²), O(1) space
     public String longestPalindrome(String s) {
-        if (s == null || s.length() < 2) {
-            return s; // single char is always a palindrome
-        }
+        if (s == null || s.length() < 1) return "";
 
-        int start = 0, end = 0;
+        String longest = "";
 
         for (int i = 0; i < s.length(); i++) {
-            // Case 1: odd-length palindrome (center at i)
-            int[] odd = expandFromCenter(s, i, i); // this returns the start & the end index of odd length palindrome
+            // Odd length palindrome
+            String odd = expandFromCenter(s, i, i);
+            if (odd.length() > longest.length()) longest = odd;
 
-            // Case 2: even-length palindrome (center between i and i+1)
-            int[] even = expandFromCenter(s, i, i + 1); // returns the start & end index of even length palindrome
-
-            // Compare which one gives longer palindrome
-            if (odd[1] - odd[0] > end - start) {
-                start = odd[0];
-                end = odd[1];
-            }
-            if (even[1] - even[0] > end - start) {
-                start = even[0];
-                end = even[1];
-            }
+            // Even length palindrome
+            String even = expandFromCenter(s, i, i + 1);
+            if (even.length() > longest.length()) longest = even;
         }
 
-        return s.substring(start, end + 1);
+        return longest;
     }
-
-    private int[] expandFromCenter(String s, int start, int end) {
-        // expand while characters match
-        while (start >= 0 && end < s.length() && s.charAt(start) == s.charAt(end)) {
-            start--;
-            end++;
+    private String expandFromCenter(String s, int left, int right) {
+        while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
+            left--;
+            right++;
         }
-
-        // When loop breaks, left & right are one step beyond palindrome
-        // So return the correct boundaries
-        return new int[]{start + 1, end - 1};
-        //WHY NOT return the substring directly?
-        //
-        //Because returning substring repeatedly is expensive
-        //→ O(n) for each substring extraction → increased total time.
-        //Returning indices is constant time and very lightweight.
+        //return right - left - 1;
+        return s.substring(left + 1, right);
     }
 
     public String longestPalindromeBruteForce(String s) {

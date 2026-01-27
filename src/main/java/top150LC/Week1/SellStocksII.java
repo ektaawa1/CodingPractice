@@ -1,4 +1,4 @@
-package org.Week1;
+package top150LC.Week1;
 
 // 122. Best Time to Buy and Sell Stock II
 // https://algo.monster/liteproblems/122
@@ -36,7 +36,6 @@ public class SellStocksII {
         int total_gain = 0;
         for(int i = 1; i<prices.length; i++){
             int daily_gain = Math.max(0,prices[i]-prices[i-1]);
-
             total_gain += daily_gain;
         }
         return total_gain;

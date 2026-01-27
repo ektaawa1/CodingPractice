@@ -23,7 +23,7 @@ public class BinaryTreeZigZagTraversal {
         while(!queue.isEmpty()){
             int size = queue.size();
             LinkedList<Integer> l1 = new LinkedList<>();
-            for(int i = 0; i< size; i++){
+            for(int i = 0; i < size; i++){
                 TreeNode curr = queue.poll();
                 if(leftToRight){
                     l1.add(curr.val);//adds at last or //queue.pollFirst()

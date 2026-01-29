@@ -1,4 +1,4 @@
-package otheTopicsExample;
+package patternBased.slidingWIndow;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -18,23 +18,26 @@ import java.util.Queue;
  * Output
  * [null, 1.0, 5.5, 4.66667, 6.0]
  */
-public class MovingAvgInStream {
+class MovingAverage {
+    Queue<Integer> queue;
     int maxSize;
-    Queue<Integer> q;
-    double sum;
-    public MovingAvgInStream(int size) {
-        this.maxSize = size;
-        q = new LinkedList<>();
-        this.sum = 0;
+    double windowSum;
+
+    public MovingAverage(int size) {
+        queue = new LinkedList<>();
+        maxSize = size;
+        windowSum = 0;
     }
 
     public double next(int val) {
-        q.offer(val);
-        sum += val;
-        if(q.size() > maxSize){
-            sum = sum - q.poll();
+        queue.offer(val);
+        windowSum += val;
+
+        if(queue.size() > maxSize){
+            windowSum -= queue.poll();
         }
-        return sum/q.size();
+        return windowSum/queue.size();// We use queue.size() because during the first few calls,
+        // the window is NOT full yet. Using maxSize would give wrong averages at the beginning
     }
 }
 
@@ -45,6 +48,18 @@ public class MovingAvgInStream {
  */
 
 /**
-
  Time per operation: O(1)
  Space: O(k) */
+
+/**
+ * Note: Why Queue
+ * If input was array-based (not stream), you could do:
+ * windowSum += arr[right];
+ * windowSum -= arr[right - k];
+ *
+ *
+ * But in a stream:
+ * You don’t have right - k
+ * You don’t know what arrived k steps ago
+ * Queue remembers that for you
+ */

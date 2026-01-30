@@ -9,6 +9,8 @@ import java.util.HashMap;
 public class FirstUniqueCharacter {
     //HashMap only if alphabet is unknown or very large (UTF-8, Unicode)
     // Not that optimal, low performance O(n) time, O(n) space
+    // I would use a HashMap to count frequencies and then iterate the array again to find the first element with frequency one.
+    // If order must be preserved in one pass, I can use LinkedHashMap.
     public int firstUniqChar(String s) {
         HashMap<Character,Integer> freqMap = new HashMap<>();
 

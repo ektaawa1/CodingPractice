@@ -14,6 +14,8 @@ import java.util.Map;
  * Input: s = "anagram", t = "nagaram", Output: true
  *
  * Example 2: Input: s = "rat", t = "car", Output: false
+ *
+ * Tip of the day-Anagram = same characters + same frequency → HashMap or array, never HashSet.
  */
 public class ValidAnagram {
     public boolean isAnagram(String s, String t) {
@@ -67,6 +69,8 @@ public class ValidAnagram {
     //SC = O(n) for char array
 
     //Using HashMap- Works for any Unicode characters — uppercase, digits, symbols, emojis
+    //Note- If the problem is case-sensitive, I will treat uppercase and lowercase as different characters. (either Hashmap or array as-is)
+    //If it’s case-insensitive, I’ll normalize both strings before processing.”
     public static boolean isAnagram1(String s, String t) {
         if (s.length() != t.length()) return false;
 

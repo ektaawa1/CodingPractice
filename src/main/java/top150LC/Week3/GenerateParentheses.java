@@ -25,9 +25,6 @@ public class GenerateParentheses {
     }
 
     private void backtrack(List<String> combStringList, String currStr, int openCount, int closeCount, int n) {
-//        if(openCount>n || closeCount>n || openCount<closeCount){ // this check is not needed as below its already being checked
-//            return;
-//        }//We can put explicit guards like (open > n) but our branching ensures such states are unreachable.
 
         if(currStr.length() == n*2){
             combStringList.add(currStr);

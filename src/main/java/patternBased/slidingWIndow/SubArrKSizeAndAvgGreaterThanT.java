@@ -22,7 +22,7 @@ public class SubArrKSizeAndAvgGreaterThanT {
         //Step2: Slide Window
         for(int right = k; right<arr.length; right++){
             windowSum += arr[right];//add one element from right
-            windowSum -= arr[right-k];// remove one lement from left
+            windowSum -= arr[right-k];// remove one element from left
 
             if(windowSum/k >= threshold){
                 count++;

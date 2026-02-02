@@ -1,10 +1,12 @@
-package otheTopicsExample;
+package patternBased.prefixSum;
 
 import java.util.HashMap;
-
+// Given constraint: -1000 <= nums[i] <= 1000
 public class SubArraySumEqualsK {
     //is the input in ascending order?
     //are elements -ve as well?
+    // If negative numbers exist → sliding window is invalid
+    // Prefix Sum Pattern is apt here
     public int subarraySum(int[] nums, int k) {
         //Brute Force Approach: TC = O(n^2), SC = O(1)
         int count = 0;

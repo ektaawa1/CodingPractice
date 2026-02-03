@@ -1,4 +1,4 @@
-package patternBased.slidingWIndow;
+package patternBased.slidingWindow;
 // 713. Subarray Product Less Than K
 /**
  * Given an array of integers nums and an integer k, return the number of contiguous subarrays

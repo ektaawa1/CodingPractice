@@ -1,4 +1,4 @@
-package patternBased.slidingWIndow;
+package patternBased.slidingWindow;
 // 1248. Count Number of Nice Subarrays
 
 /**

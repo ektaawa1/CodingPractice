@@ -1,4 +1,4 @@
-package patternBased.slidingWIndow;
+package patternBased.slidingWindow;
 // 487. Max Consecutive Ones II
 
 /**

@@ -1,4 +1,4 @@
-package patternBased.slidingWIndow;
+package patternBased.slidingWindow;
 // 424. Longest Repeating Character Replacement
 
 /**

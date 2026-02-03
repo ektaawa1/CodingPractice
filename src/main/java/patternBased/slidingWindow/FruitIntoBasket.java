@@ -1,4 +1,4 @@
-package patternBased.slidingWIndow;
+package patternBased.slidingWindow;
 // 904. Fruit Into Baskets
 // Given the integer array fruits, return the maximum number of fruits you can pick.
 

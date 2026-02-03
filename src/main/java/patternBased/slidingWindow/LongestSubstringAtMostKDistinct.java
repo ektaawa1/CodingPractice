@@ -1,4 +1,4 @@
-package patternBased.slidingWIndow;
+package patternBased.slidingWindow;
 import java.util.HashMap;
 
 //340. Longest Substring with At Most K Distinct Characters

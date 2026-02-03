@@ -1,4 +1,4 @@
-package patternBased.slidingWIndow;
+package patternBased.slidingWindow;
 
 public class MinSizeSubArraySum {
     //Variable size sliding window approach, 2 pointers

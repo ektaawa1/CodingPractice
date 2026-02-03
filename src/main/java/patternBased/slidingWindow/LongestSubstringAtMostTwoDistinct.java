@@ -1,4 +1,4 @@
-package patternBased.slidingWIndow;
+package patternBased.slidingWindow;
 // 159. Longest Substring with At Most Two Distinct Characters
 
 import java.util.HashMap;

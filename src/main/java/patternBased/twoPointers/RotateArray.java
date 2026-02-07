@@ -1,4 +1,4 @@
-package top150LC.Week1;
+package patternBased.twoPointers;
 
 // 189. Rotate Array
 
@@ -47,17 +47,56 @@ public class RotateArray {
             nums[j--] = temp;
         }
     }
+
+    public void rotateBetter(int[] nums, int k) {
+        if(nums == null || nums.length == 0){
+            return;
+        }
+        int len = nums.length;
+        if(k> len){
+            k = k % len;
+        }
+        //1st reverse the whole array
+        reverseArray(nums, 0, len-1); //[7,6,5,4,3,2,1]
+        //2nd reverse the 1st k elements
+        reverseArray(nums, 0, k-1); //[5,6,7,4,3,2,1]
+        //3rd reverse the n-k elements
+        reverseArray(nums, k, len-1); //[5,6,7,1,2,3,4]
+    }
+    private void reverseArray(int[] nums, int i, int j){
+        while(i<j){
+            int temp = nums[i];
+            nums[i] = nums[j];
+            nums[j] = temp;
+            i++;
+            j--;
+        }
+    }
 }
 
 /**
- * Explanation-
- *
- *  Using Reversal Algo- First, reverse the last K elements
- *  Second, reverse the rst n-k elements of the array
- *  Third, reverse the complete array.
- *  Eg- Input- nums = [1,2,3,4,5,6,7], k = 3
- *  Step1- [1,2,3,4,7,6,5] (Reverse elements 7,6,5)
- *  Step2- [4,3,2,1,7,6,5] (Reverse elements 1,2,3,4)
- *  Step3- [5,6,7,1,2,3,4] (Reverse the whole array) ===> Output
  *  Time Complexity = O(n) ; Space Complexity = O(1)
+ */
+
+/**
+ * Right rotation (what you already know)
+ * Steps:
+ * Reverse whole array
+ * Reverse first k
+ * Reverse remaining n - k
+ * reverse(nums, 0, n - 1);
+ * reverse(nums, 0, k - 1);
+ * reverse(nums, k, n - 1);
+ */
+
+/**
+ * Left rotation — what changes? Only the order of reversals
+ *
+ * Steps for LEFT rotation by k:
+ * Reverse first k elements
+ * Reverse remaining n - k elements
+ * Reverse the whole array
+ * reverse(nums, 0, k - 1);
+ * reverse(nums, k, n - 1);
+ * reverse(nums, 0, n - 1);
  */

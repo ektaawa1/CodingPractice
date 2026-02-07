@@ -17,14 +17,13 @@ public class CountOfNiceSubArrays {
             if(nums[right]%2 == 1){
                 oddCount++;
             }
-            if(oddCount > k){
-                while(oddCount>k){
+            while(oddCount>k){
                     if(nums[left]%2==1){
                         oddCount--;
                     }
                     left++;
                 }
-            }
+
             if(oddCount == k){
                 int tempLeft = left;
                 while(tempLeft < nums.length  && nums[tempLeft] %2 == 0) tempLeft++;

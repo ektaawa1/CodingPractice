@@ -1,4 +1,4 @@
-package top150LC.Week1;
+package patternBased.twoPointers;
 
 //125. Valid Palindrome
 
@@ -28,16 +28,17 @@ package top150LC.Week1;
 
 // 2 pointers approach
 public class ValidPalindrome {
+    // Optimized Solution- Inplace
     public boolean isPalindrome(String s) {
         int l = 0, r = s.length()-1;
 
         while(l < r) {
             //Move the left pointer forward until it points to a valid letter or digit.
-            while(l < r && !alphaNum(s.charAt(l))){
+            while(l < r && !Character.isLetterOrDigit(s.charAt(l))){
                 l++;
             }
             //Move the right pointer backward until it points to a valid letter or digit.
-            while(r > l && !alphaNum(s.charAt(r))){
+            while(r > l && !Character.isLetterOrDigit(s.charAt(r))){
                 r--;
             }
             //Compare the characters at l and r case-insensitively.
@@ -54,11 +55,28 @@ public class ValidPalindrome {
         return true;
     }
 
-    //Checks if the character is alphanumeric (a–z, A–Z, 0–9).
-    private boolean alphaNum(char c) {
-        return (c >= 'A' && c <= 'Z' ||
-                c >= 'a' && c <= 'z' ||
-                c >= '0' && c <= '9');
+    //TC = O(n), SC = O(n)
+    public boolean isPalindromeBruteForce(String s) {
+        if(s == null || s.isEmpty()){
+            return true;
+        }
+        StringBuilder sb = new StringBuilder(); //SC = O(n)
+        for(char ch: s.toCharArray()){
+            if(Character.isLetterOrDigit(ch)){
+                sb.append(Character.toLowerCase(ch));
+            }
+        }
+        String s1 = sb.toString();
+        int left = 0; int right = s1.length()-1;
+
+        while(left < right){
+            if(s1.charAt(left) != s1.charAt(right)){
+                return false;
+            }
+            left++;
+            right--;
+        }
+        return true;
     }
 }
 //TC = O(n)

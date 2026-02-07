@@ -1,4 +1,4 @@
-package top150LC.Week1;
+package patternBased.twoPointers;
 
 // Leetcode
 //88. Merge Sorted Array
@@ -38,6 +38,8 @@ public class MergeSortedArray {
             }
         }
         // copy remaining elements from nums2
+        // Leftover elements of nums1 never need copying as they are already in the correct position once nums2 is done
+        //Leftover elements of nums2 always do.
         while (j >= 0){
             nums1[k--] = nums2[j--];
         }
@@ -46,3 +48,14 @@ public class MergeSortedArray {
 
 //Time Complexity = O(m+n) We are iterating through both the arrays once
 // Space Complexity =  O(1) No extra space is needed, the merge is done in-place
+
+/**
+ * Example-
+ * nums1 = [4,5,6,0,0,0]
+ * nums2 = [1,2,3]
+ * After moving elements-
+ * nums1 = [?, ?, ?, 4,5,6]
+ * nums2 = [1,2,3]
+ *Now the 2nd while loop will come into picture
+ * to copy the remaing elements from nums2.
+ */

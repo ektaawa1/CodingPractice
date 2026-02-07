@@ -1,4 +1,4 @@
-package top150LC.Week2;
+package patternBased.twoPointers;
 
 // 1. Two Sum
 // https://algo.monster/liteproblems/1

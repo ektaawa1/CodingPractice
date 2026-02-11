@@ -1,4 +1,4 @@
-package org.Week1;
+package patternBased.twoPointers;
 
 // 27. Remove Element
 
@@ -23,13 +23,13 @@ package org.Week1;
 // https://algo.monster/liteproblems/27
 public class RemoveElement {
     public int removeElement(int[] nums, int val) {
-        int new_len = 0;
+        int k = 0;
         for( int n: nums){
             if (n != val){
-                nums[new_len++] = n;
+                nums[k++] = n;
             }
         }
-        return new_len;
+        return k;
     }
 }
 

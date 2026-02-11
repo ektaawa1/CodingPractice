@@ -1,0 +1,17 @@
+Solve:
+
+Binary Search
+Search Insert Position
+First Bad Version
+Find Peak Element
+Search in Rotated Sorted Array
+Find First and Last Position of Element
+Koko Eating Bananas (Search on Answer)
+
+================================================================================================
+Advanced Binary Search:
+
+Capacity to ship packages
+Median of two sorted arrays (at least understand)
+Split array largest sum
+Min in rotated sorted array

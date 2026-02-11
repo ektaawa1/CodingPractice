@@ -1,0 +1,7 @@
+Start with:
+
+Valid Parentheses
+Next Greater Element
+Daily Temperatures
+Largest Rectangle in Histogram
+Trapping Rain Water (stack version)

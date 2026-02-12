@@ -1,4 +1,4 @@
-package org.Week5;
+package patternBased.binarySearch;
 //Using Binary Search here
 public class MinInSortedRotatedArray {
     public int findMin(int[] nums) {
@@ -13,6 +13,21 @@ public class MinInSortedRotatedArray {
             }
         }
         return nums[l]; // left == right at this point
+    }
+    public int findMinBetter(int[] nums) {
+        int low = 0;
+        int high = nums.length-1;
+        //int min = nums[0];
+
+        while(low < high){
+            int mid = low + (high-low)/2;
+            if(nums[mid] < nums[high]){
+                high = mid; //search on the left side
+            } else {
+                low = mid +1;
+            }
+        }
+        return nums[low];
     }
 }
 //Explanation-

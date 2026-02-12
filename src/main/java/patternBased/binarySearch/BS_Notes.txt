@@ -15,3 +15,74 @@ Capacity to ship packages
 Median of two sorted arrays (at least understand)
 Split array largest sum
 Min in rotated sorted array
+
+==================================================================================================
+Binary Search on answer-
+Koko Eating Bananas
+Split Array Largest Sum
+Aggressive Cows (1552. Magnetic Force Between Two Balls) & (2517. Maximum Tastiness of Candy Basket)
+Allocate Books (split array largest sum)
+Min Days to Make Bouquets
+Minimum Speed to Arrive On Time
+
+==================================================================================================
+
+1st Classic Binary Search in Array (Sorted / Monotonic)
+
+First / Last occurrence in sorted array → lower bound / upper bound
+
+Search in Rotated Sorted Array
+
+Find Minimum in Rotated Sorted Array
+
+Find Minimum in Rotated Sorted Array II (duplicates)
+
+Find Peak Element
+
+Pattern: first true / last true on index.
+===
+
+2nd Binary Search on Answer / Monotonic Function
+
+Ship Packages Within D Days
+
+Koko Eating Bananas
+
+Split Array Largest Sum
+
+Minimize Max Distance to Gas Station
+
+Cutting Ribbons
+
+Divide Chocolate
+
+Maximum Bags With Full Capacity of Rocks
+
+Minimum Limit of Balls in a Bag
+
+Count Negative Numbers in a Sorted Matrix (variation)
+
+Pattern: numeric answer space → monotonic property → feasibility check → first true / last true.
+===
+
+3rd Two Pointers + Binary Search Variants
+
+Container With Most Water
+
+Trapping Rain Water (binary search variant in advanced solutions)
+
+Koko Eating Bananas (can combine prefix sum + binary search)
+
+Pattern: sometimes combined with greedy check.
+
+4th Hard Monotonic / Slope Problems
+
+Find Peak Element
+
+Peak Index in a Mountain Array
+
+Find in Mountain Array
+
+Binary Search on Graph / Distance Problems
+
+Pattern: binary search not on indices directly, but over structural property.

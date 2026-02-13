@@ -1,41 +1,51 @@
-package top75LC.Week2;
+package patternBased.binarySearch.binarySearchOnAnswer;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-//Applying binary search algo
+//Applying binary search on answer
+// Answer is min speed which means my left & right pointers should be speed
+
+/**
+ * If speed works → try smaller speed
+ * If speed doesn't work → try bigger speed
+ * Small k → More time → Might fail
+ * Large k → Less time → Will succeed
+ * k: 1 2 3 4 5 6 7 8 9 ...
+ *    F F F T T T T T T ...
+ *    We want First True i.e., minimum k
+ */
 public class KokoEatingBanana {
     public int minEatingSpeed(int[] piles, int h) {
-        int minSpeed = 1;
-        int maxSpeed = 0;
+        int left = 1; //as speed can't be 0 here
+        int right = 0; //we have to find the max speed from the piles
 
         // Find max pile (upper bound for speed)
-        for (int pile : piles) {
-            maxSpeed = Math.max(maxSpeed, pile);
+        for (int p : piles) {
+            right = Math.max(right, p);
         }
 
-        while (minSpeed < maxSpeed) {
-            int midSpeed = minSpeed + (maxSpeed - minSpeed) / 2;
+        while (left < right) {
+            int midSpeed = left + (right - left) / 2;
 
-            // Calculate total hours at this midSpeed
-            int totalHours = 0;
-            for (int pile : piles) {
-                totalHours += (pile + midSpeed - 1) / midSpeed; // ceil division
-            }
-
-            if (totalHours > h) {
-                // too slow → need higher speed
-                minSpeed = midSpeed + 1;
+            if (canFinish(piles, h, midSpeed)) {
+                right = midSpeed; //try smaller speed as we have to find 1st TRUE
             } else {
-                // can finish on time or earlier → try smaller speed
-                maxSpeed = midSpeed;
+                left = midSpeed + 1;
             }
         }
-
-        return minSpeed; // minSpeed == maxSpeed here
+        return left;
     }
+    private boolean canFinish(int[] piles, int h, int speed) {
+        //speed = dist/time
+        int hours = 0;
+        for (int pile : piles) {
+            // hours += ceil(pile / k)
+            hours += Math.ceilDiv(pile,speed); //If Java 9 otherwise use (pile + speed - 1) / speed
+        }
+        return hours <= h;
+    }
+    //Java 8 streams practise
     public List<Integer> maxSumArray(List<Integer> input) {
         return input.stream().filter(s->s%2==0).map(s->s*s).sorted().collect(Collectors.toList());
     }
@@ -63,7 +73,7 @@ public class KokoEatingBanana {
 /**
  * Because integer division in Java floors the result, but we need ceiling.
  * For example, 7 bananas at speed 3 requires 3 hours, not 2.
- * To implement ceiling division without using floats, we use the trick (a + b - 1) / b.
+ * To implement ceiling division without using floats, we use the trick hours += ceil(pile / k)
  * That way, we always round up when there’s a remainder.
  * time = work / rate
  * must round up because you can’t do partial work in less time

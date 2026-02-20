@@ -85,3 +85,48 @@ Find in Mountain Array
 Binary Search on Graph / Distance Problems
 
 Pattern: binary search not on indices directly, but over structural property.
+
+===========================================================================================
+🟢 Basic Binary Search (Index Search)
+
+Binary Search
+
+Search Insert Position
+
+Find First and Last Position of Element in Sorted Array
+
+🟡 Rotated Array
+
+Search in Rotated Sorted Array
+
+Find Minimum in Rotated Sorted Array
+
+🔵 Binary Search on Answer (MOST IMPORTANT)
+
+Koko Eating Bananas
+
+Capacity To Ship Packages Within D Days
+
+Minimum Number of Days to Make m Bouquets
+
+Minimum Time to Complete Trips
+
+Minimum Speed to Arrive on Time
+
+🔴 Max-Min / Min-Max Placement Problems
+
+Magnetic Force Between Two Balls
+
+Split Array Largest Sum
+
+💎 BONUS (if time permits)
+
+These appear VERY often:
+
+Cutting Ribbons (1891)
+
+Divide Chocolate (1231)
+
+Peak Element (162)
+
+Median of Two Sorted Arrays (4) — advanced

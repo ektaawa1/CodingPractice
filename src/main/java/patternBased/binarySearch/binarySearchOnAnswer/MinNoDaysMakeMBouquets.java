@@ -64,6 +64,12 @@ public class MinNoDaysMakeMBouquets {
  We need m*k flowers in total
  If m * k > n, return -1.
 
- TC = O(nlog(maxDay−minDay))
+ TC on Binary search over range [1, D] takes:
+ O(log D) where D = max(bloomDay)
+ Now, TC of makeBouquet() function is= O(n) as you are scanning all the n numbers
+
+ So, Final TC = O(n log D) i.e. O(n) * O(log D)
+ where n = number of flowers, D = max bloom day value
+ SC = O(1)
  */
 

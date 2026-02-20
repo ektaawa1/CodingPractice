@@ -54,7 +54,7 @@ public class CapacityToShipPackages {
         return daysNeeded <= days;
     }
 }
-// Time complexity is O(n * log S) where n = number of weights and S = sum of weights
+// Time complexity is O(n * log S) where n = number of weights and S = sum of weights i.e., totalWeight
 //log S because each binary search step halves the range of possible capacity
 
 

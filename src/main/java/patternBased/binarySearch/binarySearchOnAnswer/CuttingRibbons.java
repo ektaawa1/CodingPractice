@@ -44,6 +44,7 @@ public class CuttingRibbons {
         return pieces >= k;
     }
 }
+//TC = O(n log maxRibbon)
 /**
  1-->True (Min)
  2-->True

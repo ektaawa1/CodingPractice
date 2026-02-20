@@ -51,7 +51,8 @@ public class KokoEatingBanana {
     }
 }
 //  Time complexity = O(n log M) where
-//  M is the maximum bananas from the piles and n is the no. of piles, Space complexity is O(1).
+//  M is the maximum bananas from the piles and n is the no. of piles ---> MaxPile
+//  Space complexity is O(1).
 
 /**
  * Note- In Java, 7/3 = 2.333 and it rounds down to 2 but in our case-

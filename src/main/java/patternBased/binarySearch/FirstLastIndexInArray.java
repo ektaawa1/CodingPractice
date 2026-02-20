@@ -1,4 +1,4 @@
-package top150LC.Week4;
+package patternBased.binarySearch;
 
 /**
  * Given an array of integers nums sorted in non-decreasing order,

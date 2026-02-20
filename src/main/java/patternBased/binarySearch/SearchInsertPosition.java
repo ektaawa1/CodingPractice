@@ -1,4 +1,4 @@
-package org.Week4;
+package patternBased.binarySearch;
 
 // Using Binary Search Algo to solve in
 // O(log n) time complexity as per the question requirement
@@ -7,21 +7,21 @@ public class SearchInsertPosition {
         int l = 0;
         int r = nums.length -1;
         while (l<=r) {
-            int mid = (l+r) / 2;// This is unsafe to use as will fail with larger integers
+            int mid = l+(r-l) / 2;
             // Use this-
             //int mid = left + (right - left) / 2;  → Classic safe version
             // int mid = (left + right) >>> 1; → Bitwise safe and sometimes faster
             if(nums[mid] == target){
                 return mid;
             }
-            else if(nums[mid]<target){
-                l = mid + 1;
+            else if(nums[mid]>target){
+                r = mid - 1; //search on left side
             }
             else {
-                r = mid - 1;
+                l = mid + 1; //search on right side
             }
         }
-        return l;
+        return l;// since
     }
 }
 
@@ -52,6 +52,12 @@ public class SearchInsertPosition {
  * l=0, r=0 → mid=0 → nums[0]=1 < 2 → l=1
  * Now l=1, r=0 → Exit loop.
  * We return l = 1 → which is the correct insert position for 2.
+ *
+ * Where Should We Insert? After the loop:
+ * low > high
+ * All elements left of low are < target
+ * All elements right of high are > target
+ * So the correct insert position is: low
  */
 
 // >>> is the unsigned right shift operator in Java.

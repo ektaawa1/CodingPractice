@@ -1,28 +1,29 @@
 Solve:
 
-Binary Search
-Search Insert Position
-First Bad Version
-Find Peak Element
-Search in Rotated Sorted Array
-Find First and Last Position of Element
-Koko Eating Bananas (Search on Answer)
+Binary Search (Done)
+Search Insert Position (Done)
+First Bad Version (Done)
+Find Peak Element (Done)
+Search in Rotated Sorted Array (Done)
+Find First and Last Position of Element (Done)
+Koko Eating Bananas (Search on Answer) (Done)
 
 ================================================================================================
 Advanced Binary Search:
 
-Capacity to ship packages
+Capacity to ship packages (Done)
 Median of two sorted arrays (at least understand)
 Split array largest sum
-Min in rotated sorted array
+Min in rotated sorted array (Done)
 
 ==================================================================================================
 Binary Search on answer-
-Koko Eating Bananas
+Koko Eating Bananas (Done)
+Cutting Ribbons (Done)
 Split Array Largest Sum
 Aggressive Cows (1552. Magnetic Force Between Two Balls) & (2517. Maximum Tastiness of Candy Basket)
 Allocate Books (split array largest sum)
-Min Days to Make Bouquets
+Min Days to Make Bouquets (Done)
 Minimum Speed to Arrive On Time
 
 ==================================================================================================
@@ -51,8 +52,6 @@ Koko Eating Bananas
 Split Array Largest Sum
 
 Minimize Max Distance to Gas Station
-
-Cutting Ribbons
 
 Divide Chocolate
 

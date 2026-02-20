@@ -1,4 +1,4 @@
-package grind75.Week1;
+package patternBased.binarySearch;
 
 /**
  * 704. Binary Search
@@ -16,10 +16,10 @@ public class BinarySearch {
 
             if(nums[mid] == target){
                 return mid;
-            } else if (nums[mid] < target){
-                left = mid + 1;
-            } else {
+            } else if (nums[mid] > target){
                 right = mid - 1;
+            } else {
+                left = mid + 1;
             }
         }
         // If target not found

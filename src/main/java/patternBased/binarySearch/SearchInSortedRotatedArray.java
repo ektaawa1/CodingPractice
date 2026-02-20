@@ -1,4 +1,4 @@
-package top150LC.Week5;
+package patternBased.binarySearch;
 
 /**
  * There is an integer array nums sorted in ascending order (with distinct values).

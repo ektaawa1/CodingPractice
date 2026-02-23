@@ -1,4 +1,4 @@
-package grind75.Week1;
+package patternBased.stack;
 
 import java.util.Stack;
 // LIFO to FIFO

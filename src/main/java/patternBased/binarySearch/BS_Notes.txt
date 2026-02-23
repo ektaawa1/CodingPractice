@@ -13,32 +13,36 @@ Advanced Binary Search:
 
 Capacity to ship packages (Done)
 Median of two sorted arrays (at least understand)
-Split array largest sum
+Split array largest sum (Done)
 Min in rotated sorted array (Done)
 
 ==================================================================================================
 Binary Search on answer-
 Koko Eating Bananas (Done)
 Cutting Ribbons (Done)
-Split Array Largest Sum
+Split Array Largest Sum (Done)
 Aggressive Cows (1552. Magnetic Force Between Two Balls) & (2517. Maximum Tastiness of Candy Basket)
 Allocate Books (split array largest sum)
 Min Days to Make Bouquets (Done)
 Minimum Speed to Arrive On Time
 
+Note-
+Minimize the maximum...
+then its BS on answer (first true)
+
+Maximize the minimum...
+
+then its BS on answer (last true)
 ==================================================================================================
 
 1st Classic Binary Search in Array (Sorted / Monotonic)
 
 First / Last occurrence in sorted array → lower bound / upper bound
 
-Search in Rotated Sorted Array
-
 Find Minimum in Rotated Sorted Array
 
 Find Minimum in Rotated Sorted Array II (duplicates)
 
-Find Peak Element
 
 Pattern: first true / last true on index.
 ===
@@ -47,9 +51,7 @@ Pattern: first true / last true on index.
 
 Ship Packages Within D Days
 
-Koko Eating Bananas
 
-Split Array Largest Sum
 
 Minimize Max Distance to Gas Station
 
@@ -75,8 +77,6 @@ Koko Eating Bananas (can combine prefix sum + binary search)
 Pattern: sometimes combined with greedy check.
 
 4th Hard Monotonic / Slope Problems
-
-Find Peak Element
 
 Peak Index in a Mountain Array
 

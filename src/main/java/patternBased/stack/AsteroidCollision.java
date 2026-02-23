@@ -1,4 +1,4 @@
-package otheTopicsExample;
+package patternBased.stack;
 
 import java.util.Stack;
 

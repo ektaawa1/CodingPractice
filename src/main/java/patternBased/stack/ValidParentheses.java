@@ -1,9 +1,7 @@
-package top150LC.Week2;
+package patternBased.stack;
 
 // 20. Valid Parentheses
 
-import java.util.ArrayDeque;
-import java.util.Deque;
 import java.util.Stack;
 
 /**

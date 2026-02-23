@@ -1,4 +1,4 @@
-package top100Liked;
+package patternBased.stack;
 
 import java.util.Stack;
 

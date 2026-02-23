@@ -5,3 +5,18 @@ Next Greater Element
 Daily Temperatures
 Largest Rectangle in Histogram
 Trapping Rain Water (stack version)
+Min Stack
+
+===================================================================================================
+Watch for these phrases:
+
+ “Nearest greater/smaller”
+ “Span”
+ “Remove duplicates repeatedly”
+ “Nested structure”
+ “Balanced”
+ “Histogram”
+ “Undo”
+ “Evaluate expression”
+ “Next warmer day”
+ “First larger element on right”

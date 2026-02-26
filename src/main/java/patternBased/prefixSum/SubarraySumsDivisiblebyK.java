@@ -10,21 +10,22 @@ public class SubarraySumsDivisiblebyK {
     public int subarraysDivByK(int[] nums, int k) {
         HashMap<Integer,Integer> map1 = new HashMap<>();
         // remainder 0 has occurred once (empty prefix)
-        map1.put(0, 1); //key-> remainder, val-> count
+        map1.put(0, 1); //key-> remainder, val-> count of this remainder/ freq of this remainder
 
         int sum = 0;
-        int count = 0;
+        int count = 0; //count of sub-arrays
         for(int num : nums){
             sum += num;
 
             int rem = sum%k;
-            if(rem < 0){
+            //I normalize negative remainders to the range [0, k-1] so that matching remainders work correctly.
+            if(rem < 0){//to handle negative nums remainder --> -2 + 5 = 3 ✔
                 rem += k;
             }
 
-            if(map1.containsKey(rem)){
-                count+= map1.get(rem);
-                map1.put(rem, map1.get(rem)+1);
+            if(map1.containsKey(rem)){//same remainder
+                count+= map1.get(rem);//increment the subarray counter
+                map1.put(rem, map1.get(rem)+1);//increse its frequency
             }else {
                 map1.put(rem,1);
             }

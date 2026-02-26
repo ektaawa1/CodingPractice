@@ -11,7 +11,7 @@ public class MaxSizeSubarraySumEqualsk {
     public int maxSubArrayLen(int[] nums, int k) {
         //negative input
         //return maxLen
-        HashMap<Integer, Integer> map1 = new HashMap<>();
+        HashMap<Integer, Integer> map1 = new HashMap<>(); //<sum, lengthCount>
         map1.put(0,-1);
         int sum = 0;
         int maxLen = 0;

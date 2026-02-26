@@ -6,10 +6,11 @@ import java.util.HashMap;
 /**
  * Given a binary array nums and an integer goal, return the number of non-empty subarrays with a sum goal.
  * A subarray is a contiguous part of the array.
+ * nums[i] is either 0 or 1.
  */
 public class BinarySubarraysWithSum {
     public int numSubarraysWithSum(int[] nums, int goal) {
-        HashMap<Integer,Integer> map1 = new HashMap<>();
+        HashMap<Integer,Integer> map1 = new HashMap<>();//prefix sum 0 occurs once <sum, its frequency>
         map1.put(0,1);// prefix sum 0 occurs once
 
         int count = 0;

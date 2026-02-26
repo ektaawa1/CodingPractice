@@ -1,6 +1,6 @@
 package patternBased.prefixSum;
 // 1248. Count Number of Nice Subarrays
-
+//Prefer Sliding Window Solution
 import java.util.HashMap;
 
 /**

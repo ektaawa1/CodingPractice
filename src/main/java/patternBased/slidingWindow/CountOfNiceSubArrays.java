@@ -24,10 +24,13 @@ public class CountOfNiceSubArrays {
                     left++;
                 }
 
-            if(oddCount == k){
+            if(oddCount == k){ //The current window [left … right] contains exactly k odd numbers. So, Count how many even numbers exist before first odd in current window
                 int tempLeft = left;
+                //Because each even can be removed from the left without affecting odd count.
                 while(tempLeft < nums.length  && nums[tempLeft] %2 == 0) tempLeft++;
                 result += tempLeft-left+1;
+                //Each even can be removed without changing odd count.
+                //Only the ones BEFORE the first odd number.
             }
 
         }

@@ -17,7 +17,6 @@ public class LongestRepeatingCharReplacement {
         }
 
         int left = 0;
-        char[] arr = s.toCharArray();
         int maxLen = Integer.MIN_VALUE;
         int maxFreq = Integer.MIN_VALUE;
         int[] freqArr = new int[26];

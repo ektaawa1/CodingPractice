@@ -15,8 +15,8 @@ package patternBased.twoPointers;
  * rotate 1 steps to the right: [7,1,2,3,4,5,6]
  * rotate 2 steps to the right: [6,7,1,2,3,4,5]
  * rotate 3 steps to the right: [5,6,7,1,2,3,4]
- * Example 2:
  *
+ * Example 2:
  * Input: nums = [-1,-100,3,99], k = 2
  * Output: [3,99,-1,-100]
  * Explanation:
@@ -47,7 +47,7 @@ public class RotateArray {
             nums[j--] = temp;
         }
     }
-
+    //prefer this
     public void rotateBetter(int[] nums, int k) {
         if(nums == null || nums.length == 0){
             return;

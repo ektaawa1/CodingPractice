@@ -48,6 +48,7 @@ public class GroupAnagram {
         // effectively grouping all anagrams together.
         return new ArrayList<>(anagram_map.values());
     }
+    //prefer this one
     public List<List<String>> groupAnagramsEasy(String[] strs) {
         HashMap<String, List<String>> map1 = new HashMap<>();
 

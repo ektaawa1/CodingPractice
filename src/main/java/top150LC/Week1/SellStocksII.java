@@ -34,8 +34,9 @@ package top150LC.Week1;
 public class SellStocksII {
     public int maxProfit(int[] prices) {
         int total_gain = 0;
+        int daily_gain = 0;
         for(int i = 1; i<prices.length; i++){
-            int daily_gain = Math.max(0,prices[i]-prices[i-1]);
+            daily_gain = Math.max(daily_gain,prices[i]-prices[i-1]);
             total_gain += daily_gain;
         }
         return total_gain;

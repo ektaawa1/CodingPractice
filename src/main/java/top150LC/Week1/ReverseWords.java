@@ -44,7 +44,7 @@ public class ReverseWords {
 
         return str_reversed;
     }
-
+    //prefer this
     public String reverseWords1(String s){
         String temp = s.trim(); // removes all leading and trailing whitespace characters (spaces, tabs, newlines, etc.)
         String[] arr = temp.split(" ");

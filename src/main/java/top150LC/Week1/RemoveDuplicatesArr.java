@@ -1,4 +1,4 @@
-package org.Week1;
+package top150LC.Week1;
 
 
 // https://algo.monster/liteproblems/26
@@ -21,13 +21,15 @@ package org.Week1;
 // 2 pointers technique
 public class RemoveDuplicatesArr {
     public int removeDuplicates(int[] nums) {
-        int i = 0;
-        for(int num: nums){
-            if(i == 0 || num != nums[i-1]){
-                nums[i++] = num;
+        if(nums.length == 0) return 0;
+
+        int k = 1;
+        for(int right = 1; right < nums.length; right++){
+            if(nums[right] != nums[right-1]){
+                nums[k++] = nums[right];
             }
         }
-        return i;
+        return k;
     }
 }
 

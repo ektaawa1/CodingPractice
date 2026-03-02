@@ -41,4 +41,31 @@ public class TrappingRainWater {
         }
         return totTrappedWater;
     }
+    public int trap1(int[] height) {
+        int left = 0;
+        int right = height.length-1;
+        int maxLeft = 0; int maxRight = 0;
+        int trappedWater = 0;
+
+        while(left < right){
+            maxLeft = Math.max(maxLeft, height[left]);
+            maxRight = Math.max(maxRight, height[right]);
+
+            if(maxLeft < maxRight){
+                trappedWater += maxLeft-height[left];
+                left++;
+            } else {
+                trappedWater += maxRight-height[right];
+                right--;
+            }
+        }
+        return trappedWater;
+    }
 }
+/**
+ * Time complexity:
+ * O(N), where N is size of height array.
+ *
+ * Space complexity:
+ * O(1), no extra space is used.
+ */

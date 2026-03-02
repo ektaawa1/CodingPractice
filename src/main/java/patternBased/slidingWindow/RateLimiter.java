@@ -24,13 +24,13 @@ class RateLimiter {
     public boolean allowRequest(int timestamp) {
 
         // Remove all requests older than window
-        while (!queue.isEmpty() && queue.peek() <= t - window) {
+        while (!queue.isEmpty() && queue.peek() <= timestamp - window) {
             queue.poll();
         }
 
         // Check capacity
         if (queue.size() < limit) {
-            queue.offer(t);
+            queue.offer(timestamp);
             return true;
         }
 

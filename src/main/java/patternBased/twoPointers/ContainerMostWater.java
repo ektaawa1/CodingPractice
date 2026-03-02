@@ -1,11 +1,25 @@
 package patternBased.twoPointers;
+//11. Container With Most Water
+
+/**
+ *Find two lines that together with the x-axis form a container, such that the container contains the most water.
+ * Return the maximum amount of water a container can store.
+ *
+ * Input: height = [1,8,6,2,5,4,8,3,7]
+ * Output: 49
+ * Explanation: The above vertical lines are represented by array [1,8,6,2,5,4,8,3,7].
+ * In this case, the max area of water (blue section) the container can contain is 49.
+ *
+ * Input: height = [1,1]
+ * Output: 1
+ */
 
 // 2 pointers approach is used here
 public class ContainerMostWater {
     public int maxArea(int[] height) {
         int left = 0;
         int right = height.length-1;
-        int maxWater = 0;
+        int maxArea = 0;
 
         while(left < right){
             //calculate height of water
@@ -14,7 +28,7 @@ public class ContainerMostWater {
             int width = right - left;
             int area = width * h;
             //calculate the max area
-            maxWater = Math.max(maxWater, area);
+            maxArea = Math.max(maxArea, area);
             //idea is to move the smaller height pointer inwards (left or right pointer)
             if(height[left] < height[right]){
                 left++;
@@ -22,7 +36,7 @@ public class ContainerMostWater {
                 right--;
             }
         }
-        return maxWater;
+        return maxArea;
     }
 }
 

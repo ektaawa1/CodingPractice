@@ -1,6 +1,6 @@
 package top150LC.Week1;
 
-//80. Remove Duplicates from Sorted Array II
+//80. Remove Duplicates from Sorted Array II- Allow at most 2 duplicates or K duplicates
 
 /**
  * Example 1:
@@ -24,20 +24,21 @@ public class RemoveDuplicatesArrII {
     public int removeDuplicates(int[] nums) {
         // index for placing the next unique element
         // or the second occurrence of an existing element
-        int i = 0;
-        for (int num: nums) {
-            // If the current position is less than 2 (i.e., we are at the start of the array)
-            // or if the current element is different than the element two positions behind
-            // then consider it for inclusion in the array
-            if(i < 2 || num != nums[i-2]){
-                // Place the current element at the new position and increment the new position
-                nums[i] = num;
-                i++;
+        if(nums.length <= 2) return nums.length;
+
+        int j = 2;
+
+        for(int right = 2; right < nums.length; right++){
+            if(nums[right] != nums[j-2]){ //if Allow K duplicates then nums[j-k]
+                nums[j++] = nums[right];
             }
         }
-        return i;
+        return j;
+
     }
 }
+//why k-2??? Because right moves over the original array,
+//but k represents the last valid position in the modified array.
 /**
  * i < 2 → Always store the first two numbers
  * num > nums[i-2] → Store the number only if it does NOT form a triplet

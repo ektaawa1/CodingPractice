@@ -13,6 +13,7 @@ import java.util.Stack;
  * Input: [4, 5, 2, 25]
  * Output: [5, 25, 25, -1]
  */
+// Refer System Monitoring Load solution
 public class NextGreaterElement {
     public static int[] nextGreaterElements(int[] nums) {
         int n = nums.length;

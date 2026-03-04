@@ -1,4 +1,4 @@
-package top150LC.Week3;
+package patternBased.linkedList;
 
 // 2. Add Two Numbers
 // Linked List https://algo.monster/liteproblems/2

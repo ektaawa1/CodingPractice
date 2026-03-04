@@ -1,4 +1,4 @@
-package top150LC.Week7;
+package patternBased.dfsBfs;
 //200. Number of Islands
 
 import java.util.LinkedList;
@@ -15,19 +15,23 @@ public class NumOfIslands {
         if(grid == null || grid.length == 0){
             return 0; // no islands
         }
+        //if input modification is not allowed, use this
+        //boolean[][] visited = new boolean[rows][cols];
 
         int rows = grid.length;
         int cols = grid[0].length;
-        int count = 0;
+        int countIslands = 0;
+
         for(int i = 0; i<rows; i++){
             for(int j = 0; j<cols; j++){
                 if(grid[i][j] == '1'){
-                    count++;
-                    dfs(grid, i, j); //bfs(grid, i, j);
+                    countIslands++; //count new island
+                    dfs(grid, i, j); //then call dfs to mark the connected 1s to this island to avoid recounting
+                    //bfs(grid, i, j);
                 }
             }
         }
-        return count;
+        return countIslands;
     }
 
     private void dfs(char[][] grid, int row, int col){
@@ -36,7 +40,8 @@ public class NumOfIslands {
             return;
         }
 
-        grid[row][col] = '0'; //mark it visited or sink the land
+        grid[row][col] = '0'; //mark it water or sink it
+        //grid[row][col] = '#'; //mark it visited
 
         //now visit the neighbors of that land
         dfs(grid, row, col-1);
@@ -44,6 +49,7 @@ public class NumOfIslands {
         dfs(grid, row-1, col);
         dfs(grid, row+1, col);
     }
+    //========================================================================================================
     //if using bfs logic
     private void bfs(char[][] grid, int r, int c) {
         int[][] dirs = {{1,0},{-1,0},{0,1},{0,-1}};
@@ -71,7 +77,22 @@ public class NumOfIslands {
         }
     }
 }
-
+/**
+ * Example: DFS
+ * 1 1 0
+ * 1 0 0
+ * 0 0 1
+ * When loop hits first 1:
+ * islandCount = 1
+ * DFS marks all connected 1s as '#'
+ * Grid becomes:
+ * # # 0
+ * # 0 0
+ * 0 0 1
+ * Then later we find last 1:
+ * islandCount = 2
+ * DFS marks it
+ */
 
 /**
  * Intuition:
@@ -80,6 +101,8 @@ public class NumOfIslands {
  * When we find a '1' (land not visited yet):
  * Count it as a new island.
  * Run DFS or BFS to "sink" (mark visited) all connected land.
+ * Each time I encounter an unvisited '1', that represents a new island.
+ * I increment count and then DFS to mark the whole island visited so it’s not counted again.
  */
 
 /**

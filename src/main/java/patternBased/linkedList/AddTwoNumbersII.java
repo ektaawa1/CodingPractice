@@ -1,4 +1,4 @@
-package top150LC.Week3;
+package patternBased.linkedList;
 
 import java.util.Stack;
 

@@ -1,4 +1,4 @@
-package org.Week2;
+package top150LC.Week2;
 
 public class PalindromeNumber {
     public boolean isPalindrome(int x) {

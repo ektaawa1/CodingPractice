@@ -4,11 +4,29 @@ package patternBased.dfsBfs;
 import java.util.LinkedList;
 import java.util.Queue;
 
+/** Input is
+ * X X X X
+ * X O O X
+ * X X O X
+ * X O X X
+ *
+ * Output is-
+ * X X X X
+ * X X X X
+ * X X X X
+ * X O X X
+ * What it does is-
+ * The middle O region is surrounded → flip it.
+ * The bottom O touches boundary → keep it.
+ */
+//If an O touches boundary,
+//we mark entire component safe.
+//Everything else must be surrounded.
 public class SurroundedRegions {
     public void solve(char[][] board) {
         int rows = board.length;
         int cols = board[0].length;
-// Step 1: Mark boundary-connected 'O's
+// Step 1: Mark boundary-connected 'O's to 'S' i.e., safe
         for(int j = 0; j <cols; j++){
             dfs(board, 0, j); // top boundary
             dfs(board, rows-1, j); // bottom boundary
@@ -18,7 +36,7 @@ public class SurroundedRegions {
             dfs(board, i, 0); // left boundary
             dfs(board, i, cols-1); // right boundary
         }
-// Step 2: Flip the cells
+//Step 2: Flip remaining O to X and restore S to O
         for(int i = 0; i < rows; i++){
             for(int j = 0; j < cols; j++){
                 if(board[i][j] == 'O'){

@@ -1,0 +1,10 @@
+When question says:
+"Nearest"
+"Minimum distance"
+"Minutes until spread"
+"Closest"
+"Shortest path in grid"
+
+Think: BFS
+
+If multiple starting points exist: Multi-source BFS

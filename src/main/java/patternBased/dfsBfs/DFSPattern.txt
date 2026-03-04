@@ -1,0 +1,32 @@
+1) Connected Components Pattern
+   “Count how many groups exist.”
+   Examples-
+   • Number of Islands
+   Count number of island components.
+
+   • Max Area of Island
+   Instead of counting islands, return largest area.
+   • Number of Closed Islands
+======================================================================
+2) Boundary DFS (Very Important)
+   Instead of counting islands,
+   you start DFS from boundary to eliminate invalid regions.
+   Example-
+   Surrounded Regions
+   Number of Enclaves
+
+======================================================================
+3) Backtracking DFS (Path Based)
+• Word Search
+
+Find if word exists in grid.
+Here:
+Use visited temporarily
+Backtrack
+Restore state
+
+• Path Sum II
+DFS in tree, build paths.
+Teaches:
+How to maintain path list
+Backtrack properly

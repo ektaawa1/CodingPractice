@@ -1,4 +1,4 @@
-package grind75.Week1;
+package patternBased.dfsBfs;
 
 /**
  * There are a total of numCourses courses you have to take, labeled from 0 to numCourses - 1.

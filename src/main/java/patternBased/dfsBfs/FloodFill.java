@@ -1,4 +1,4 @@
-package grind75.Week1;
+package patternBased.dfsBfs;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -7,6 +7,9 @@ import java.util.Queue;
  * You are given an image represented by an m x n grid of integers image, where image[i][j]
  * represents the pixel value of the image. You are also given three integers sr, sc, and color.
  * Your task is to perform a flood fill on the image starting from the pixel image[sr][sc].
+ *
+ * Input: image = [[1,1,1],[1,1,0],[1,0,1]], sr = 1, sc = 1, color = 2
+ * Output: [[2,2,2],[2,2,0],[2,0,1]]
  */
 public class FloodFill {
     public int[][] floodFill(int[][] image, int sr, int sc, int color) {
@@ -39,22 +42,41 @@ public class FloodFill {
 
     public int[][] floodFillDFS(int[][] image, int sr, int sc, int color) {
         // DFS Approach
-        int currColor = image[sr][sc];
-        if(currColor == color) return image; // nothing to change
-        dfs(image, sr, sc, currColor, color);
+        if(image == null || image.length == 0){
+            return new int[][]{};
+        }
+
+        int rows = image.length;
+        int cols = image[0].length;
+        int startPixel = image[sr][sc];
+
+        // If starting pixel is already the new color, no need to process
+        if(startPixel == color){
+            return image;
+        }
+        dfs(image, sr, sc, startPixel, color, rows, cols);
         return image;
     }
-    private void dfs(int[][] image, int r, int c, int currColor, int newColor){
-        if(r < 0 || c < 0 || r >=image.length || c >= image[0].length) return; //exit the function
-        if(image[r][c] != currColor) return; //exploring neighbors //exit the function
+    private void dfs(int[][] image, int sr, int sc, int startPixel, int color, int rows, int cols){
+        // Boundary check
+        if(sr < 0 || sr >= rows || sc < 0 || sc >= cols){
+            return;
+        }
 
-        image[r][c] = newColor;
+        // Only fill cells that match original color
+        if(image[sr][sc] != startPixel){
+            return;
+        }
+
+        // Recolor
+        image[sr][sc] = color;
 
         // 4 directions: up, down, left, right
-        dfs(image, r+1, c, currColor, newColor);
-        dfs(image, r-1, c, currColor, newColor);
-        dfs(image, r, c+1, currColor, newColor);
-        dfs(image, r, c-1, currColor, newColor);
+        // Explore 4 directions
+        dfs(image, sr - 1, sc, startPixel, color, rows, cols);
+        dfs(image, sr + 1, sc, startPixel, color, rows, cols);
+        dfs(image, sr, sc - 1, startPixel, color, rows, cols);
+        dfs(image, sr, sc + 1, startPixel, color, rows, cols);
     }
 }
 //Time: O(m×n) and Space: O(m×n) (in worst case when all cells are filled).

@@ -1,4 +1,4 @@
-package grind75.Week1;
+package patternBased.dfsBfs;
 
 //207. Course Schedule
 
@@ -78,8 +78,12 @@ public class CourseSchedule {
         return false;
     }
 }
-//Complexity: Time: O(V + E) → each edge visited once
-//Space: O(V + E) for graph + O(V) for recursion + O(V) for seen set
+/**
+ * | Metric | Value                                               |
+ * | ------ | --------------------------------------------------- |
+ * | Time   | O(V + E) → traverse all courses & prerequisites     |
+ * | Space  | O(V + E) → adjacency list + recursion stack / queue |
+ */
 
 /**
  * Example B

@@ -14,6 +14,7 @@ import java.util.Queue;
  */
 
 public class RottingOranges {
+    //infection spreads level by level (minute by minute) so BFS
     public int orangesRotting(int[][] grid) {
         int rows = grid.length;
         int cols = grid[0].length;
@@ -54,9 +55,9 @@ public class RottingOranges {
                         freshCount--;
                     }
                 }
-            }
+            }//end of for
             mins++; // one minute passed after finishing the level
-        }
+        }//end of while
         return freshCount == 0 ? mins : -1;
     }
 }

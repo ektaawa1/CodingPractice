@@ -22,6 +22,7 @@ class Node {
 }
 //DFS Approach
 public class CloneGraph {
+    //Graph can have cycles → must use visited map
     private HashMap<Node, Node> map = new HashMap<>();
     public Node cloneGraph(Node node) {
         if(node == null) return null;
@@ -40,7 +41,19 @@ public class CloneGraph {
     }
     //BFS Approach
 }
-//O(n + e) TC, SC = O(n)
-//n = number of nodes
-//
-//e = number of edges
+
+/**
+ * 1 -- 2
+ * |    |
+ * 4 -- 3
+ * Node 1’s neighbors: [2,4]
+ * Node 2’s neighbors: [1,3]
+ * Node 3’s neighbors: [2,4]
+ * Node 4’s neighbors: [1,3]
+ */
+/**
+ * | Metric | Value                                        |
+ * | ------ | -------------------------------------------- |
+ * | Time   | O(V + E) → traverse every node and edge once |
+ * | Space  | O(V) → map + recursion stack (DFS)           |
+ */

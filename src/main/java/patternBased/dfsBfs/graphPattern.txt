@@ -1,0 +1,56 @@
+The 5 Major Graph Patterns (High ROI for Interviews)
+1️⃣ Grid DFS/BFS (Matrix Problems)
+
+You already saw these:
+
+Number of Islands
+
+Surrounded Regions
+
+Rotting Oranges
+
+Graph is implicit (4 directions).
+========================================================
+2️⃣ General Graph Traversal (Adjacency List)
+
+Now graph is explicit:
+Nodes + neighbors list.
+
+This is where Clone Graph comes.
+========================================================
+3️⃣ Topological Sort (Directed Graph + Dependency)
+
+Now we enter Course Schedule type.
+
+🔹 Course Schedule
+
+Problem:
+Given prerequisites, can you finish all courses?
+
+Translation:
+Detect cycle in directed graph.
+
+Two approaches:
+
+DFS cycle detection
+
+Kahn’s Algorithm (BFS + indegree)
+
+Course Schedule II
+Return ordering instead of boolean.
+=======================================================
+4️⃣ Shortest Path in Word Transformations
+🔹 Word Ladder
+
+This is:
+
+Graph where words are nodes
+
+Edge exists if 1 character difference
+
+Find shortest transformation
+
+Solution:
+
+BFS (because shortest path in unweighted graph)
+========================================================

@@ -1,0 +1,7 @@
+When reading any graph problem ask:
+
+1️) Weighted edges? → Dijkstra
+2️) Dependencies? → Topological sort
+3️) Connected regions? → DFS/BFS
+4️) Shortest path unweighted? → BFS
+5️) Dynamic connectivity? → Union Find

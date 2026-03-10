@@ -1,4 +1,4 @@
-package patternBased.dfsBfs;
+package patternBased.graph.dfsBfs;
 
 import java.util.LinkedList;
 import java.util.Queue;

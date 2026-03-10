@@ -1,4 +1,4 @@
-package patternBased.dfsBfs;
+package patternBased.graph.dfsBfs;
 //200. Number of Islands
 
 import java.util.LinkedList;

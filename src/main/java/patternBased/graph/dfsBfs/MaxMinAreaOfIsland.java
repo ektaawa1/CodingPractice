@@ -1,4 +1,4 @@
-package patternBased.dfsBfs;
+package patternBased.graph.dfsBfs;
 //Was asked in screening round of Oracle
 //0 being white pixel, 1 means color pixel, I have to find out the minCount & maxCount of 1s joined together in
 //all 4 directions.

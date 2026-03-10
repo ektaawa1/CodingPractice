@@ -1,4 +1,4 @@
-package patternBased.dfsBfs;
+package patternBased.graph.dfsBfs;
 // 463. Island Perimeter
 
 /**

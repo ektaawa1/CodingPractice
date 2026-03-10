@@ -1,4 +1,4 @@
-package patternBased.dfsBfs;
+package patternBased.graph.dfsBfs;
 // 1926. Nearest Exit from Entrance in Maze
 
 import java.util.LinkedList;

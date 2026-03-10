@@ -1,4 +1,4 @@
-package patternBased.dfsBfs;
+package patternBased.graph.dfsBfs;
 //542. 01 Matrix
 
 import java.util.LinkedList;

@@ -1,4 +1,4 @@
-package patternBased.dfsBfs;
+package patternBased.graph.dfsBfs;
 
 /**
  * Return the maximum number of fish the fisher can catch if he chooses his starting cell optimally,

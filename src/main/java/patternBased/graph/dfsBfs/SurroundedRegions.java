@@ -1,4 +1,4 @@
-package patternBased.dfsBfs;
+package patternBased.graph.dfsBfs;
 //130. Surrounded Regions
 
 import java.util.LinkedList;

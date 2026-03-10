@@ -1,4 +1,4 @@
-package patternBased.dfsBfs;
+package patternBased.graph.dfsBfs;
 
 /**
  * This is a Multi-Source BFS problem.

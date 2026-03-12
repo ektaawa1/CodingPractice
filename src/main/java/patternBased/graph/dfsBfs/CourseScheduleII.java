@@ -27,51 +27,58 @@ import java.util.Queue;
  */
 public class CourseScheduleII {
     public int[] findOrder(int numCourses, int[][] prerequisites) {
-        List<List<Integer>> prereqs = new ArrayList<>();
-
-        for (int i = 0; i < numCourses; i++) { // Step 1: Build graph + indegree array
-            prereqs.add(new ArrayList<>());
+        // Step 1: Create graph
+        List<Integer>[] graph = new ArrayList[numCourses];
+        for(int i = 0; i < numCourses; i++){
+            graph[i] = new ArrayList<>();
         }
-        int[] inDegree = new int[numCourses];
-        for (int[] pair : prerequisites) {
-            int course = pair[0];
-            int prereq = pair[1];
-            prereqs.get(prereq).add(course); // prereq → course
-            inDegree[course]++;           // course needs prereq
-        }
+        // Step 2: Create indegree array
+        int[] indegree = new int[numCourses];
 
-        // Step 2: Start with courses having no prerequisites
+        // Step 3: Build graph + indegree
+        for(int[] prereq : prerequisites){
+            int course = prereq[0];
+            int prerequisiteCourse = prereq[1];
+
+            graph[prerequisiteCourse].add(course);
+            indegree[course]++;
+        }
+        // Step 4: Add courses with 0 prerequisites to queue
         Queue<Integer> queue = new LinkedList<>();
-        for (int i = 0; i < numCourses; i++) {
-            if (inDegree[i] == 0) {
-                queue.offer(i);
+
+        for(int course = 0; course < numCourses; course++){
+            if(indegree[course] == 0){
+                queue.offer(course);
             }
         }
 
-        // Step 3: Process queue
-        int[] order = new int[numCourses];
+        // Step 5: Store order
+        int[] courseOrder = new int[numCourses];
         int index = 0;
 
-        while (!queue.isEmpty()) {
-            int c = queue.poll();
-            order[index++] = c;
+        // Step 6: BFS
+        while(!queue.isEmpty()){
 
-            // "Remove" this course, update neighbors
-            for (int next : prereqs.get(c)) {
-                inDegree[next]--;
-                if (inDegree[next] == 0) {
-                    queue.offer(next);
+            int currentCourse = queue.poll();
+
+            courseOrder[index++] = currentCourse;
+
+            for(int nextCourse : graph[currentCourse]){
+
+                indegree[nextCourse]--;
+
+                if(indegree[nextCourse] == 0){
+                    queue.offer(nextCourse);
                 }
             }
         }
 
-        // Step 4: If we couldn't take all courses → cycle
-        if (index == numCourses) {
-            return order;
-        } else {
-            return new int[0]; // cycle → impossible
+        // Step 7: Check if all courses finished
+        if(index == numCourses){
+            return courseOrder;
         }
 
+        return new int[0];
     }
 }
 //Time complexity: O(V+E)

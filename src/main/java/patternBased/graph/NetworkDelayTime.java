@@ -26,7 +26,7 @@ public class NetworkDelayTime {
         //STEP 1: Build the graph (adjacency list) something like this
         // node -> list of neighbors with travel time
         int totalNodes = n;
-        int startNode = k;
+        //int startNode = k;
         List<int[]>[] graph = new ArrayList[totalNodes+1]; //since nodes are from 1 to n & not 0 to n
         for(int i = 1; i<= totalNodes; i++){
             graph[i] = new ArrayList<>();
@@ -46,12 +46,12 @@ public class NetworkDelayTime {
         int[] shortestTime = new int[totalNodes + 1];
         Arrays.fill(shortestTime, Integer.MAX_VALUE);
         //Now set the start node to 0
-        shortestTime[startNode] = 0;
+        shortestTime[k] = 0;
 
         //STEP 3: Create a Min Heap to pick the node with the smallest distance first.
         PriorityQueue<int[]> minHeap = new PriorityQueue<>((a, b) -> a[0] - b[0]);
         //time 0 to reach startNode
-        minHeap.offer(new int[]{0, startNode});//starting node storing [timeToReachNode , node]
+        minHeap.offer(new int[]{0, k});//starting node storing [timeToReachNode , node]
 
         //STEP 4: Main Loop
         while(!minHeap.isEmpty()) {

@@ -24,9 +24,10 @@ public class NumOfIslands {
 
         for(int i = 0; i<rows; i++){
             for(int j = 0; j<cols; j++){
-                if(grid[i][j] == '1'){
+                if(grid[i][j] == '1'){ //if(grid[i][j] == '1' && !visited[i][j])
                     countIslands++; //count new island
                     dfs(grid, i, j); //then call dfs to mark the connected 1s to this island to avoid recounting
+                    //dfs(grid, visited, i, j)
                     //bfs(grid, i, j);
                 }
             }
@@ -39,9 +40,13 @@ public class NumOfIslands {
         if(row <0 || col <0 || row>= grid.length || col >= grid[0].length || grid[row][col] == '0'){
             return;
         }
+        //if(i < 0 || j < 0 || i >= rows || j >= cols || grid[i][j] == '0' || visited[i][j]){
+        //     return;
+        // }
 
         grid[row][col] = '0'; //mark it water or sink it
-        //grid[row][col] = '#'; //mark it visited
+        //OR grid[row][col] = '#'; //mark it visited
+        //OR   visited[i][j] = true; if using visited boolean array
 
         //now visit the neighbors of that land
         dfs(grid, row, col-1);
@@ -108,6 +113,17 @@ public class NumOfIslands {
 /**
  * Time Complexity: O(m * n) → each cell visited once.
  * Space Complexity:
- * DFS: O(m * n) (recursion stack in worst case).
+ * DFS: O(m * n) worst case recursion depth
  * BFS: O(min(m,n)) queue in worst case (if entire row/col is land).
+ */
+/**
+ * Follow Up Question-
+ * What if the grid is very large and recursion stack overflows?
+ * Use BFS instead of DFS
+ *
+ * What if we cannot modify the grid?
+ * Use visited[][] array
+ *
+ * What if islands are connected diagonally?
+ * Then explore 8 directions instead of 4.
  */

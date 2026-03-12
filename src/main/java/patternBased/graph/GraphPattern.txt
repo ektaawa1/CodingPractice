@@ -5,3 +5,12 @@ When reading any graph problem ask:
 3️) Connected regions? → DFS/BFS
 4️) Shortest path unweighted? → BFS
 5️) Dynamic connectivity? → Union Find
+
+When the problem says-
+minimum
+maximum
+shortest
+least cost
+least effort
+least risk
+Think of Dijkstra / BFS / Binary Search + BFS

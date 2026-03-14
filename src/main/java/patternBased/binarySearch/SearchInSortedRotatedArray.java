@@ -14,7 +14,7 @@ public class SearchInSortedRotatedArray {
         }
         int low = 0;
         int high = nums.length-1; // index: 0-6
-        while(low <= high){
+        while(low <= high){ // why??
             int mid = low + (high-low)/2; //to avoid integer overflow
 
             if(nums[mid] == target){
@@ -22,6 +22,7 @@ public class SearchInSortedRotatedArray {
             }
             // if on the left side
             if(nums[low] <= nums[mid]){
+                //if left side is sorted
                 if(target >= nums[low] && target < nums[mid]){
                     high = mid - 1; //search left side
                 } else {
@@ -30,6 +31,7 @@ public class SearchInSortedRotatedArray {
             }
             //if on the right side
             else {
+                // Right half sorted
                 if (target > nums[mid] && target <= nums[high]) {
                     low = mid + 1;  // search right half
                 } else {

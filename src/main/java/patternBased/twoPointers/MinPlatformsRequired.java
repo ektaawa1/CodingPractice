@@ -20,19 +20,19 @@ public class MinPlatformsRequired {
         Arrays.sort(arrival);//[935, 1000, 1100]
         Arrays.sort(dep);//[1130, 1200, 1240]
         int i = 0, j = 0;
-        int platforms = 0, maxPlatforms = 0;
+        int countPlatform = 0, maxCount = 0;
 
         while(i< arrival.length){
             if(arrival[i]<dep[j]){ //Arrival comes first → means overlappin so need a new platform
-                platforms++;
-                maxPlatforms = Math.max(maxPlatforms, platforms);
+                countPlatform++;
+                maxCount = Math.max(maxCount, countPlatform);
                 i++;
             } else{ //Departure comes first → free a platform
-                platforms--;
+                countPlatform--;
                 j++;
             }
         }
-        return maxPlatforms;
+        return maxCount;
     }
 }
 /**

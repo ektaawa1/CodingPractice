@@ -12,6 +12,12 @@ import java.util.PriorityQueue;
  * Input: [[7,10],[2,4]]
  * Output: 1
  */
+
+/**
+ * Meeting 1: [0,  30] → occupies a room from time 0  to time 30
+ * Meeting 2: [5,  10] → occupies a room from time 5  to time 10
+ * Meeting 3: [15, 20] → occupies a room from time 15 to time 20
+ */
 // max no.of meetings overlapping
 public class MeetingRoomsII {
     //2 pointers approach
@@ -80,4 +86,15 @@ public class MeetingRoomsII {
  * | ------------ | ------------ | ------ |
  * | Min Heap     | `O(n log n)` | `O(n)` |
  * | Two Pointers | `O(n log n)` | `O(n)` |
+ */
+
+/**
+ * Dry Run-
+ * Step 1: start[0]=0  < end[0]=10 → new room, rooms=1, maxRooms=1, i=1
+ * Step 2: start[1]=5  < end[0]=10 → new room, rooms=2, maxRooms=2, i=2
+ * Step 3: start[2]=15 > end[0]=10 → free room, rooms=1, j=1
+ * Step 4: start[2]=15 < end[1]=20 → new room, rooms=2, maxRooms=2, i=3
+ *
+ * i=3 == intervals.length → loop ends
+ * return maxRooms = 2
  */

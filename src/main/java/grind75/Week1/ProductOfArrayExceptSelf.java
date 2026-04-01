@@ -11,7 +11,7 @@ package grind75.Week1;
 public class ProductOfArrayExceptSelf {
     public int[] productExceptSelf(int[] nums) {
         int result[] = new int[nums.length];
-        int left =1;
+        int left = 1;
         int right = 1;
         // Calculate Prefix Product
         for(int i = 0; i<nums.length; i++){

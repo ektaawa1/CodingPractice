@@ -79,4 +79,17 @@ public class SortColors {
  Brute Force Algo- Sort the array [O(n log n) times] or take 3 counters [O(n) times] & count the no of 0s, 1s, 2s and finally set the no of 0s, 1s & 2s
  manually using 3 seperate for loops
  */
-
+/**
+ * Note-
+ * At ANY point during the algorithm, we maintain:
+ * [0 ... left-1] → all 0s
+ * [left ... mid-1] → all 1s
+ * [mid ... right] → unknown
+ * [right+1 ... end] → all 2s
+ *
+ * Example- nums = [2,0,2,1,1,0], L=0, M=0, R=5
+ * Step 1:
+ * nums[mid] = 2
+ * swap(mid, right) and so on
+ *
+ */

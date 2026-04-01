@@ -5,7 +5,7 @@ package patternBased.twoPointers;
 
 //Note: If array is sorted and we are finding a pair → think Two Pointers FIRST
 //Is the array sorted? Finding a pair or a triplet?
-public class TwoSumSorted {
+public class  TwoSumSorted {
     public int[] twoSum(int[] numbers, int target) {
         int l = 0;
         int r = numbers.length-1;

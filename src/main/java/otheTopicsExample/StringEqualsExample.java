@@ -35,7 +35,5 @@ public class StringEqualsExample {
         String s = "Hello";
         s.concat(" World");
         System.out.println(s);// Hello, why-> String is immutable, Result not assigned
-
-
     }
 }

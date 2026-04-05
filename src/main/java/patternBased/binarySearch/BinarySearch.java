@@ -26,7 +26,9 @@ public class BinarySearch {
         return -1;
     }
 }
-
+//To prevent integer overflow. If left and right are both very large integers,
+// their sum could exceed Integer.MAX_VALUE, leading to a negative number
+// and an ArrayIndexOutOfBoundsException.
 /**
  * 1) while (left <= right) → Standard Binary Search (find exact element)
  * Use this when you want to check every index, including when left == right.

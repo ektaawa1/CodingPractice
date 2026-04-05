@@ -39,6 +39,9 @@ public class RobHouse {
         return dp[n - 1];
     }
     //this one
+    //At any house i, I have two choices:
+    // Rob this house: In which case I add its value to the maximum amount robbed up to house i-2.
+    // Skip this house: In which case the maximum amount remains the same as what I had at house i-1.
     public int rob1(int[] nums){
         if(nums == null || nums.length == 0){
             return 0;
@@ -46,8 +49,8 @@ public class RobHouse {
         if(nums.length == 1){
             return nums[0];
         }
-        int prev1 = 0;//dp[i-1]
-        int prev2 = 0;//dp[i-2]
+        int prev1 = 0;//dp[i-1] // max at i-2
+        int prev2 = 0;//dp[i-2] //max at i-1
         for(int n:nums){
             int curr = Math.max(n+prev2, prev1); // rob or skip
             prev2 = prev1; // move forward

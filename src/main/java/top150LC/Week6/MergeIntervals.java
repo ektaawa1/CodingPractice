@@ -17,7 +17,43 @@ import java.util.List;
  * you’ll get a ClassCastException or unexpected results, because Java doesn’t have a natural ordering for int[].
  */
 public class MergeIntervals {
+    //prefer this one- whenever I see that the next start time is greater than the current end time,
+    // I know a 'gap' has occurred. This effectively 'closes' the current merged interval.
+    // It’s an O(N log N) solution that is very efficient because sorting primitive arrays is highly optimized in Java.
     public int[][] merge(int[][] intervals) {
+        //example- Input: [[1, 3], [8, 10], [2, 6]]
+        if(intervals.length <= 1){
+            return intervals;
+        }
+        int n = intervals.length;
+        int[] start = new int[n];
+        int[] end = new int[n];
+        for(int i = 0; i<n; i++){
+            start[i] = intervals[i][0];
+            end[i] = intervals[i][1];
+        }
+        Arrays.sort(start); //1,2,8
+        Arrays.sort(end);//to tell when the earliest possible exit is
+        //3,6,10
+        //n = 3
+
+        ArrayList<int[]> mergeList = new ArrayList<>();
+        int j = 0;
+        for(int i = 0; i<n; i++){
+            //0 == 2 (F) || start[1] > end[0] (F) nothing happens
+            //1 == 2 (F) || start[2] > end[1] (T)
+            //2 == 2 (T)
+            if(i == n-1 || start[i+1] > end[i]){
+                mergeList.add(new int[]{start[j], end[i]});
+                //[{1,6}]
+                //[{1,6}, {8,10}]
+                j = i+1;//j = 2, j = 3
+            }
+        }
+        return mergeList.toArray(new int[mergeList.size()][]);//[[1,6],[8,10]]
+    }
+
+    public int[][] merge1(int[][] intervals) {
         if(intervals.length <= 1){
             return intervals;
         }

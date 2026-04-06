@@ -1,5 +1,6 @@
 package patternBased.heap;
 
+import java.util.Comparator;
 import java.util.PriorityQueue;
 
 class ListNodeAB {
@@ -21,6 +22,8 @@ public class MergeKSortedLists {
 
         //Optimized Solution: Using MinHeap
         PriorityQueue<ListNodeAB> minHeap = new PriorityQueue<>((a, b)-> a.val - b.val); //Lambda to write the comparator:
+        //or
+        PriorityQueue<ListNodeAB> minHeap1 = new PriorityQueue<>(Comparator.comparingInt(node -> node.val));
         for(ListNodeAB n : lists){
             if(n != null){
                 minHeap.offer(n); //adding head of each linked list

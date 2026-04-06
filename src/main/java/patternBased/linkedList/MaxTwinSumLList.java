@@ -10,13 +10,6 @@ import java.util.List;
  * Traverse both halves in parallel, calculating twin sums.
  * Return the maximum twin sum.
  */
-class ListNode {
-      int val;
-      ListNode next;
-      ListNode() {}
-      ListNode(int val) { this.val = val; }
-      ListNode(int val, ListNode next) { this.val = val; this.next = next; }
-  }
 public class MaxTwinSumLList {
     public int pairSum(ListNode head) {
         ListNode slow = head;

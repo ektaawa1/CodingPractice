@@ -1,13 +1,13 @@
 package patternBased.linkedList;
 
 
-class ListNode {
-      int val;
-      ListNode next;
-      ListNode() {}
-      ListNode(int val) { this.val = val; }
-      ListNode(int val, ListNode next) { this.val = val; this.next = next; }
-  }
+//class ListNode {
+//      int val;
+//      ListNode next;
+//      ListNode() {}
+//      ListNode(int val) { this.val = val; }
+//      ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+//  }
 public class ReverseLL {
     // 3 pointers approach, TC = O(n), SC = O(1)
     // Input: 1-->2-->3-->4-->5-->null

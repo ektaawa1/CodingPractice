@@ -5,19 +5,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-class TreNode {
-      int val;
-    TreNode left;
-    TreNode right;
-    TreNode() {}
-    TreNode(int val) { this.val = val; }
-    TreNode(int val, TreNode left, TreNode right) {
-          this.val = val;
-          this.left = left;
-          this.right = right;
-      }
-  }
-
 public class LevelOrderTraversal {
     // BFS Algo
     public List<List<Integer>> levelOrder(TreNode root) {

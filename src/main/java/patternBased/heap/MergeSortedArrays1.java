@@ -16,7 +16,8 @@ import java.util.PriorityQueue;
 //Min Heap (PriorityQueue) – K-way Merge
 
 public class MergeSortedArrays1 {
-    //flatten + sort, TC= O(N log N)
+    //flatten + sort, TC= O(N log N), SC = O(N)
+    //or use a minHeap to add all the elements in it.
     public List<Integer> mergeSortedArrays(int[][] mat) {
         List<Integer> result = new ArrayList<>();
         for (int[] row : mat)
@@ -26,12 +27,12 @@ public class MergeSortedArrays1 {
         Collections.sort(result);
         return result;
     }
-    //optimized solution O(n log k)
+    //optimized solution O(n log k), SC = O(k)
     public List<Integer> mergeSortedArrays1(int[][] mat) {
         List<Integer> result = new ArrayList<>();
-        PriorityQueue<int[]> minHeap = new PriorityQueue<>((a,b) -> a[0]-b[0]);
-        // Step 1: push first element of each row i.e., 1,2,0
-        for(int i = 0; i<mat.length; i++){
+        PriorityQueue<int[]> minHeap = new PriorityQueue<>((a,b) -> a[0]-b[0]);// PriorityQueue stores: {value, row, col}
+        // Step 1: push first element of each row i.e., 1,2,0 i.e., 0th column
+        for(int i = 0; i<mat.length; i++){//minHeap of size = number of rows
             minHeap.offer(new int[]{mat[i][0],i,0});//{value, row, col}
         }
         while(!minHeap.isEmpty()){
@@ -41,7 +42,7 @@ public class MergeSortedArrays1 {
             int col = curr[2];
 
             result.add(val);//0
-            //now insert the next element from the same list i.e, 9
+            //now insert the next element from the same row i.e, 9
             if(col+1 < mat[row].length){//boundary condition: Does this row still have another element after this one?
                 minHeap.offer(new int[]{mat[row][col+1], row, col+1});
             }
@@ -57,4 +58,8 @@ public class MergeSortedArrays1 {
  * Since each row is already sorted, I use a min heap to do a K-way merge.
  * I push the first element of each row, then repeatedly extract the minimum and
  * insert the next element from the same row. This gives O(N log K) time.
+ */
+
+/**
+ *
  */

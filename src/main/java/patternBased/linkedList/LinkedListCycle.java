@@ -4,14 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 // https://algo.monster/liteproblems/141
-class ListNode1 {
-    int val;
-    ListNode1 next;
-    ListNode1(int x) {
-        val = x;
-        next = null;
-    }
-}
+
 // 2 pointers aproach- slow & fast (Floyd's Tortoise and Hare Algo)
 public class LinkedListCycle {
     public boolean hasCycle(ListNode1 head) {

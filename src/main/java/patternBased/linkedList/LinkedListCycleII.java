@@ -13,14 +13,6 @@ package patternBased.linkedList;
  * After detection, start one pointer from head and one from meeting point.
  * Move both one step at a time until they meet → that node is the cycle start.
  */
-class ListNode {
-      int val;
-      ListNode next;
-      ListNode(int x) {
-          val = x;
-          next = null;
-      }
-  }
 public class LinkedListCycleII {
     public ListNode detectCycle(ListNode head) {
         ListNode slow = head;

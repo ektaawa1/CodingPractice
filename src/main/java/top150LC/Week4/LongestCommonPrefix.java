@@ -27,6 +27,22 @@ public class LongestCommonPrefix {
         }
         return prefix;
     }
+    public String longestCommonPrefix1(String[] strs) {
+        if (strs == null || strs.length == 0) return "";
+
+        // Start by assuming the first word is the common prefix
+        String prefix = strs[0]; // "flower"
+
+        for (int i = 1; i < strs.length; i++) {
+            // While the current word does NOT start with our prefix
+            while (strs[i].indexOf(prefix) != 0) {
+                // Chop off the last letter of the prefix
+                prefix = prefix.substring(0, prefix.length() - 1);
+                if (prefix.isEmpty()) return "";
+            }
+        }
+        return prefix;
+    }
 }
 
 /**

@@ -16,7 +16,7 @@ public class PaymentTransfer1 {
         //validation check here
         try{
             if(senderAcc.hasSufficeintFunds(amountToSend)){
-                double currBal = senderAcc.getBalance();
+                //double currBal = senderAcc.getBalance();
                 double diff = senderAcc.getBalance() - amountToSend;
                 senderAcc.setBalance(diff);
             }

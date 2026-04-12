@@ -17,6 +17,8 @@ public class LongestCommonPrefix {
         String prefix = strs[0];
         for(int i = 1; i<strs.length; i++){
             // Keep trimming the prefix until it matches the current string
+            //startsWith() checks only if the string begins with the specified prefix.
+            //is generally faster and more efficient.
             while(!strs[i].startsWith(prefix)){
                 prefix = prefix.substring(0, prefix.length()-1);
 
@@ -35,6 +37,7 @@ public class LongestCommonPrefix {
 
         for (int i = 1; i < strs.length; i++) {
             // While the current word does NOT start with our prefix
+            //indexOf() scans the entire string to find the first occurrence of the substring anywhere within it.
             while (strs[i].indexOf(prefix) != 0) {
                 // Chop off the last letter of the prefix
                 prefix = prefix.substring(0, prefix.length() - 1);

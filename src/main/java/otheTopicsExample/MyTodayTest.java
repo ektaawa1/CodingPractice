@@ -35,4 +35,21 @@ public class MyTodayTest {
         }
         System.out.print(output);
     }
+    public String longestCommonPrefix(String[] strs) {
+        if(strs == null || strs.length == 0){
+            return "";
+        }
+
+        String currPrefix = strs[0];//flower
+        for(int i = 1; i<strs.length; i++){
+            while(!strs[i].startsWith(currPrefix)){
+                currPrefix = currPrefix.substring(0, currPrefix.length()-1);
+
+                if(currPrefix.isEmpty()){
+                    return "";
+                }
+            }
+        }
+        return currPrefix;
+    }
 }

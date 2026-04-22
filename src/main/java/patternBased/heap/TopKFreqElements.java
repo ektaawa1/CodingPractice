@@ -17,7 +17,9 @@ public class TopKFreqElements {
     public int[] topKFrequent(int[] nums, int k) {
         //HashMap & MinHeap will be used
         if(nums == null || nums.length == 0){
-            return new int[0];
+            //return new int[0];
+            //OR
+            return new int[]{};
         }
 
         //Step1: build a freq map
@@ -29,6 +31,7 @@ public class TopKFreqElements {
         k = Math.min(k, freqMap.size());
 
         //Step2: Build a Min Stack of size k (smallest frequency at the top)
+        //this is a Comparator
         PriorityQueue<Map.Entry<Integer,Integer>> minHeap = new PriorityQueue<>((a, b)-> a.getValue() - b.getValue());// letting miHeap know
         // that the sorting is based on value(freq) of a key, sorting in ascending order
         for(Map.Entry<Integer, Integer> entry : freqMap.entrySet()){
@@ -62,15 +65,17 @@ public class TopKFreqElements {
 
         // 2. Create buckets. The index represents the frequency.
         // The max possible frequency is products.length.
-        List<Integer>[] buckets = new List[products.length + 1];
+        //is a row of boxes (an array), where each box is itself a list.
+        //i.e., an array of list
+        List<Integer>[] buckets = new ArrayList[products.length + 1];
 
         // 3. Fill buckets - O(N)
         for (int key : freqMap.keySet()) {
-            int frequency = freqMap.get(key);
-            if (buckets[frequency] == null) {
-                buckets[frequency] = new ArrayList<>();
+            int value = freqMap.get(key);
+            if (buckets[value] == null) {
+                buckets[value] = new ArrayList<>();
             }
-            buckets[frequency].add(key);
+            buckets[value].add(key);
         }
 
         // 4. Collect Top K by iterating backwards from the highest frequency - O(N)
@@ -91,7 +96,7 @@ public class TopKFreqElements {
 }
 /**
  Total time: O(n log k) — better than sorting all elements (which is O(n log n))
- Space: O(n) */
+ Space: O(D) where D is the no. of distinct elements */
 
 //While the Min-Heap approach is excellent (and often what interviewers expect first),
 // Bucket Sort is the "level up" solution because it achieves Linear Time Complexity O(N).
@@ -106,4 +111,13 @@ public class TopKFreqElements {
  * Fill Buckets: If Product $A$ appears 3 times, put ID $A$ into buckets[3].
  * Collect Top K: Iterate through the buckets array from the end (highest frequency)
  * toward the beginning. Collect IDs until you have $K$ elements.
+ */
+
+/**
+ * Bucket Sort-
+ * If nums = [1,1,1,2,2,3], your bucket array would look like this:
+ * Index 1 (Freq 1): [3]
+ * Index 2 (Freq 2): [2]
+ * Index 3 (Freq 3): [1]
+ * Index 4-6: null (unused)
  */

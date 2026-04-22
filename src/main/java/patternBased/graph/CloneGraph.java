@@ -23,7 +23,9 @@ class Node {
 //DFS Approach
 public class CloneGraph {
     //Graph can have cycles → must use visited map
+    //Create a HashMap<Node, Node> where the Key is the original node and the Value is the new cloned node.
     private HashMap<Node, Node> map = new HashMap<>();
+
     public Node cloneGraph(Node node) {
         if(node == null) return null;
 

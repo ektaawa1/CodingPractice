@@ -66,3 +66,16 @@ public class ProductOfArrayExceptSelf {
 //Brute Force O(n²): Multiply everything for each index.
 //Prefix + Suffix O(n): Precompute left and right products.
 //Optimized O(n), O(1) space: Store prefix in result, then multiply by running suffix.
+
+/**
+ * My solution approach-
+ *
+ * The most straightforward approach would be a nested loop where for each element,
+ * I iterate through the rest of the array to calculate the product.
+ * However, that's $O(n^2)$ time complexity. Given Walmart's scale,
+ * if we have an array of 100,000 items, that's 10 billion operations, which isn't efficient.
+ *
+ * Another thought is to calculate the total product of the array and then divide by each element.
+ * But that has two issues: first, the problem constraints often forbid division, and second,
+ * it fails if there are one or more zeros in the array because of the DivisionByZero error.
+ */

@@ -82,11 +82,22 @@ public class TopKFreqElements {
         int[] result = new int[k];
         int counter = 0;
 
-        for (int i = buckets.length - 1; i >= 0 && counter < k; i--) {
-            if (buckets[i] != null) {
-                for (int id : buckets[i]) {
-                    result[counter++] = id;
-                    if (counter == k) break;
+        // Iterate from the highest frequency down to 0
+        for (int freq = buckets.length - 1; freq >= 0; freq--) {
+
+            // 1. Skip if no numbers have this frequency
+            if (buckets[freq] == null) {
+                continue;
+            }
+
+            // 2. We found a frequency that has numbers! Let's grab them.
+            for (int num : buckets[freq]) {
+                result[counter] = num;
+                counter++;
+
+                // 3. Stop the moment we have exactly K elements
+                if (counter == k) {
+                    return result;
                 }
             }
         }

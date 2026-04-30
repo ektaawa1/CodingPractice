@@ -5,7 +5,7 @@ import java.util.HashMap;
 public class SubArraySumEqualsK {
     //is the input in ascending order?
     //are elements -ve as well?
-    // If negative numbers exist → sliding window is invalid
+    // If negative numbers exist → sliding window may be invalid in this case
     // Prefix Sum Pattern is apt here
     public int subarraySum(int[] nums, int k) {
         //Brute Force Approach: TC = O(n^2), SC = O(1)

@@ -14,6 +14,8 @@ public class RotateImage {
 
         // Step 1: Transpose
         for(int i = 0; i<size; i++){
+            //The reason the inner loop starts at j = i + 1 is to avoid swapping the same pair of elements twice,
+            // which would effectively undo the transpose and return the matrix to its original state.
             for(int j = i+1; j<size; j++){
                 // Swap elements across the diagonal
                 int temp = matrix[i][j];

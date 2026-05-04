@@ -32,10 +32,11 @@ public class TopKFreqElements {
 
         //Step2: Build a Min Stack of size k (smallest frequency at the top)
         //this is a Comparator
-        PriorityQueue<Map.Entry<Integer,Integer>> minHeap = new PriorityQueue<>((a, b)-> a.getValue() - b.getValue());// letting miHeap know
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>((a, b) -> freqMap.get(a) - freqMap.get(b));
+        //PriorityQueue<Map.Entry<Integer,Integer>> minHeap = new PriorityQueue<>((a, b)-> a.getValue() - b.getValue());// letting miHeap know
         // that the sorting is based on value(freq) of a key, sorting in ascending order
-        for(Map.Entry<Integer, Integer> entry : freqMap.entrySet()){
-            minHeap.offer(entry);
+        for(int key : freqMap.keySet()){
+            minHeap.offer(key);
             if(minHeap.size()>k){ //if minHeap is full
                 minHeap.poll(); // remove the one with smallest frequency
             }
@@ -46,7 +47,7 @@ public class TopKFreqElements {
         int[] outputArr = new int[k];
         int i = 0;
         while(!minHeap.isEmpty()){
-            outputArr[i++] = minHeap.poll().getKey();
+            outputArr[i++] = minHeap.poll();
         }
         //or for (int i = 0; i < k; i++) {
         //        result[i] = minHeap.poll().getKey();

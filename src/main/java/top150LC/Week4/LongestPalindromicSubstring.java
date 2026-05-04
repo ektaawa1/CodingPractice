@@ -33,7 +33,7 @@ public class LongestPalindromicSubstring {
             left--;
             right++;
         }
-        //return right - left - 1;
+        //return right - left + 1;
         return s.substring(left + 1, right);
     }
 

@@ -31,17 +31,19 @@ public class TopKFreqWords {
         }
         //Lower frequency → remove first
         //If frequency equal → lexicographically larger word should be removed first
-        PriorityQueue<Map.Entry<String, Integer>> minHeap =
-                new PriorityQueue<>((a, b) -> {
-                    if (!a.getValue().equals(b.getValue())) {
-                        return a.getValue() - b.getValue(); // smaller freq first
-                    } else {
-                        return b.getKey().compareTo(a.getKey()); // reverse lex order
-                    }
-                });
+        PriorityQueue<String> minHeap = new PriorityQueue<>((w1, w2) -> {
+            int freq1 = freqMap.get(w1);
+            int freq2 = freqMap.get(w2);
+            if (freq1 != freq2) {
+                return freq1 - freq2; // Smaller frequency stays at the top
+            } else {
+                return w2.compareTo(w1); // Alphabetically "larger" stays at the top
+            }
+        });
 
-        for (Map.Entry<String, Integer> entry : freqMap.entrySet()) {
-            minHeap.offer(entry);
+        // 3. Maintain heap of size K
+        for (String word : freqMap.keySet()) {
+            minHeap.offer(word);
             if (minHeap.size() > k) {
                 minHeap.poll();
             }
@@ -49,7 +51,7 @@ public class TopKFreqWords {
 
         List<String> result = new ArrayList<>();
         while (!minHeap.isEmpty()) {
-            result.add(minHeap.poll().getKey());
+            result.add(minHeap.poll());
         }
         Collections.reverse(result);
         return result;

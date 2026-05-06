@@ -33,7 +33,7 @@ public class MinCostToReachCityWithDiscounts {
             int toll = h[2];
 
             graph[u].add(new int[]{v, toll});
-            graph[v].add(new int[]{u, toll});
+            graph[v].add(new int[]{u, toll});//Path from v to u (The "Undirected" part)
         }
 
         int[][] dist = new int[n][discounts + 1];
@@ -97,7 +97,12 @@ public class MinCostToReachCityWithDiscounts {
  * highways =[[0,1,10],[1,2,10],[0,3,1],[3,4,10],[4,2,1]]
  * discounts = 1
  */
-
+/**
+ * Undirected (Two-way):
+ * "There is a highway between City A and City B."
+ * "The cities are connected by a road."
+ * "Each highway connects two cities bidirectionally."
+ */
 /**
  * Algo:
  * 1 Build graph

@@ -9,7 +9,7 @@ package patternBased.binarySearch;
 //Modified Binary search
 public class SearchInSortedRotatedArray {
     public int search(int[] nums, int target) {
-        if(nums.length == 0 || nums == null){
+        if(nums == null || nums.length == 0 ){
             return -1;
         }
         int low = 0;

@@ -12,12 +12,13 @@ public class LongestValidParentheses {
         Stack<Integer> stck = new Stack<>();
         stck.push(-1);//base index, to correctly calculate length
         int maxLen = 0;
-        for(int i = 0; i<s.length(); i++){
+        for(int i = 0; i< s.length(); i++){
             if(s.charAt(i) == '('){
-                stck.push(i);
+                stck.push(i);//pushing index in stack
             } else {
                 stck.pop();
-                if(stck.isEmpty()){//if stack is empty it means We found a closing bracket with NO matching '(', This position is INVALID, Valid substring cannot cross this point
+                if(stck.isEmpty()){//if stack is empty it means We found a closing bracket with NO matching '(',
+                    // This position is INVALID, Valid substring cannot cross this point
                     stck.push(i); //mark it a new boundary/ new base index
                 }else {
                     maxLen = Math.max(maxLen, i-stck.peek());

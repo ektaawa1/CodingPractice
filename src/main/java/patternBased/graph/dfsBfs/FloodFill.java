@@ -39,7 +39,7 @@ public class FloodFill {
         }
         return image;
     }
-
+//prefer this
     public int[][] floodFillDFS(int[][] image, int sr, int sc, int color) {
         // DFS Approach
         if(image == null || image.length == 0){

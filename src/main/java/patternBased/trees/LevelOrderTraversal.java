@@ -32,6 +32,7 @@ public class LevelOrderTraversal {
         return result;
     }
     // DFS Approach
+    // The key difference from BFS is space — DFS uses O(h) stack space vs O(n) for BFS queue.
     public List<List<Integer>> levelOrder1(TreNode root) {
         List<List<Integer>> result = new ArrayList<>();
         dfs(root, 0, result);
@@ -41,11 +42,11 @@ public class LevelOrderTraversal {
     private void dfs(TreNode node, int level, List<List<Integer>> result) {
         if (node == null) return;
 
-        // Create a new level list if it doesn't exist yet
+        //if visiting this level for first time, create a new list
         if (result.size() == level) {
             result.add(new ArrayList<>());
         }
-
+        // add current node to its level
         result.get(level).add(node.val);
 
         dfs(node.left, level + 1, result);

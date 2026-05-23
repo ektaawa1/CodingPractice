@@ -21,6 +21,7 @@ package patternBased.trees;
 public class LCAOfBST {
     public TreeNode11 lowestCommonAncestor(TreeNode11 root, TreeNode11 p, TreeNode11 q) {
         TreeNode11 curr = root;
+        //what if input is null or empty?
         while (curr != null){
             if(p.val > curr.val && q.val > curr.val){
                 curr = curr.right;

@@ -28,19 +28,19 @@ public class CourseSchedule {
         //example- graph[0] → [1,2] means for course 1 & 2 the prereq is course 0.
 
         // Step 1: Build adjacency list 0->1, 0->2
-        for(int course = 0; course< numCourses; course++){
+        for(int i = 0; i< numCourses; i++){
             //graph.add(new ArrayList<>());
-            graph[course] = new ArrayList<>();
+            graph[i] = new ArrayList<>();
         }
         //Track Number of Prerequisites or indegree
         int[] indegree = new int[numCourses];
 
         //Now fill the graph
         //example- graph = [[1,2],[3],[3],[]]
-        for(int prereq[] : prerequisites){
-            int course = prereq[0];
-            int prerequisiteCourse = prereq[1];
-            graph[prerequisiteCourse].add(course);
+        for(int p[] : prerequisites){
+            int course = p[0];
+            int prereq = p[1];
+            graph[prereq].add(course);
             indegree[course]++;
         }
 

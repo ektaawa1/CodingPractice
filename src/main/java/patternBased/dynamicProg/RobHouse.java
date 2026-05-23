@@ -51,7 +51,7 @@ public class RobHouse {
 
         return dp[n - 1];
     }
-    //this one
+    //prefer this one
     //At any house i, I have two choices:
     // Rob this house: In which case I add its value to the maximum amount robbed up to house i-2.
     // Skip this house: In which case the maximum amount remains the same as what I had at house i-1.

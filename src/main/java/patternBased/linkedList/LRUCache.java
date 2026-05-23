@@ -10,14 +10,14 @@ import java.util.Map;
  */
 class Node {
     int key, val;
-    Node1 prev, next;
+    Node prev, next;
     Node(int k, int v) { this.key = k; this.val = v; }
 }
 class LRUCache {
     int capacity;
-    Map<Integer, Node1> map = new HashMap<>();
-    Node1 head = new Node1(0, 0);
-    Node1 tail = new Node1(0, 0);
+    Map<Integer, Node> map = new HashMap<>();
+    Node head = new Node(0, 0);
+    Node tail = new Node(0, 0);
     public LRUCache(int capacity) {
         this.capacity = capacity;
         head.next = tail;
@@ -26,40 +26,40 @@ class LRUCache {
 
     public int get(int key) {
         if (!map.containsKey(key)) return -1;
-        Node1 node = map.get(key);
+        Node node = map.get(key);
         moveToHead(node);
         return node.val;
     }
 
     public void put(int key, int value) {
         if(map.containsKey(key)){
-            Node1 node = map.get(key);
+            Node node = map.get(key);
             node.val = value;
             moveToHead(node);//since it is most recently used
         } else {
-            Node1 newNode = new Node1(key, value);
+            Node newNode = new Node(key, value);
             map.put(key, newNode);
             addToHead(newNode); //since its a new node so directly move to Head
             if(map.size() > capacity){
-                Node1 lruNode = tail.prev;
+                Node lruNode = tail.prev;
                 removeNode(lruNode);
                 map.remove(lruNode.key);
             }
         }
     }
 
-    private void moveToHead(Node1 currNode){
+    private void moveToHead(Node currNode){
         //Remove the node
         removeNode(currNode);
         //add the node to head
         addToHead(currNode);
     }
-    private void removeNode(Node1 node){
+    private void removeNode(Node node){
         node.prev.next = node.next;
         node.next.prev = node.prev;
     }
     // dummyHead->node1->dummyTail ===>  dummyHead->node->node1->dummyTail
-    private void addToHead(Node1 node){
+    private void addToHead(Node node){
         node.next = head.next;
         node.prev = head;
         head.next.prev = node;

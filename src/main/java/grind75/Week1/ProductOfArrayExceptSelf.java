@@ -22,7 +22,7 @@ public class ProductOfArrayExceptSelf {
         }
         // Calculate Suffix product and multiply to update the result array
         for(int j = nums.length-1; j>=0; j--){
-            result[j] = result[j]*right;
+            result[j] = result[j] * right;
             right = right * nums[j];
             // result[] = [1, 1, 2, 6] ==> [24, 12,  8, 6]
             // right = 4 --> 12 --> 24 --> 24

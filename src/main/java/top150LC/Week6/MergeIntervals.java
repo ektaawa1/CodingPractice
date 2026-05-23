@@ -17,7 +17,8 @@ import java.util.List;
  * you’ll get a ClassCastException or unexpected results, because Java doesn’t have a natural ordering for int[].
  */
 public class MergeIntervals {
-    //prefer this one- whenever I see that the next start time is greater than the current end time,
+    //prefer this one
+    // whenever I see that the next start time is greater than the current end time,
     // I know a 'gap' has occurred. This effectively 'closes' the current merged interval.
     // It’s an O(N log N) solution that is very efficient because sorting primitive arrays is highly optimized in Java.
     public int[][] merge(int[][] intervals) {

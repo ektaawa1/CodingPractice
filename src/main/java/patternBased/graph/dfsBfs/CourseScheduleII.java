@@ -54,14 +54,14 @@ public class CourseScheduleII {
 
         // Step 5: Store order
         int[] courseOrder = new int[numCourses];
-        int index = 0;
+        int i = 0;
 
         // Step 6: BFS
         while(!queue.isEmpty()){
 
             int currentCourse = queue.poll();
 
-            courseOrder[index++] = currentCourse;
+            courseOrder[i++] = currentCourse;
 
             for(int nextCourse : graph[currentCourse]){
 
@@ -74,7 +74,7 @@ public class CourseScheduleII {
         }
 
         // Step 7: Check if all courses finished
-        if(index == numCourses){
+        if(i == numCourses){
             return courseOrder;
         }
 

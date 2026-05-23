@@ -32,7 +32,7 @@ public class NoOfUniqueFlavorsOfCandies {
             if (right - left + 1 > k) {
                 int addBack = candies[left++];
                 freqMap.put(addBack, freqMap.getOrDefault(addBack, 0) + 1);
-                if (freqMap.get(addBack) == 1) uniqueSize++;
+                if (freqMap.get(addBack) == 1) uniqueSize++; //for unique flavor check
             }
 
             if (right - left + 1 == k) {
@@ -45,6 +45,9 @@ public class NoOfUniqueFlavorsOfCandies {
 //We are not tracking unique flavors inside the window.
 // We are tracking: unique flavors OUTSIDE the window (remaining candies)
 //My hashmap always represents the candies I still have AFTER giving away the current window.
+//The window represents the block of candies you are temporarily handing over to sibling.
+// Shifting the window means they pick up a new candy on the right,
+// but they have to put back the old candy on the left!
 
 /**
  So:
@@ -92,4 +95,13 @@ public class NoOfUniqueFlavorsOfCandies {
  * You do not have to give any candies.
  * You can eat the candies with flavors [2,4,5].
  * There are 3 unique flavors, so return 3.
+ */
+
+/**
+ * Explanation-
+ * Let's look at what happens when the window shifts.
+ * Imagine k = 2, and your candies are [Flavor A, Flavor B, Flavor C].
+ * 1st window is [A,B] --> sibling takes 1st 2 candies
+ * 2nd window is [B,C] --> sibling takes 2nd 2 candies so A flavor is pushed back into your bucket.
+ *
  */

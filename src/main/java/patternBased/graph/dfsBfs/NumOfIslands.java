@@ -51,10 +51,10 @@ public class NumOfIslands {
         //OR   visited[i][j] = true; if using visited boolean array
 
         //now visit the neighbors of that land
-        dfs(grid, row, col-1);
-        dfs(grid, row, col+1);
-        dfs(grid, row-1, col);
-        dfs(grid, row+1, col);
+        dfs(grid, row, col-1);//left
+        dfs(grid, row, col+1);//right
+        dfs(grid, row-1, col);//up
+        dfs(grid, row+1, col);//down
     }
     //========================================================================================================
     //if using bfs logic

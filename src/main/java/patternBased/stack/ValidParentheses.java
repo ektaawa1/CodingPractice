@@ -18,7 +18,6 @@ import java.util.Stack;
  * Example 4: Input: s = "([])", Output: true
  */
 
-// https://algo.monster/liteproblems/20
 //Stack LIFO
 public class ValidParentheses {
     //another approach

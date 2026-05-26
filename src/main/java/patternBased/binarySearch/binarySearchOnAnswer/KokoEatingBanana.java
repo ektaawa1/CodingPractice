@@ -15,6 +15,16 @@ import java.util.stream.Collectors;
  *    F F F T T T T T T ...
  *    We want First True i.e., minimum k
  */
+
+/**
+ * To find the minimum eating speed, k, let's look at the absolute extremes.
+ * The absolute slowest Koko can eat is 1 banana per hour.
+ * The absolute fastest she ever needs to eat is the size of the largest pile,
+ * because eating any faster than that doesn't save her any time—she still has to wait for the next hour to change piles.
+ * So, our possible answer space for k is 1, 2, 3, ..., max(piles).
+ * The brute force approach would be to test k = 1, calculate the total hours, then test k = 2, and so on until we find a speed that
+ * takes h hours. But checking every single number is too slow.
+ */
 public class KokoEatingBanana {
     public int minEatingSpeed(int[] piles, int h) {
         int left = 1; //as speed can't be 0 here
@@ -38,7 +48,8 @@ public class KokoEatingBanana {
     }
     private boolean canFinish(int[] piles, int h, int speed) {
         //speed = dist/time
-        int hours = 0;
+        int hours = 0;//note-in production env, I would use long just to be on the safer side and avoid
+        //integer overflow
         for (int pile : piles) {
             // hours += ceil(pile / k)
             hours += Math.ceilDiv(pile,speed); //If Java 9 otherwise use (pile + speed - 1) / speed

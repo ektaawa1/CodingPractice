@@ -31,7 +31,7 @@ public class CapacityToShipPackages {
 
         while(low < high){
             int midCapacity = low + (high-low)/2;
-            if(canShip(weights, days, midCapacity)){
+            if(canShipPackages(weights, days, midCapacity)){
                 high = midCapacity;
             } else {
                 low = midCapacity + 1;
@@ -39,17 +39,15 @@ public class CapacityToShipPackages {
         }
         return low;
     }
-    private boolean canShip(int[] weights, int days, int capacity){
+    private boolean canShipPackages(int[] weights, int days, int capacity){
         int daysNeeded = 1;
-        int sum = 0;
-
-        for(int weight : weights){
-            //sum += weight;
-            if(sum+weight > capacity){ //overflow
+        int currLoad = 0;
+        for(int w : weights){
+            if(currLoad+w > capacity){
                 daysNeeded++;
-                sum = 0; //start new day
+                currLoad = 0;//resetting the load for the next day
             }
-            sum += weight; //add curr weight to new day
+            currLoad += w;//15
         }
         return daysNeeded <= days;
     }
@@ -82,3 +80,12 @@ public class CapacityToShipPackages {
 //False  False  False  True  True  True  (We want 1st TRUE)
 //OR
 //True  True  True  False  False  False (We want last TRUE)
+
+/**
+ * //weights = [1,2,3,4,5,6,7,8,9,10], days = 5
+ * //Ship Capacity Range = 10, 11, ..... sum(weights) 55
+ * // Binary Search to find the capacity in O(log n) time complexity
+ * //This pattern is known as Binary Search on Answer
+ *
+ * //mid = low + (high-low)/2 = 10 + (55-10)/2 = 32
+ */

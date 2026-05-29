@@ -23,21 +23,26 @@ public class SubArraySumEqualsK {
     }
     //Using HashMap
     public int subarraySum1(int[] nums, int k) {
+        if(nums == null || nums.length == 0){
+            return 0;
+        }
         HashMap<Integer, Integer> map1 = new HashMap<>(); //The hashmap stores frequency of prefix sums so far.
         map1.put(0, 1); // base case: prefix sum 0 has 1 frequency
         //Why?? It represents an empty prefix, allowing subarrays starting from index 0 to be counted.
 
-        int countSubArrays = 0;
-        int sum = 0;
+        int count = 0;
+        int currentSum = 0;
 
-        for(int n : nums){
-            sum += n;
-            if(map1.containsKey(sum-k)){
-                countSubArrays += map1.get(sum-k);// updating the count
+        for(int num : nums){
+            currentSum += num;
+            int need = currentSum-k; // what prefix sum do we need?
+            if(map1.containsKey(need)){
+                count += map1.get(need);// updating the count
             }
-            map1.put(sum, map1.getOrDefault(sum,0)+1);//updating the freqency
+            // record current prefix sum
+            map1.put(currentSum, map1.getOrDefault(currentSum,0)+1);//updating the freqency
         }
-        return countSubArrays;
+        return count;
     }
 }
 //TC = O(n)
@@ -98,5 +103,5 @@ public class SubArraySumEqualsK {
  * map = { 0:1, 1:1, 3:1, 6:1 }
  *
  *
- * ✅ count = 2 (subarrays: [1,2] and [3])
+ * count = 2 (subarrays: [1,2] and [3])
  */

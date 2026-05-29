@@ -1,9 +1,6 @@
 package patternBased.trees;
 
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * BFS Algo Approach-
@@ -13,18 +10,18 @@ import java.util.List;
  * …and so on.
  */
 public class BinaryTreeZigZagTraversal {
-    public List<List<Integer>> zigzagLevelOrder(top150LC.Week8.TreeNode root) {
+    public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
         List<List<Integer>> finalList = new ArrayList<>();
         if (root == null) return finalList;
 
-        Deque<top150LC.Week8.TreeNode> queue = new LinkedList<>();
+        Deque<TreeNode> queue = new LinkedList<>();
         queue.offer(root);
         boolean leftToRight = true;
         while(!queue.isEmpty()){
             int size = queue.size();
             LinkedList<Integer> l1 = new LinkedList<>();
             for(int i = 0; i < size; i++){
-                top150LC.Week8.TreeNode curr = queue.poll();
+                TreeNode curr = queue.poll();
                 if(leftToRight){
                     l1.add(curr.val);//adds at last or //queue.pollFirst()
                 }else {
@@ -38,6 +35,36 @@ public class BinaryTreeZigZagTraversal {
             leftToRight = !leftToRight;//flip directions
         }
         return finalList;
+    }
+
+    //prefer this
+    public List<List<Integer>> zigZagTraversal(TreeNode root) {
+        List<List<Integer>> outputList = new ArrayList<>();
+        if (root == null) return outputList;
+
+        Queue<TreeNode> q = new LinkedList<>();
+        q.offer(root);
+        boolean leftToRight = true; // Use a boolean instead of an int count
+
+        while (!q.isEmpty()) {
+            int size = q.size();
+            List<Integer> levelList = new ArrayList<>();
+
+            for (int i = 0; i < size; i++) {
+                TreeNode curr = q.poll();
+                levelList.add(curr.val);
+
+                if (curr.left != null) q.offer(curr.left);
+                if (curr.right != null) q.offer(curr.right);
+            }//end of for loop
+
+            if (!leftToRight) {
+                Collections.reverse(levelList);
+            }
+            outputList.add(levelList);
+            leftToRight = !leftToRight; // Toggle
+        }
+        return outputList;
     }
 }
 //Time Complexity: O(n) (visit each node once)

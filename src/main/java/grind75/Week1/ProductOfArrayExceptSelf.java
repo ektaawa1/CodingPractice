@@ -72,7 +72,7 @@ public class ProductOfArrayExceptSelf {
  *
  * The most straightforward approach would be a nested loop where for each element,
  * I iterate through the rest of the array to calculate the product.
- * However, that's $O(n^2)$ time complexity. Given Walmart's scale,
+ * However, that's O(n^2) time complexity. Given Tech Company's scale,
  * if we have an array of 100,000 items, that's 10 billion operations, which isn't efficient.
  *
  * Another thought is to calculate the total product of the array and then divide by each element.

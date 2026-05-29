@@ -1,0 +1,29 @@
+What is a prefix sum???
+Array:  [1,  2,  3,  4,  5]
+Index:   0   1   2   3   4
+
+Prefix sums (running total):
+After index 0: 1
+After index 1: 1+2 = 3
+After index 2: 1+2+3 = 6
+After index 3: 1+2+3+4 = 10
+After index 4: 1+2+3+4+5 = 15
+
+So, Prefix sum at index i = sum of everything from index 0 to i.
+========================================================================================
+
+How to find the subarray sum (i to j index)??
+The formula is Sum(i to j) = prefixSum(j) - prefixSum(i-1)
+where the i-1 means "everything BEFORE the starting index of your subarray."
+
+sum of any subarray = difference of two prefix sums.
+
+For Example -
+You want sum from index 2 to index 4 = 3+4+5 = 12
+j = 4  (ending index)
+i = 2  (starting index)
+
+prefixSum[j]   = prefixSum[4] = 15  (sum of everything up to end)
+prefixSum[i-1] = prefixSum[1] = 3   (sum of everything BEFORE start)
+
+Answer = 15 - 3 = 12

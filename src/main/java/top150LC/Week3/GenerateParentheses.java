@@ -40,6 +40,34 @@ public class GenerateParentheses {
             backtrack(combStringList, currStr+ ")", openCount, closeCount+1,n);
         }
     }
+    //using String Builder so SC = O(N)
+    public List<String> generateParenthesis1(int n) {
+        List<String> result = new ArrayList<>();
+        backtrack1(result, new StringBuilder(), 0, 0, n);
+        return result;
+    }
+
+    private void backtrack1(List<String> res, StringBuilder sb, int open, int close, int n) {
+        // Base Case: If the string is full length
+        if (sb.length() == n * 2) {
+            res.add(sb.toString());
+            return;
+        }
+
+        // Rule 1: Can we add an opener?
+        if (open < n) {
+            sb.append("(");
+            backtrack1(res, sb, open + 1, close, n);
+            sb.deleteCharAt(sb.length() - 1); // Backtrack
+        }
+
+        // Rule 2: Can we add a closer?
+        if (close < open) {
+            sb.append(")");
+            backtrack1(res, sb, open, close + 1, n);
+            sb.deleteCharAt(sb.length() - 1); // Backtrack
+        }
+    }
 }
 
 //Explanation-
@@ -67,3 +95,25 @@ public class GenerateParentheses {
 //Time Complexity: O(4^n / √n) → you can say roughly O(4^n).
 
 //Space Complexity: O(4^n / √n) → again, roughly O(4^n).
+
+/**
+ * The Visual Example (n = 2)
+ *
+ * Start: "" (Empty)
+ *
+ * Step 1: You must pick (. Now you have "(". (Rule 1: Open < 2)
+ *
+ * Step 2:
+ *
+ * Option A: Add another (. Now you have "((".
+ *
+ * Option B: Add a ). Now you have "()". (Rule 2: Close < Open)
+ *
+ * Step 3:
+ *
+ * From "((": You only have one choice: Add ). Now you have "(()".
+ *
+ * From "()": You have one choice: Add (. Now you have "()(".
+ *
+ * Step 4: Finish the remaining characters until both reach n.
+ */

@@ -30,11 +30,13 @@ public class TopKFreqElements {
         //if k is greater than nums' length
         k = Math.min(k, freqMap.size());
 
-        //Step2: Build a Min Stack of size k (smallest frequency at the top)
+        //Step2: Build a Min Stack of size k (key with the smallest frequency is at the top)
         //this is a Comparator
         PriorityQueue<Integer> minHeap = new PriorityQueue<>((a, b) -> freqMap.get(a) - freqMap.get(b));
         //PriorityQueue<Map.Entry<Integer,Integer>> minHeap = new PriorityQueue<>((a, b)-> a.getValue() - b.getValue());// letting miHeap know
         // that the sorting is based on value(freq) of a key, sorting in ascending order
+
+        //minHeap is storing Keys but by sorting the keys on the basis of their values.
         for(int key : freqMap.keySet()){
             minHeap.offer(key);
             if(minHeap.size()>k){ //if minHeap is full
@@ -120,13 +122,13 @@ public class TopKFreqElements {
  * our frequencies are naturally bounded.Count Frequencies: Just like before,
  * use a HashMap to get {ID: Count}.Create Buckets: Create an array of Lists
  * where the index represents the frequency. The size of this array will be N + 1.
- * Fill Buckets: If Product $A$ appears 3 times, put ID $A$ into buckets[3].
+ * Fill Buckets: If Product A appears 3 times, put ID A into buckets[3].
  * Collect Top K: Iterate through the buckets array from the end (highest frequency)
- * toward the beginning. Collect IDs until you have $K$ elements.
+ * toward the beginning. Collect IDs until you have K elements.
  */
 
 /**
- * Bucket Sort-
+ * Bucket Sort -
  * If nums = [1,1,1,2,2,3], your bucket array would look like this:
  * Index 1 (Freq 1): [3]
  * Index 2 (Freq 2): [2]

@@ -52,9 +52,11 @@ public class RobHouse {
         return dp[n - 1];
     }
     //prefer this one
+    //sliding window of state
     //At any house i, I have two choices:
     // Rob this house: In which case I add its value to the maximum amount robbed up to house i-2.
     // Skip this house: In which case the maximum amount remains the same as what I had at house i-1.
+    //TC = O(n), SC = O(1)
     public int rob1(int[] nums){
         if(nums == null || nums.length == 0){
             return 0;
@@ -72,6 +74,7 @@ public class RobHouse {
         return prev1; // result; by the end of the loop, prev1 contains the best possible amount
         // you can rob from all the houses
     }
+    //TC = O(n)+O(n) around O(n), SC = O(1)
     public int robCircular(int[] nums) {
         if(nums == null || nums.length == 0){
             return 0;

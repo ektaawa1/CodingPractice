@@ -17,8 +17,11 @@ import java.util.*;
 public class WordLadder {
     //BFS + level order
     public int ladderLength(String beginWord, String endWord, List<String> wordList) {
-        Set<String> dictSet = new HashSet<>(wordList); //to mark visited nodes
-        if(!dictSet.contains(endWord)){
+        if(wordList == null || wordList.size() == 0 || beginWord.isEmpty() || endWord.isEmpty()){
+            return 0;
+        }
+        Set<String> wordSet = new HashSet<>(wordList); //to mark visited nodes
+        if(!wordSet.contains(endWord)){
             return 0;
         }
         Queue<String> queue = new LinkedList<>();
@@ -39,9 +42,9 @@ public class WordLadder {
                     for(char k = 'a'; k <= 'z'; k++){
                         arr[j] = k;
                         String nextStr = new String(arr);
-                        if(dictSet.contains(nextStr)){
+                        if(wordSet.contains(nextStr)){
                             queue.offer(nextStr);
-                            dictSet.remove(nextStr); //mark it visited
+                            wordSet.remove(nextStr); //mark it visited
                         }
                     }
                     arr[j] = oldCh;

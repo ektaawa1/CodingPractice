@@ -41,6 +41,8 @@ public class TrappingRainWater {
         }
         return totTrappedWater;
     }
+    //this one
+    //the shorter boundary determines the water level.
     public int trap1(int[] height) {
         int left = 0;
         int right = height.length-1;
@@ -66,6 +68,34 @@ public class TrappingRainWater {
  * Time complexity:
  * O(N), where N is size of height array.
  *
- * Space complexity:
+ * Space complexity: due to 2 pointer's approach
  * O(1), no extra space is used.
+ */
+
+/**
+ * At any bar, water it can hold =
+ * min(tallest bar on left, tallest bar on right) - its own height
+ *
+ * For Example -
+ * height = [4, 2, 0, 3, 1]
+ * At index 2 (height=0):
+ *   Tallest seen from left  = max(4,2,0) = 4  ← maxLeft
+ *   Tallest seen from right = max(1,3,0) = 3  ← maxRight
+ *   Water = min(4,3) - 0 = 3
+ *
+ * Brute force would compute maxLeft and maxRight for every index → O(n²).
+ * Two pointer does it in O(n) by using this one observation:
+ * If maxLeft < maxRight:
+ *
+ * The LEFT side is the limiting factor
+ * Water at left pointer = maxLeft - height[left]
+ * We don't need to know exact maxRight — we already know it's taller than maxLeft, so min is maxLeft regardless
+ * Process left, move left pointer inward
+ *
+ * If maxRight <= maxLeft:
+ *
+ * The RIGHT side is the limiting factor
+ * Water at right pointer = maxRight - height[right]
+ * We don't need to know exact maxLeft — it's taller than maxRight, so min is maxRight regardless
+ * Process right, move right pointer inward
  */

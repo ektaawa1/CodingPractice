@@ -2,6 +2,7 @@ package top150LC.Week7;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 //139. Word Break
 
@@ -12,6 +13,7 @@ import java.util.List;
  * Explanation: Return true because "leetcode" can be segmented as "leet code".
  */
 public class WordBreak {
+    // brute force way to look at "Word Break" is to try every possible way to split the string
     // DP approach
     public boolean wordBreak(String s, List<String> wordDict) {// List search operation is O(n)
         // List search operation is O(n) → correct, because List.contains() is linear scan.
@@ -40,6 +42,25 @@ public class WordBreak {
             }
         }
         return arr[strLen]; // final answer: can whole string be split?
+    }
+
+    //bruteforce recursion solution- TC is O(2^N) & SC is O(N)
+    public boolean wordBreak1(String s, List<String> wordDict) {
+        return canBreak(s, new HashSet<>(wordDict), 0);
+    }
+
+    private boolean canBreak(String s, Set<String> wordSet, int start) {
+        // Base Case: If we reached the end, we succeeded!
+        if (start == s.length()) return true;
+
+        // Try every possible end position for a word
+        for (int end = start + 1; end <= s.length(); end++) {
+            String sub = s.substring(start, end);
+            if (wordSet.contains(sub) && canBreak(s, wordSet, end)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
 /**

@@ -1,5 +1,6 @@
 package patternBased.slidingWindow;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -57,9 +58,31 @@ public class LongestSubstringWithoutRepeatingChars {
 
         return maxLen;
     }
+    //Using an array for ascii chars
+    public int lengthOfLongestSubstring2(String s) {
+        // We use -1 to represent that we haven't seen the character yet
+        int[] lastSeen = new int[128];
+        Arrays.fill(lastSeen, -1);
+
+        int left = 0;
+        int maxLen = 0;
+
+        for (int right = 0; right < s.length(); right++) {
+            char ch = s.charAt(right);
+
+            // If we've seen this character and it's within our current window
+            if (lastSeen[ch] >= left) {
+                left = lastSeen[ch] + 1;//make left pointer jump
+            }
+
+            lastSeen[ch] = right; // Store the index
+            maxLen = Math.max(maxLen, right - left + 1);
+        }
+        return maxLen;
+    }
 }
-//TC = O(n)
-//SC = O(n)
+//TC = O(2n) (hashset approach), O(n) for hashmap approach
+//SC = O(n) or O(1) if using int[26] or int[128] instead of map or set
 /**
  right → always moves forward
 
@@ -80,42 +103,25 @@ public class LongestSubstringWithoutRepeatingChars {
 /**
  * HashMap example- s = "abba"
  * Step by step:
- *
- * right = 0 → 'a'
- *
- * map = {a:0}
+ * right = 0 → 'a' map = {a:0}
  * left = 0
  *
- * right = 1 → 'b'
- *
- * map = {a:0, b:1}
+ * right = 1 → 'b' map = {a:0, b:1}
  * left = 0
  *
- * right = 2 → 'b' (duplicate!)
+ * right = 2 → 'b' (duplicate!) map.get('b') = 1
+ * So:left = max(0, 1+1) = 2
  *
- * map.get('b') = 1
- *
- * So:
- *
- * left = max(0, 1+1) = 2
- *
- *
- * Now window becomes:
- *
- * "b"
- *
- *
+ * Now window becomes: "b"
  * We did NOT remove old 'b' from map.
- *
  * Map still:
- *
  * a → 0
  * b → 2
+ * But that’s fine because: Left pointer already jumped. Window is valid.
  *
- *
- * But that’s fine because:
- *
- * Left pointer already jumped.
- *
- * Window is valid.
+ * Note-
+ * The HashMap approach is more efficient in practice because it reduces the number of operations by
+ * jumping the left pointer directly. However, we should keep in mind the alphabet size.
+ * If the character set is small (like ASCII), using an int[128] array instead of a HashMap
+ * would be even more performant, as it avoids the overhead of hashing and object creation entirely.
  */

@@ -2,12 +2,14 @@ package top150LC.Week8;
 
 public class ZigZagConversion {
     public String convert(String s, int numRows) {
-        if (numRows == 1 || s.length() <= numRows){ // for this case- Input: s = "A", numRows = 1, Output: "A"
-            return s;
-        }
         if (s == null || s.isEmpty()){
             return s;
         }
+
+        if (numRows == 1 || s.length() <= numRows){ // for this case- Input: s = "A", numRows = 1, Output: "A"
+            return s;
+        }
+
         StringBuilder stb[] = new StringBuilder[numRows];
         StringBuilder result = new StringBuilder();
         for(int i = 0; i<numRows; i++){

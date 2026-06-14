@@ -53,10 +53,10 @@ public class BuildingsWithOceanView {
         }
 
         int[] result = new int[stack.size()];
-        int idx = stack.size() - 1;
+        int j = stack.size() - 1;
 
         while (!stack.isEmpty()) {
-            result[idx--] = stack.pop();
+            result[j--] = stack.pop();
         }
 
         return result;

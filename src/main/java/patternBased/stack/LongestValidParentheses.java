@@ -27,6 +27,43 @@ public class LongestValidParentheses {
         }
         return maxLen;
     }
+    //TC= O(N), SC = O(1) Two Pointer's approach
+    public int longestValidParenthesesOptimized(String s) {
+        int left = 0, right = 0, maxLen = 0;
+
+        // Left-to-Right Pass
+        for (int i = 0; i < s.length(); i++) {
+            if(s.charAt(i) == '('){
+                left++;
+            }else {
+                right++;
+            }
+            if(left == right){
+                maxLen = Math.max(maxLen, 2*right);
+            } else if (right > left) {
+                //invalid as more closing brakets than the opening brackets
+                //so reset the pointers
+                left = right = 0;
+            }
+        }
+        // Reset counters for the right-to-left pass
+        left = right = 0;
+
+        // Right-to-Left Pass
+        for (int i = s.length() - 1; i >= 0; i--) {
+            if (s.charAt(i) == '(') left++;
+            else right++;
+
+            if (left == right) {
+                maxLen = Math.max(maxLen, 2 * left);
+            } else if (left > right) {
+                // Invalid: more opening than closing, reset
+                left = right = 0;
+            }
+        }
+
+        return maxLen;
+    }
 }
 //Time Complexity = O(n)
 //Space Complexity = O(n) (stack in worst case like "(((((")

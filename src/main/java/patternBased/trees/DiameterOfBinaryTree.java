@@ -9,21 +9,29 @@ package patternBased.trees;
  * Output: 3
  * Explanation: 3 is the length of the path [4,2,1,3] or [5,2,1,3].
  */
+
+/**
+ * Why BFS is awkward: BFS explores level-by-level. To calculate the diameter using BFS,
+ * you would essentially be calculating the height of every node separately, which is inefficient,
+ * or using a more complex two-pass algorithm (finding the farthest node from the root,
+ * then the farthest from that node) which is less intuitive and adds unnecessary
+ * overhead for a standard binary tree.
+ */
 public class DiameterOfBinaryTree {
     private int maxDiameter = 0;
     public int diameterOfBinaryTree(TreeNode root) {
-        dfs(root);
+        getHeight(root);
         return maxDiameter;
     }
 
-    private int dfs(TreeNode node){
+    private int getHeight(TreeNode node){
         if (node == null) return 0;
-
-        int leftHeight = dfs(node.left);
-        int rightHeight = dfs(node.right);
-
+        // Recursive DFS: Get heights of subtrees (bottom up approach)
+        int leftHeight = getHeight(node.left);
+        int rightHeight = getHeight(node.right);
+        // Calculate diameter passing through THIS node
         maxDiameter = Math.max(maxDiameter, leftHeight + rightHeight);
-
+        // Return height to parent
         return Math.max(leftHeight, rightHeight) + 1; // height = 1 + max(lf,rh)
     }
 }
@@ -66,4 +74,14 @@ public class DiameterOfBinaryTree {
  * Results:
  * maxDiameter = 3
  * That corresponds to path [4 → 2 → 1 → 3]
+ */
+/**
+ * One Concept to Double-Check
+ * Sometimes people get confused about whether the diameter is defined by the number of nodes in the path or the number of edges.
+ *
+ * Number of Edges (Standard LeetCode definition): Your current solution returns the number of edges.
+ * For a tree with only one node, it returns 0. This is correct.
+ *
+ * Number of Nodes: If the problem ever asked for the number of nodes in the longest path,
+ * you would simply change leftHeight + rightHeight to leftHeight + rightHeight + 1.
  */

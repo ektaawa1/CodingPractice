@@ -1,0 +1,80 @@
+Let me start with brute force.
+I recursively try every possible word starting at position 0. If the word is in the dictionary, I recurse on the remaining string. Base case — if I reach the end of the string, return true.
+[trace through leetcode example]
+The problem is repeated subproblems — canBreak from position 4 might be called multiple times. So I add memoization — cache the result at each start index. Now each position computed exactly once — O(n²) time.
+But I can do this more cleanly bottom-up. Instead of top-down recursion, I build a boolean array where dp[i] means I can validly reach position i.
+dp[0] = true is my base case — the starting position always exists. Think of it as the first stepping stone.
+From every reachable position, I try every dictionary word. If the word matches the substring starting there, I mark the landing position as reachable too.
+My final answer is dp[n] — did I reach the end?
+Time complexity O(n × w × L) where n is string length, w is dictionary size, L is average word length. Space O(n) for the dp array.
+
+===================================================
+
+Brute force → "I'm recomputing same suffixes"
+Memoization → "Cache each suffix result"
+Bottom-up   → "Flip it — build reachability
+               left to right without recursion"
+
+============================================================
+
+The problem with brute force is that I'm recomputing the same subproblems repeatedly.
+s = "catsandcat"
+dict = ["cat", "cats", "and", "sand"]
+
+canBreak(s, 0)
+  try "cat" → canBreak(s, 3)   ← computed
+  try "cats" → canBreak(s, 4)  ← computed
+
+Later from a different path:
+  canBreak(s, 3) ← computed AGAIN
+  canBreak(s, 4) ← computed AGAIN
+I'm solving the same suffix multiple times. This screams memoization — cache the result at each start index.
+
+Step 1 — Notice the repeated work
+canBreak(s, dict, 4) might be called
+ multiple times from different paths.
+ The result never changes — so why recompute?
+ Let me cache it.
+
+STEP2-
+// Just add a memo map to your recursion
+Map<Integer, Boolean> memo = new HashMap<>();
+
+private boolean canBreak(String s, Set<String> dict,
+                          int start, Map<Integer,Boolean> memo){
+    if(start == s.length()) return true;
+    if(memo.containsKey(start)) return memo.get(start); // ← add this
+
+    for(int end = start+1; end <= s.length(); end++){
+        String word = s.substring(start, end);
+        if(dict.contains(word) && canBreak(s, dict, end, memo)){
+            memo.put(start, true);
+            return true;
+        }
+    }
+    memo.put(start, false);
+    return false;
+}
+// Time: O(n^2), Space: O(n)
+
+============================================================
+
+Intuitive Explanation-
+It's like stepping stones across a river.
+River:
+[START] l e e t c o d e [END]
+   0    1 2 3 4 5 6 7 8
+
+dp[i] = true means "there's a stone at position i
+                     I can stand on"
+
+dp[0] = true → starting stone always exists
+
+From any stone I'm standing on (dp[i]=true):
+  Try every dictionary word as a jump
+  If word matches s starting at i
+  → place a new stone at i+word.length()
+  → dp[i+len] = true
+
+If I can place a stone at position n
+→ I crossed the river → return true (Reached the end of the string)

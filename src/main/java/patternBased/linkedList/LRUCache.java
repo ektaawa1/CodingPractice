@@ -17,7 +17,8 @@ import java.util.Map;
  * Finding that previous node requires an O(N) traversal from the head.)
  */
 //Doubly LinkedList- bidirectional traversal | O(1) insert/delete | Slow Random Access- O(n)
-    // a linear data structure where each element (node) contains a data field and two references: one pointing to the next node and another pointing to the previous node.
+    // a linear data structure where each element (node) contains a data field and two references:
+// one pointing to the next node and another pointing to the previous node.
 class Node {
     int key, val;
     Node prev, next;

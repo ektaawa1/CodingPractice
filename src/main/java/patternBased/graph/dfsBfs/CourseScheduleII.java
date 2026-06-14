@@ -27,6 +27,13 @@ import java.util.Queue;
  */
 public class CourseScheduleII {
     public int[] findOrder(int numCourses, int[][] prerequisites) {
+
+        // base case — no prerequisites
+        if(prerequisites == null || prerequisites.length == 0){
+            int[] result = new int[numCourses];
+            for(int j = 0; j < numCourses; j++) result[j] = j;
+            return result;
+        }
         // Step 1: Create graph
         List<Integer>[] graph = new ArrayList[numCourses];
         for(int i = 0; i < numCourses; i++){
@@ -37,48 +44,45 @@ public class CourseScheduleII {
 
         // Step 3: Build graph + indegree
         for(int[] prereq : prerequisites){
-            int course = prereq[0];
-            int prerequisiteCourse = prereq[1];
+            int c = prereq[0];
+            int p = prereq[1];
 
-            graph[prerequisiteCourse].add(course);
-            indegree[course]++;
+            graph[p].add(c);
+            indegree[c]++;
         }
         // Step 4: Add courses with 0 prerequisites to queue
         Queue<Integer> queue = new LinkedList<>();
 
-        for(int course = 0; course < numCourses; course++){
-            if(indegree[course] == 0){
-                queue.offer(course);
+        for(int i = 0; i < numCourses; i++){
+            if(indegree[i] == 0){
+                queue.offer(i);
             }
         }
 
         // Step 5: Store order
         int[] courseOrder = new int[numCourses];
-        int i = 0;
+        int j = 0;
 
         // Step 6: BFS
         while(!queue.isEmpty()){
 
-            int currentCourse = queue.poll();
+            int currC = queue.poll();
 
-            courseOrder[i++] = currentCourse;
+            courseOrder[j++] = currC;
 
-            for(int nextCourse : graph[currentCourse]){
+            for(int nextC : graph[currC]){
 
-                indegree[nextCourse]--;
+                indegree[nextC]--;
 
-                if(indegree[nextCourse] == 0){
-                    queue.offer(nextCourse);
+                if(indegree[nextC] == 0){
+                    queue.offer(nextC);
                 }
             }
-        }
+        }//end of while
 
-        // Step 7: Check if all courses finished
-        if(i == numCourses){
-            return courseOrder;
-        }
-
-        return new int[0];
+        // Step 7: Check if all courses finished, cycle detection
+        // return output Array if no cycle, else [] (int[])
+        return j == numCourses ? courseOrder:new int[0];
     }
 }
 //Time complexity: O(V+E)

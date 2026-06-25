@@ -7,7 +7,7 @@ import java.util.Arrays;
  * Arrival times of trains, Departure times of trains
  *
  * You need:
- * Minimum number of platforms so no train waits
+ * Max number of platforms so no train waits
  *
  * Example- Input: arrival[] = [1000, 935, 1100],
  * dep[] = [1200, 1240, 1130]
@@ -35,6 +35,8 @@ public class MinPlatformsRequired {
         return maxCount;
     }
 }
+//TC = O(n log n)
+//SC =
 /**
  * It means:
  * What is the maximum number of trains present at the station at the same time?

@@ -11,21 +11,6 @@ package patternBased.linkedList;
  */
 
 public class OddEvenLinkedList {
-    public ListNode oddEvenList(ListNode head) {
-        if(head == null || head.next == null) return head;
-        ListNode odd = head;
-        ListNode even = head.next;
-        ListNode evenHead = head.next;
-        while(even != null && even.next != null){//odd will always be behind even so checking just for even condition
-            odd.next = odd.next.next;
-            even.next = even.next.next;
-
-            odd = odd.next;
-            even = even.next;
-        }
-        odd.next = evenHead; // connect end of odd list to start of even list
-        return head;
-    }
     public ListNode oddEvenList1(ListNode head) {
         if (head == null || head.next == null) return head;
 
@@ -48,3 +33,22 @@ public class OddEvenLinkedList {
 //Time: O(n) – each node visited once
 //
 //Space: O(1) – no extra data structures
+/**
+ * Dry Run:
+ * Input: head = [1,2,3,4,5]
+ * odd point to 1 and even points to 2
+ * evenHead points to 2
+ *
+ * Now odd.next = even.next links 1 to 3
+ * then odd = odd.next i.e, now odd points to 3
+ *
+ * Now even.next = odd.next links 2 to 4
+ * then even = even.next i.e., now even points to 4
+ *
+ * Similarly, 3 links to 5 and now odd points to 5.
+ * Similarly, 4 links to null and now even points to null so loop ends.
+ *
+ * Now, odd.next= evenHead links 5 to 2, so output becomes
+ * 1-3-5-2-4-null
+ * return head which is 1.
+ */

@@ -53,7 +53,7 @@ public class RotateArray {
             return;
         }
         int len = nums.length;
-        if(k> len){
+        if(k > len){
             k = k % len;
         }
         //1st reverse the whole array

@@ -52,14 +52,14 @@ public class ParallelCourses {
             }
         }
 
-        int semesters = 0;
+        int semCount = 0;
         int coursesCompleted = 0;
 
         // Step 5: BFS
         while(!queue.isEmpty()){
 
             int size = queue.size();
-            semesters++;
+            semCount++;//counting levels
 
             for(int i = 0; i < size; i++){
 
@@ -78,11 +78,7 @@ public class ParallelCourses {
         }
 
         // Step 6: Cycle check
-        if(coursesCompleted == n){
-            return semesters;
-        }
-
-        return -1;
+        return coursesCompleted == n ? semCount : -1;
     }
 }
 /**

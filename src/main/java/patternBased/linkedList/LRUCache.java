@@ -94,7 +94,7 @@ class LRUCache {
 /**
  * We will be using HashMap and Doubly Linked List. Now while inserting the key & value pair, we will be checking if the pair is already present in
  *  the Cache or not.
- *  Also we will be checking if the Cache size == capacity, then while inserting the pair, then remove the least recently used node
+ *  Also we will be checking if the Cache size > capacity, then while inserting the pair, then remove the least recently used node
  *  & insert the new pair right after the head. If the key is not present in the Cache then we will be returning -1. We will be using a left & a right
  *  pointer to denote the LRU node & the most recently used node respectively.
  *

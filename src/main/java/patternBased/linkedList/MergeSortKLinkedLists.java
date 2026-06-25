@@ -33,21 +33,21 @@ public class MergeSortKLinkedLists {
     }
     private ListNodeX mergeTwoLists(ListNodeX l1, ListNodeX l2) {
         ListNodeX dummy = new ListNodeX(0);
-        ListNodeX tail = dummy;
+        ListNodeX curr = dummy;
 
         while(l1 != null && l2 != null){
             if(l1.val < l2.val){
-                tail.next = l1;
+                curr.next = l1;
                 l1 = l1.next;
             }else{
-                tail.next = l2;
+                curr.next = l2;
                 l2 = l2.next;
             }
-            tail = tail.next;
+            curr = curr.next;
         }
         // Attach remaining nodes
-        if (l1 != null) tail.next = l1;
-        if (l2 != null) tail.next = l2;
+        if (l1 != null) curr.next = l1;
+        if (l2 != null) curr.next = l2;
 
         return dummy.next;
     }

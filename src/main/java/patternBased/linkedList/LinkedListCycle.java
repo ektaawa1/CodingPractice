@@ -6,7 +6,7 @@ import java.util.Set;
 // https://algo.monster/liteproblems/141
 
 // 2 pointers aproach- slow & fast (Floyd's Tortoise and Hare Algo)
-public class LinkedListCycle {
+public class  LinkedListCycle {
     public boolean hasCycle(ListNode1 head) {
 // Initialize two pointers, the slow pointer moves one step at a time.
         ListNode1 slow = head;

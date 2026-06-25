@@ -24,18 +24,16 @@ public class SortCharactersByFreq {
         }
 
         //Use MaxHeap here
-        PriorityQueue<Map.Entry<Character,Integer>> maxHeap =
-                new PriorityQueue<>((a,b)-> b.getValue() - a.getValue()); // sorting in descending order
-        maxHeap.addAll(freqMap.entrySet()); //or use a for loop
-        //for (Map.Entry<Character,Integer> entry : map.entrySet()) {
-        //    maxHeap.add(entry);
-        //}
+        PriorityQueue<Character> maxHeap = new PriorityQueue<>((a, b) -> freqMap.get(b) - freqMap.get(a));
+        maxHeap.addAll(freqMap.keySet());
 
         StringBuilder sb = new StringBuilder();
         while(!maxHeap.isEmpty()){
-            Map.Entry<Character,Integer> entry = maxHeap.poll();
-            for (int i = 0; i < entry.getValue(); i++) {
-                sb.append(entry.getKey());
+            //Map.Entry<Character,Integer> entry = maxHeap.poll();
+            char c = maxHeap.poll();
+            int freq = freqMap.get(c);
+            for (int i = 0; i < freq; i++) {
+                sb.append(c);
             }
         }
         return sb.toString();
@@ -43,3 +41,9 @@ public class SortCharactersByFreq {
 }
 //TC = O(n log k)
 //SC = O(n + k)
+
+/**
+ * // 2. Put characters into a list and sort by frequency
+ *     List<Character> characters = new ArrayList<>(freqMap.keySet());
+ *     characters.sort((a, b) -> freqMap.get(b) - freqMap.get(a)); // Descending order
+ */

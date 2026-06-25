@@ -1,4 +1,4 @@
-package top100Liked;
+package patternBased.graph.dfsBfs;
 
 /**
  * Given an m x n grid of characters board and a string word, return true if word exists in the grid.
@@ -6,7 +6,7 @@ package top100Liked;
  * vertically neighboring. The same letter cell may not be used more than once.
  */
 public class WordSearchMatrix {
-    //DFS with backtracking
+    //This is a backtracking + DFS problem.
     public boolean exist(char[][] board, String word) {
         int r = board.length;
         int c = board[0].length;
@@ -50,7 +50,10 @@ public class WordSearchMatrix {
         //OR
         //        visited[i][j] = true;
 
-        boolean found = dfs(board, word, i, j+1, index+1) || dfs(board, word, i, j-1, index+1) || dfs(board, word, i+1, j, index+1) || dfs(board, word, i-1, j, index+1);
+        boolean found = dfs(board, word, i, j+1, index+1)
+                || dfs(board, word, i, j-1, index+1)
+                || dfs(board, word, i+1, j, index+1)
+                || dfs(board, word, i-1, j, index+1);
 
         board[i][j] = temp;//backtracking
         //OR
@@ -59,6 +62,12 @@ public class WordSearchMatrix {
         return found;
     }
 }
+/**
+ * I mark cells visited with '#' to avoid
+ *  reusing them in the same path, then
+ *  unmark them when backtracking — because
+ *  a different path might need the same cell.
+ */
 
 // I can use a HashSet for visited, but modifying the board in place is faster and
 // more memory-efficient, so it’s usually preferred.

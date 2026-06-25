@@ -29,7 +29,6 @@ class TreeNodeX {
 public class ValidateBST {
     public boolean isValidBST(TreeNodeX root) {
         return dfs(root, Long.MIN_VALUE, Long.MAX_VALUE);// initially start with -inf & +inf
-        // Long instead of int to avoid integer overflow
     }
 
     private boolean dfs(TreeNodeX node, long left, long right){

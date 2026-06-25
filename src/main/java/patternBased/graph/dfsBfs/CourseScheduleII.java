@@ -39,7 +39,7 @@ public class CourseScheduleII {
         for(int i = 0; i < numCourses; i++){
             graph[i] = new ArrayList<>();
         }
-        // Step 2: Create indegree array
+        // Step 2: Create indegree array to keep track of the no of prereq for the course
         int[] indegree = new int[numCourses];
 
         // Step 3: Build graph + indegree

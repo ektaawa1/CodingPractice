@@ -27,7 +27,7 @@ public class NextGreaterToLeft {
             // If stack empty → no greater element on left
             result[i] = stack.isEmpty() ? -1 : stack.peek();
 
-            // Push current element (because this may be NGL for upcoming numbers)
+            // Push current element
             stack.push(nums[i]);
         }
 

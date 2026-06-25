@@ -44,36 +44,39 @@ public class UnableToEatLunch {
     //Iterate sandwiches from top
     //If sandwich type has students available → decrement count
     //Else → stop and return remaining students
-    public int countStudentsOptimized(int[] students, int[] sandwiches) {
+    class Solution {
+        public int countStudents(int[] students, int[] sandwiches) {
+            // 1. Count the preferences of students
+            int count0 = 0; // Prefers circular (0)
+            int count1 = 0; // Prefers square (1)
 
-        int ones = 0; //count of students who prefer type1
-        int zeros = 0; //count of students who prefer type0
-
-        for (int stud : students) {
-            if(stud == 0){
-                zeros++;
-            }else {
-                ones++;
+            for (int student : students) {
+                if (student == 0) count0++;
+                else count1++;
             }
-        }
 
-        for (int s : sandwiches) {
-
-            if (s == 0) { // if sandwich is of type0
-                if(zeros == 0){ // if no student wants a type0 sandwich
-                    return ones;
+            // 2. Process the sandwiches
+            for (int sandwich : sandwiches) {
+                // Check if there's any student left who wants this sandwich type
+                if (sandwich == 0) {
+                    if (count0 > 0) {
+                        count0--; // Student eats this sandwich
+                    } else {
+                        return count1; // No more circular lovers, return square lovers left
+                    }
+                } else {
+                    if (count1 > 0) {
+                        count1--; // Student eats this sandwich
+                    } else {
+                        return count0; // No more square lovers, return circular lovers left
+                    }
                 }
-                zeros--;
-            }else {
-                if(ones == 0){
-                    return zeros;
-                }
-                ones--;
             }
-        }
 
-        return 0;
+            return 0; // All students ate
+        }
     }
+
 }
 //Brute Force- the queue solution will be O(n^2)
 //Worst case: O(n²) --> Because each student may rotate many times.
